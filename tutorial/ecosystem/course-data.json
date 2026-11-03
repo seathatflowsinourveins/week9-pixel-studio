@@ -29,7 +29,8 @@
           ],
           "correct": 0,
           "explanation": "Save and share through the editor.",
-          "repair": "Narrow each window by dragging its edge."
+          "repair": "Narrow each window by dragging its edge.",
+          "focusTarget": "setup"
         },
         {
           "title": "Run the untouched workbook example",
@@ -44,7 +45,8 @@
           ],
           "correct": 1,
           "explanation": "Animation arrives in a later stage.",
-          "repair": "Read the Run status and first error."
+          "repair": "Read the Run status and first error.",
+          "focusTarget": "image"
         },
         {
           "title": "Download the actual image file",
@@ -59,7 +61,8 @@
           ],
           "correct": 0,
           "explanation": "Display enlargement leaves the source unchanged.",
-          "repair": "Check downloads, allow downloading, then retry."
+          "repair": "Check downloads, allow downloading, then retry.",
+          "focusTarget": "load"
         },
         {
           "title": "Create a project and find its files",
@@ -74,7 +77,8 @@
           ],
           "correct": 1,
           "explanation": "sketch.js contains the drawing program.",
-          "repair": "Log in, then reopen the file panel."
+          "repair": "Log in, then reopen the file panel.",
+          "focusTarget": "setup"
         },
         {
           "title": "Copy the complete pinned editor page",
@@ -89,7 +93,8 @@
           ],
           "correct": 0,
           "explanation": "The HTML template belongs in index.html.",
-          "repair": "If pasted into the wrong file, select index.html and replace its whole text correctly. Restore sketch.js with the complete stage code at the later copy step."
+          "repair": "If pasted into the wrong file, select index.html and replace its whole text correctly. Restore sketch.js with the complete stage code at the later copy step.",
+          "focusTarget": "setup"
         },
         {
           "title": "Upload the real sample.png file",
@@ -104,7 +109,8 @@
           ],
           "correct": 0,
           "explanation": "Use the project-relative filename in loadImage.",
-          "repair": "If upload says “Log in to upload files”, log in first. Check the actual folder: an image under assets needs \"assets/sample.png\" instead."
+          "repair": "If upload says “Log in to upload files”, log in first. Check the actual folder: an image under assets needs \"assets/sample.png\" instead.",
+          "focusTarget": "load"
         },
         {
           "title": "Replace every line of sketch.js",
@@ -119,7 +125,8 @@
           ],
           "correct": 1,
           "explanation": "Complete stages replace the whole file.",
-          "repair": "Select all and paste the complete stage again."
+          "repair": "Select all and paste the complete stage again.",
+          "focusTarget": "load"
         },
         {
           "title": "Run, compare and save your first version",
@@ -134,7 +141,8 @@
           ],
           "correct": 0,
           "explanation": "Fix missing assets before pixel mathematics.",
-          "repair": "Compare the first error with the filename."
+          "repair": "Compare the first error with the filename.",
+          "focusTarget": "image"
         },
         {
           "title": "Try one reversible size change",
@@ -149,7 +157,8 @@
           ],
           "correct": 1,
           "explanation": "createCanvas changes the destination surface.",
-          "repair": "Restore this complete stage if syntax breaks."
+          "repair": "Restore this complete stage if syntax breaks.",
+          "focusTarget": "canvas"
         }
       ],
       "vocabulary": [
@@ -232,7 +241,8 @@
           ],
           "correct": 0,
           "explanation": "tile measures source-pixel sampling distance.",
-          "repair": "Confirm this stage replaced all sketch.js text."
+          "repair": "Confirm this stage replaced all sketch.js text.",
+          "focusTarget": "tile"
         },
         {
           "title": "Make the invisible sampling grid visible",
@@ -247,11 +257,12 @@
           ],
           "correct": 0,
           "explanation": "The rectangle positions create the grid; outlines are optional.",
-          "repair": "Use tile 40 temporarily so the block edges are easier to count, then restore 16."
+          "repair": "Use tile 40 temporarily so the block edges are easier to count, then restore 16.",
+          "focusTarget": "loop-y"
         },
         {
           "title": "Read one color and move to its neighbor",
-          "here": "Select the picture.get(x, y) line, then the fill line. Imagine the first two visits: source (0, 0), then (16, 0). Each visit reads a color before drawing its rectangle. Stage 3 adds an address inspector.",
+          "here": "The step selects the sampling line. In Follow one pixel, try source (0, 0), then Next sample for (16, 0). Each visit reads a color before drawing its rectangle. Stage 3 adds an address inspector.",
           "editor": "Read const shade = picture.get(x, y); as “remember the color at this source location.” Read shade[0], shade[1], shade[2], shade[3] as red, green, blue and alpha.",
           "why": "Read color before drawing its block.",
           "expect": "You can follow a source color from get into fill and then into one block.",
@@ -262,7 +273,8 @@
           ],
           "correct": 0,
           "explanation": "get supplies the sampled source color.",
-          "repair": "Read the get and fill explanations consecutively with Next line."
+          "repair": "Read the get and fill explanations consecutively with Next line.",
+          "focusTarget": "sample"
         },
         {
           "title": "Follow the two loops without editing them",
@@ -277,7 +289,8 @@
           ],
           "correct": 1,
           "explanation": "Multiply rows by columns: 300.",
-          "repair": "Calculate both divisions; never set tile zero."
+          "repair": "Calculate both divisions; never set tile zero.",
+          "focusTarget": "loop-y"
         },
         {
           "title": "Change only the sampling step",
@@ -292,7 +305,8 @@
           ],
           "correct": 0,
           "explanation": "Larger sampling steps visit fewer locations.",
-          "repair": "Check tile in both separate windows."
+          "repair": "Check tile in both separate windows.",
+          "focusTarget": "tile"
         },
         {
           "title": "Explain how a source position reaches the canvas",
@@ -307,7 +321,8 @@
           ],
           "correct": 1,
           "explanation": "Half of 640 is 320.",
-          "repair": "Divide first; label source and canvas widths."
+          "repair": "Divide first; label source and canvas widths.",
+          "focusTarget": "rect"
         },
         {
           "title": "Keep one observed result",
@@ -322,7 +337,8 @@
           ],
           "correct": 0,
           "explanation": "Concrete observations guide further decisions.",
-          "repair": "Compare 8 and 40 again before writing."
+          "repair": "Compare 8 and 40 again before writing.",
+          "focusTarget": "rect"
         }
       ],
       "vocabulary": [
@@ -413,7 +429,8 @@
           ],
           "correct": 0,
           "explanation": "Different methods can produce matching colors.",
-          "repair": "Check loadPixels and the uploaded image path."
+          "repair": "Check loadPixels and the uploaded image path.",
+          "focusTarget": "loadpixels"
         },
         {
           "title": "Start with pixel zero",
@@ -428,11 +445,12 @@
           ],
           "correct": 1,
           "explanation": "The first array address is zero.",
-          "repair": "Use the inspector’s coordinate label to distinguish sample (0, 0) from a later sample."
+          "repair": "Use the inspector’s coordinate label to distinguish sample (0, 0) from a later sample.",
+          "focusTarget": "index"
         },
         {
           "title": "Calculate one later address by hand",
-          "here": "With tile 16, use Next sample until the coordinate reads (16, 16). Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.",
+          "here": "With tile 16, press the (16, 16) shortcut in Follow one pixel. Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.",
           "editor": "Calculate: 16 complete rows × 320 pixels = 5120; add x = 16 to get 5136 pixels; multiply by 4 RGBA entries to get address 20544.",
           "why": "Convert pixels into channel entries.",
           "expect": "Selected pixel starts at address 20544.",
@@ -443,7 +461,8 @@
           ],
           "correct": 0,
           "explanation": "Source-buffer calculations use source width.",
-          "repair": "Confirm tile 16 and coordinate (16, 16), then calculate using source width 320."
+          "repair": "Confirm tile 16 and coordinate (16, 16), then calculate using source width 320.",
+          "focusTarget": "index"
         },
         {
           "title": "Separate the address from the amount",
@@ -458,7 +477,8 @@
           ],
           "correct": 1,
           "explanation": "Addresses locate values; they are not amounts.",
-          "repair": "Label each number “where” or “how much”."
+          "repair": "Label each number “where” or “how much”.",
+          "focusTarget": "green"
         },
         {
           "title": "Read alpha and the density assumption",
@@ -473,7 +493,8 @@
           ],
           "correct": 0,
           "explanation": "Transparent pixels differ from opaque black.",
-          "repair": "Use the supplied source for this exercise."
+          "repair": "Use the supplied source for this exercise.",
+          "focusTarget": "picture-density"
         },
         {
           "title": "Keep the original buffer unchanged",
@@ -488,7 +509,8 @@
           ],
           "correct": 1,
           "explanation": "Reading needs no updatePixels; drawing uses rect.",
-          "repair": "Restore the complete stage after accidental assignments."
+          "repair": "Restore the complete stage after accidental assignments.",
+          "focusTarget": "fill"
         }
       ],
       "vocabulary": [
@@ -572,7 +594,8 @@
           ],
           "correct": 0,
           "explanation": "focus tests position, not object identity.",
-          "repair": "Confirm focus mode and strength 100%."
+          "repair": "Confirm focus mode and strength 100%.",
+          "focusTarget": "condition"
         },
         {
           "title": "Read the condition as a sentence",
@@ -587,7 +610,8 @@
           ],
           "correct": 1,
           "explanation": "The >= comparison includes equality.",
-          "repair": "Compare one sample’s fraction with 0.4."
+          "repair": "Compare one sample’s fraction with 0.4.",
+          "focusTarget": "condition"
         },
         {
           "title": "Move only the region boundary",
@@ -602,7 +626,8 @@
           ],
           "correct": 0,
           "explanation": "focus changes a spatial boundary.",
-          "repair": "Check focus, then Run the edited sketch."
+          "repair": "Check focus, then Run the edited sketch.",
+          "focusTarget": "focus"
         },
         {
           "title": "Blend toward gray at half strength",
@@ -617,7 +642,8 @@
           ],
           "correct": 1,
           "explanation": "Amount zero returns original channel values.",
-          "repair": "Inspect a colorful sample outside the region."
+          "repair": "Inspect a colorful sample outside the region.",
+          "focusTarget": "fill"
         },
         {
           "title": "Compare one different target rule",
@@ -632,7 +658,8 @@
           ],
           "correct": 0,
           "explanation": "255 minus 40 equals 215.",
-          "repair": "Return to focus mode for boundary control."
+          "repair": "Return to focus mode for boundary control.",
+          "focusTarget": "target"
         },
         {
           "title": "Choose and record a deliberate rule",
@@ -647,7 +674,8 @@
           ],
           "correct": 1,
           "explanation": "Your viewing supports your own observation.",
-          "repair": "Compare two boundaries with everything else fixed."
+          "repair": "Compare two boundaries with everything else fixed.",
+          "focusTarget": "condition"
         }
       ],
       "vocabulary": [
@@ -734,7 +762,8 @@
           ],
           "correct": 0,
           "explanation": "Teaching and editor clocks are independent.",
-          "repair": "Press editor Run to restart its minute."
+          "repair": "Press editor Run to restart its minute.",
+          "focusTarget": "clock-init"
         },
         {
           "title": "Locate where the clock starts",
@@ -749,7 +778,8 @@
           ],
           "correct": 1,
           "explanation": "Repeated resets would prevent elapsed progress.",
-          "repair": "Restore the first-frame condition if progress stalls."
+          "repair": "Restore the first-frame condition if progress stalls.",
+          "focusTarget": "clock-init"
         },
         {
           "title": "Inspect three states without waiting",
@@ -764,7 +794,8 @@
           ],
           "correct": 0,
           "explanation": "constrain holds the ending at one.",
-          "repair": "Choose one Teaching time value at a time and compare the displayed progress with seconds divided by 60."
+          "repair": "Choose one Teaching time value at a time and compare the displayed progress with seconds divided by 60.",
+          "focusTarget": "progress"
         },
         {
           "title": "Distinguish progress from final strength",
@@ -779,7 +810,8 @@
           ],
           "correct": 1,
           "explanation": "Strength changes endpoint, not duration.",
-          "repair": "Check that the divisor remains 60000."
+          "repair": "Check that the divisor remains 60000.",
+          "focusTarget": "amount"
         },
         {
           "title": "Use a quick rehearsal correctly",
@@ -794,7 +826,8 @@
           ],
           "correct": 0,
           "explanation": "Teaching inspection and the exported elapsed-time program serve different purposes.",
-          "repair": "Inspect and restore any manually changed divisor."
+          "repair": "Inspect and restore any manually changed divisor.",
+          "focusTarget": "progress"
         },
         {
           "title": "Watch one real minute and record it",
@@ -809,7 +842,8 @@
           ],
           "correct": 1,
           "explanation": "Frame-rate requests do not guarantee elapsed duration.",
-          "repair": "Time from visible start; inspect a stalled clock."
+          "repair": "Time from visible start; inspect a stalled clock.",
+          "focusTarget": "progress"
         }
       ],
       "vocabulary": [
@@ -893,7 +927,8 @@
           ],
           "correct": 0,
           "explanation": "Share links belong to the editor project.",
-          "repair": "Confirm the new stage replaced sketch.js completely."
+          "repair": "Confirm the new stage replaced sketch.js completely.",
+          "focusTarget": "canvas"
         },
         {
           "title": "Compare replay states in the workbook",
@@ -908,7 +943,8 @@
           ],
           "correct": 0,
           "explanation": "The local preview and your saved editor project are separate.",
-          "repair": "Compare source, settings and selected sample first."
+          "repair": "Compare source, settings and selected sample first.",
+          "focusTarget": "progress"
         },
         {
           "title": "Restart the actual sketch with a click",
@@ -923,7 +959,8 @@
           ],
           "correct": 0,
           "explanation": "The unchanged source needs no restoration.",
-          "repair": "Click the canvas; verify mousePressed exists."
+          "repair": "Click the canvas; verify mousePressed exists.",
+          "focusTarget": "replay"
         },
         {
           "title": "Test a wide and a narrow window",
@@ -938,7 +975,8 @@
           ],
           "correct": 1,
           "explanation": "Independent width and height can distort proportions.",
-          "repair": "Record the failed size before revising layout."
+          "repair": "Record the failed size before revising layout.",
+          "focusTarget": "resize"
         },
         {
           "title": "Open the actual presentation link",
@@ -953,7 +991,8 @@
           ],
           "correct": 0,
           "explanation": "Only opening a link checks its destination.",
-          "repair": "Verify assets, Save, and reopen the link."
+          "repair": "Verify assets, Save, and reopen the link.",
+          "focusTarget": "resize"
         },
         {
           "title": "Rehearse twice and preserve the result",
@@ -968,7 +1007,8 @@
           ],
           "correct": 1,
           "explanation": "Each seed controls its own generator.",
-          "repair": "Compare inputs; restore the simple working version."
+          "repair": "Compare inputs; restore the simple working version.",
+          "focusTarget": "replay"
         }
       ],
       "vocabulary": [
@@ -1057,11 +1097,12 @@
           ],
           "correct": 0,
           "explanation": "Answering cards does not perform class activities.",
-          "repair": "Finish all actual examples together before claiming completion."
+          "repair": "Finish all actual examples together before claiming completion.",
+          "focusTarget": "setup"
         },
         {
           "title": "Agree on a concept and divide real responsibilities",
-          "here": "Use the partner log from the full workbook. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.",
+          "here": "Open Finish and expand Concept and partner. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.",
           "editor": "Save a baseline version both partners can identify. Preserve each person’s actual tested variation or agreed contribution before discussing the results.",
           "why": "Make contributions and shared decisions visible.",
           "expect": "Named roles precede actual contribution records.",
@@ -1072,11 +1113,12 @@
           ],
           "correct": 1,
           "explanation": "Specific records show how collaboration shaped work.",
-          "repair": "Assign concrete tasks and reunite to compare."
+          "repair": "Assign concrete tasks and reunite to compare.",
+          "focusTarget": "setup"
         },
         {
           "title": "Preserve at least three algorithm iterations",
-          "here": "Use the iteration log. For each version, record the rule changed, your prediction, what actually happened and the next decision. Keep the source and settings identifiable. Blank rows are not evidence of completed work.",
+          "here": "Open Finish and expand Iterations. For each version, record the rule changed, your prediction, what actually happened and the next decision. Keep the source and settings identifiable. Blank rows are not evidence of completed work.",
           "editor": "Develop, test and preserve at least three algorithm iterations. Save the complete code for each before replacing it. Copy sketch.js here supplies a starting program; your tested changes make the iterations.",
           "why": "Connect changed rules with observed results.",
           "expect": "Three preserved tested algorithm versions exist.",
@@ -1087,11 +1129,12 @@
           ],
           "correct": 0,
           "explanation": "Planned filenames alone are not iterations.",
-          "repair": "Recover overwritten versions or test another honestly."
+          "repair": "Recover overwritten versions or test another honestly.",
+          "focusTarget": "amount"
         },
         {
           "title": "Watch at least three full runs with a timer",
-          "here": "Use the timed observation log. Prepare rows for viewing number, actual timestamp, what you noticed and your interpretation. Keep each partner’s initial attention notes separate before discussing them.",
+          "here": "Open Finish and expand Full-minute viewings. Prepare rows for viewing number, actual timestamp, what you noticed and your interpretation. Keep each partner’s initial attention notes separate before discussing them.",
           "editor": "Watch at least three complete runs with a separate timer. Restart deliberately, keep the project silent and record real moments. Inspecting a few slider states does not replace watching the entire minute.",
           "why": "Watch pacing, not just isolated states.",
           "expect": "Three full viewings have real timestamped observations.",
@@ -1102,7 +1145,8 @@
           ],
           "correct": 1,
           "explanation": "Scrubbing cannot replace complete timed viewing.",
-          "repair": "Label interruptions and watch another full run."
+          "repair": "Label interruptions and watch another full run.",
+          "focusTarget": "progress"
         },
         {
           "title": "Compile the class spreadsheet and write the process blog",
@@ -1117,11 +1161,12 @@
           ],
           "correct": 0,
           "explanation": "Local templates do not replace class submissions.",
-          "repair": "Consult live instructions for unclear destinations."
+          "repair": "Consult live instructions for unclear destinations.",
+          "focusTarget": "setup"
         },
         {
           "title": "Check the actual blog, code and fullscreen links",
-          "here": "Use the full submission checklist to audit actual deliverables: blog, sketch-code link, fullscreen link, source and inspiration credits, collaboration record, iterations and timed observations.",
+          "here": "Open Finish and use Links and the self-checklist to audit actual deliverables: blog, sketch-code link, fullscreen link, source and inspiration credits, collaboration record, iterations and timed observations.",
           "editor": "Open the exact saved code and fullscreen links. Check the intended image and behavior, then rehearse two silent runs at presentation size. Repair any failed link or unintended sound before submitting.",
           "why": "Check what your intended viewer opens.",
           "expect": "All three links reach intended current artifacts.",
@@ -1132,7 +1177,8 @@
           ],
           "correct": 1,
           "explanation": "A candidate URL needs actual destination verification.",
-          "repair": "Repair failed links, Save, and test again."
+          "repair": "Repair failed links, Save, and test again.",
+          "focusTarget": "canvas"
         },
         {
           "title": "Finish separate preparation and make an honest final audit",
@@ -1147,7 +1193,8 @@
           ],
           "correct": 0,
           "explanation": "Sound preparation remains separate; this artifact stays silent.",
-          "repair": "Name missing work and complete the actual activity."
+          "repair": "Name missing work and complete the actual activity.",
+          "focusTarget": "setup"
         }
       ],
       "vocabulary": [

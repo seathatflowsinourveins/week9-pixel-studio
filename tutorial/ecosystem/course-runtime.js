@@ -14,6 +14,18 @@ let teachingSeconds=null,lastReport=0;
 function tell(kind,extra={}){parent.postMessage({kind,token:courseToken,...extra},courseOrigin);}
 window.addEventListener('error',e=>tell('course-error',{message:e.message}));
 window.addEventListener('unhandledrejection',e=>tell('course-error',{message:String(e.reason)}));
+let selectedSample=null,selectionBox;
+function markSample(){
+ const canvas=document.querySelector('canvas');if(!canvas||!selectedSample)return;
+ if(!selectionBox){selectionBox=document.createElement('div');selectionBox.id='course-sample-marker';selectionBox.setAttribute('role','img');Object.assign(selectionBox.style,{position:'absolute',pointerEvents:'none',border:'2px solid #d0efa0',boxShadow:'0 0 0 2px #0a1117',boxSizing:'border-box'});document.body.append(selectionBox);}
+ const {x,y,tile}=selectedSample,box=canvas.getBoundingClientRect();Object.assign(selectionBox.style,{left:(box.left+x/320*box.width)+'px',top:(box.top+y/240*box.height)+'px',width:(tile/320*box.width)+'px',height:(tile/240*box.height)+'px'});selectionBox.setAttribute('aria-label','Selected source tile ('+x+', '+y+') in the p5 output');
+}
+window.addEventListener('message',event=>{
+ if(event.source!==parent||event.origin!==courseOrigin||event.data?.token!==courseToken||event.data.kind!=='course-select')return;
+ const {x,y,tile}=event.data;if(![x,y,tile].every(Number.isFinite)||x<0||x>=320||y<0||y>=240||tile<4||tile>40)return;selectedSample={x,y,tile};markSample();
+});
+function reportSize(){const canvas=document.querySelector('canvas');if(canvas){markSample();tell('course-size',{width:canvas.width,height:canvas.height});}}
+window.addEventListener('resize',()=>requestAnimationFrame(reportSize));
 ${stage>=4?`
 const normalDraw=window.draw;
 window.draw=function(){

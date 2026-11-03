@@ -8,6 +8,8 @@ const data={version:1,
  stages:stages.map((stage,i)=>({number:i+1,id:'studio-'+i,title:stage.title,short:['One image','A mosaic','Four numbers','Color focus','One minute','Present','Refine'][i],description:descriptions[i],href:'./learn.html?view=editor#stage-'+(i+1),checkpoint:checkpoints[i]})),
  foundations:lessons.map((lesson,i)=>({id:lesson.id,title:lesson.title,group:i<10?'01 · Drawing and code':i<16?'02 · Pixels and this project':'03 · Optional media and debugging',href:'../Week-9-Project-Studio.html#'+lesson.id})),
  repos:[
+ {name:'Code Hike / focus',role:'Design reference · no installed dependency',url:'https://codehike.org/docs/code/focus',detail:'Reference for connecting a learning step to the relevant code. This studio implements semantic line focus with native JavaScript.'},
+ {name:'p5.Image pixels',role:'Primary pixel reference',url:'https://p5js.org/reference/p5.Image/pixels/',detail:'The source buffer stores four RGBA entries per pixel. Follow one pixel connects its location, addresses, values and drawn tile.'},
  {name:'processing / p5.js',role:'Used · local drawing library',url:'https://github.com/processing/p5.js',detail:'The lesson previews run p5.js 2.3.4, pinned in this kit. Learn image, get, pixels, loops and time.'},
  {name:'processing / p5.js-web-editor',role:'Used · official embedded editor',url:'https://github.com/processing/p5.js-web-editor',detail:'The real p5 editor is beside the guide. Edit and Run there. Sign in inside the editor to save to your account.'},
  {name:'radix-ui / primitives',role:'Design reference · no installed dependency',url:'https://github.com/radix-ui/primitives',detail:'Reference for clear component states and accessible dialog behavior. This dashboard uses the browser’s native dialog.'},

@@ -189,6 +189,18 @@
   ],
   "repos": [
     {
+      "name": "Code Hike / focus",
+      "role": "Design reference · no installed dependency",
+      "url": "https://codehike.org/docs/code/focus",
+      "detail": "Reference for connecting a learning step to the relevant code. This studio implements semantic line focus with native JavaScript."
+    },
+    {
+      "name": "p5.Image pixels",
+      "role": "Primary pixel reference",
+      "url": "https://p5js.org/reference/p5.Image/pixels/",
+      "detail": "The source buffer stores four RGBA entries per pixel. Follow one pixel connects its location, addresses, values and drawn tile."
+    },
+    {
       "name": "processing / p5.js",
       "role": "Used · local drawing library",
       "url": "https://github.com/processing/p5.js",

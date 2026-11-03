@@ -80,7 +80,7 @@ const lessons = [
         repair: 'Use tile 40 temporarily so the block edges are easier to count, then restore 16.'
       },
       {
-        here: 'Select the picture.get(x, y) line, then the fill line. Imagine the first two visits: source (0, 0), then (16, 0). Each visit reads a color before drawing its rectangle. Stage 3 adds an address inspector.',
+        here: 'The step selects the sampling line. In Follow one pixel, try source (0, 0), then Next sample for (16, 0). Each visit reads a color before drawing its rectangle. Stage 3 adds an address inspector.',
         editor: 'Read const shade = picture.get(x, y); as “remember the color at this source location.” Read shade[0], shade[1], shade[2], shade[3] as red, green, blue and alpha.',
         expect: 'You can follow a source color from get into fill and then into one block.',
         repair: 'Read the get and fill explanations consecutively with Next line.'
@@ -124,7 +124,7 @@ const lessons = [
         repair: 'Use the inspector’s coordinate label to distinguish sample (0, 0) from a later sample.'
       },
       {
-        here: 'With tile 16, use Next sample until the coordinate reads (16, 16). Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.',
+        here: 'With tile 16, press the (16, 16) shortcut in Follow one pixel. Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.',
         editor: 'Calculate: 16 complete rows × 320 pixels = 5120; add x = 16 to get 5136 pixels; multiply by 4 RGBA entries to get address 20544.',
         repair: 'Confirm tile 16 and coordinate (16, 16), then calculate using source width 320.'
       },
@@ -283,15 +283,15 @@ const lessons = [
         editor: 'Keep your working sketch saved while examining examples in separate tabs. An answer on this learning card does not complete the example exploration.'
       },
       {
-        here: 'Use the partner log from the full workbook. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.',
+        here: 'Open Finish and expand Concept and partner. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.',
         editor: 'Save a baseline version both partners can identify. Preserve each person’s actual tested variation or agreed contribution before discussing the results.'
       },
       {
-        here: 'Use the iteration log. For each version, record the rule changed, your prediction, what actually happened and the next decision. Keep the source and settings identifiable. Blank rows are not evidence of completed work.',
+        here: 'Open Finish and expand Iterations. For each version, record the rule changed, your prediction, what actually happened and the next decision. Keep the source and settings identifiable. Blank rows are not evidence of completed work.',
         editor: 'Develop, test and preserve at least three algorithm iterations. Save the complete code for each before replacing it. Copy sketch.js here supplies a starting program; your tested changes make the iterations.'
       },
       {
-        here: 'Use the timed observation log. Prepare rows for viewing number, actual timestamp, what you noticed and your interpretation. Keep each partner’s initial attention notes separate before discussing them.',
+        here: 'Open Finish and expand Full-minute viewings. Prepare rows for viewing number, actual timestamp, what you noticed and your interpretation. Keep each partner’s initial attention notes separate before discussing them.',
         editor: 'Watch at least three complete runs with a separate timer. Restart deliberately, keep the project silent and record real moments. Inspecting a few slider states does not replace watching the entire minute.'
       },
       {
@@ -299,7 +299,7 @@ const lessons = [
         editor: 'Choose the iteration you will post, Save it and verify its title and links. Preserve other versions so your blog can show meaningful differences.'
       },
       {
-        here: 'Use the full submission checklist to audit actual deliverables: blog, sketch-code link, fullscreen link, source and inspiration credits, collaboration record, iterations and timed observations.',
+        here: 'Open Finish and use Links and the self-checklist to audit actual deliverables: blog, sketch-code link, fullscreen link, source and inspiration credits, collaboration record, iterations and timed observations.',
         editor: 'Open the exact saved code and fullscreen links. Check the intended image and behavior, then rehearse two silent runs at presentation size. Repair any failed link or unintended sound before submitting.'
       },
       {

@@ -95,3 +95,22 @@ test('export sanitizes local data without mutating browser-shaped inputs', () =>
   assert.equal(result.workbook, 'icm-week9-v1');
   assert.equal(Object.hasOwn(result, 'unrelated'), false);
 });
+
+test('Finish desk evidence round trips, strips foreign fields and survives legacy imports', () => {
+  const desk = {project:{title:'Window study',partner:'Practice partner'},iterations:[{change:'Tile 16 → 8',result:'More detail'}],viewings:[{notes:'00:30 light shifts',fullMinute:true}],links:{code:'https://editor.p5js.org/test/sketches/test'},checked:[2],secret:'drop'};
+  const local = C.createExport(workbook(), {assignment:desk});
+  const parsed = C.parse(JSON.stringify(local));
+  assert.deepEqual(parsed, local);
+  assert.equal(parsed.studioTransfer.assignment.project.title, 'Window study');
+  assert.equal(Object.hasOwn(parsed.studioTransfer.assignment,'secret'), false);
+  assert.deepEqual(C.merge(local,workbook()).studioTransfer.assignment, local.studioTransfer.assignment);
+  const incoming = C.createExport(workbook(), {assignment:{project:{concept:'Keep the light'},iterations:[{url:'https://example.test/v1'}],viewings:[{}, {notes:'00:50 leaf is clearer'}],checked:[4]}});
+  const merged = C.merge(local,incoming).studioTransfer.assignment;
+  assert.equal(merged.project.title, 'Window study');
+  assert.equal(merged.project.concept, 'Keep the light');
+  assert.equal(merged.iterations[0].change, 'Tile 16 → 8');
+  assert.equal(merged.iterations[0].url, 'https://example.test/v1');
+  assert.equal(merged.viewings[0].fullMinute, true);
+  assert.equal(merged.viewings[1].notes, '00:50 leaf is clearer');
+  assert.deepEqual(merged.checked, [2,4]);
+});

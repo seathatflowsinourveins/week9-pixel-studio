@@ -104,6 +104,7 @@
     return list;
   }
   function assignment() {
+    if (window.assignmentPanel) return window.assignmentPanel.render(data.assignment);
     const wrap = element('div'), intro = element('p','', 'Use this checklist before you submit your work.'), list = element('ul','assignment-list');
     for (const item of data.assignment.items) list.append(element('li','',item));
     const link = element('a','','Open the assignment and submission details ↗');

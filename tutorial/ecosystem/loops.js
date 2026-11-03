@@ -22,4 +22,5 @@
  if(!L||!R){$('loop-current').textContent='The lesson could not load.';$('loop-meaning').textContent='Start the local study launcher, then refresh this page.';return;}
  openChapter(mode,true);
  mountOfficialEditor();
+ window.pixelFlow?.bridge(document.querySelector(".loop-code-panel"));
 })();

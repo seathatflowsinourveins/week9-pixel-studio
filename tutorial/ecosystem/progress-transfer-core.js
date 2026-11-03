@@ -1,7 +1,7 @@
 (function (root, factory) {
-  if (typeof module === 'object' && module.exports) module.exports = factory(require('./course-core.js'));
-  else root.progressTransferCore = factory(root.projectCore);
-})(typeof globalThis === 'object' ? globalThis : this, function (projectCore) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./course-core.js'),require('./assignment-core.js'));
+  else root.progressTransferCore = factory(root.projectCore,root.assignmentCore);
+})(typeof globalThis === 'object' ? globalThis : this, function (projectCore,assignmentCore) {
   'use strict';
   const MAX_BYTES = 2 * 1024 * 1024;
   const foundationIds = new Set([
@@ -15,7 +15,8 @@
   function portable(value) {
     const result = {version:1};
     if (!record(value)) return result;
-    const {session, resume, loop} = value;
+    const {session, resume, loop, assignment} = value;
+    if (record(assignment)) result.assignment=assignmentCore.normalize(assignment);
     if (record(session) && bounded(session.stage,1,7) && bounded(session.line,0,100)) result.session = {stage:session.stage,line:session.line};
     if (record(resume) && bounded(resume.stage,1,7)) {
       if (resume.kind === 'stage') result.resume = {kind:'stage',stage:resume.stage};
@@ -69,7 +70,7 @@
         notes:{...before.notes,...after.notes},
         walkthrough:{...before.walkthrough,...after.walkthrough}
       } : before,
-      studioTransfer:{version:1,...left.studioTransfer,...right.studioTransfer}
+      studioTransfer:{version:1,...left.studioTransfer,...right.studioTransfer,...((left.studioTransfer?.assignment||right.studioTransfer?.assignment)?{assignment:assignmentCore.merge(left.studioTransfer?.assignment,right.studioTransfer?.assignment)}:{})}
     };
   }
   function summarize(value) {

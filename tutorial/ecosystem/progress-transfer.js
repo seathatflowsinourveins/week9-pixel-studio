@@ -2,7 +2,7 @@
   'use strict';
   const C = window.progressTransferCore;
   if (!C) return;
-  const keys = {workbook:'icm-workbook-v1',session:'icm-study-session-v1',resume:'icm-studio-resume-v1',loop:'icm-loop-lesson-v1'};
+  const keys = {workbook:'icm-workbook-v1',session:'icm-study-session-v1',resume:'icm-studio-resume-v1',loop:'icm-loop-lesson-v1',assignment:'icm-assignment-desk-v1'};
   function element(tag, text, className) {
     const node = document.createElement(tag);
     if (text !== undefined) node.textContent = text;
@@ -17,7 +17,7 @@
   }
   function current() {
     const read = key => JSON.parse(localStorage.getItem(key) || 'null');
-    return C.createExport(read(keys.workbook), {session:read(keys.session),resume:read(keys.resume),loop:read(keys.loop)});
+    return C.createExport(read(keys.workbook), {session:read(keys.session),resume:read(keys.resume),loop:read(keys.loop),assignment:read(keys.assignment)});
   }
   function download(value) {
     const blob = new Blob([JSON.stringify(value,null,2) + '\n'], {type:'application/json'});
@@ -31,7 +31,8 @@
   }
   function counts(value) {
     const n = C.summarize(value);
-    return n.stages + ' of 7 stages · ' + n.foundations + ' foundation lessons · ' + n.notes + ' notes · ' + n.positions + ' saved positions';
+    const desk=value.studioTransfer?.assignment, extra=desk&&window.assignmentCore?window.assignmentCore.summary(desk):null;
+    return n.stages + ' of 7 stages · ' + n.foundations + ' foundation lessons · ' + n.notes + ' notes · ' + n.positions + ' saved positions'+(extra?' · Finish: '+extra.iterations+' iterations, '+extra.viewings+' full viewings':'');
   }
   function mount() {
     if (document.getElementById('transfer-dialog')) return;
@@ -43,7 +44,7 @@
     const title = element('h2','Your learning progress'); title.id = 'transfer-title';
     const close = button('Close'); close.setAttribute('aria-label','Close learning progress'); close.autofocus = true;
     top.append(title,close);
-    const description = element('p','Progress stays in this browser on this site. Export a file to move your notes and saved steps to another browser or computer.');
+    const description = element('p','Progress stays in this browser. Export to move learning notes, saved steps and your Finish desk to another device.');
     description.id = 'transfer-description';
     const summary = element('p',undefined,'transfer-summary');
     const exportButton = button('Export progress','transfer-export');
@@ -107,7 +108,7 @@
         // Read again at confirmation so notes saved since the preview are retained.
         const merged = C.merge(current(),pending), {studioTransfer,...progress} = merged;
         const writes = [[keys.workbook,JSON.stringify(progress)]];
-        for (const key of ['session','resume','loop']) if (Object.hasOwn(studioTransfer,key)) writes.push([keys[key],JSON.stringify(studioTransfer[key])]);
+        for (const key of ['session','resume','loop','assignment']) if (Object.hasOwn(studioTransfer,key)) writes.push([keys[key],JSON.stringify(studioTransfer[key])]);
         for (const [key] of writes) previous.set(key,localStorage.getItem(key));
         started = true;
         for (const [key,value] of writes) localStorage.setItem(key,value);

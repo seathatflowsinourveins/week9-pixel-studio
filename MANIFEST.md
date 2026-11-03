@@ -14,7 +14,15 @@ Open the [dashboard](https://seathatflowsinourveins.github.io/week9-pixel-studio
 | 6 | [Replay and present](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/learn.html?view=editor#stage-6) | 6 | Replay → resize |
 | 7 | [Refine and document together](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/learn.html?view=editor#stage-7) | 7 | Test → observe → share |
 
-Before the Stage 2 mosaic, use the [row → grid loop lesson](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/loops.html?mode=row&view=editor). Each click highlights the next operation and illustrates the squares drawn so far. The normal p5 Run draws the full loop immediately.
+Before the Stage 2 mosaic, use the [row → grid loop lesson](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/loops.html?mode=row&view=editor). Each click highlights the next operation and illustrates the squares drawn so far. The normal p5 Run draws the full loop immediately. Its sampling comparison shows one color read before the loops beside a new color read for each tile inside the loops.
+
+## Follow the mechanism
+
+From Stage 2, **Follow one pixel** connects the supplied source image to its RGBA addresses, channel values and selected rectangle in the real p5 illustration. Click the source, use its arrow keys, enter coordinates or move to the previous/next sample. Coordinates snap to the current sampling grid.
+
+In [Stage 3](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/learn.html?view=editor#stage-3), set tile 16 and select **(16, 16)**: `4 × (16 + 16 × 320) = 20544`. The next three addresses hold green, blue and alpha. Stage 4 adds original/target/current color; Stage 5 separates elapsed progress from strength, so `30 / 60 × 0.5 = 0.25`.
+
+Changing steps focuses a relevant line by its role in the code, including when the color rule changes. Manual line selection remains available. These controls explain the supplied code and retain the official p5 editor beside the guide.
 
 ## Twenty foundations
 
@@ -49,6 +57,8 @@ Before the Stage 2 mosaic, use the [row → grid loop lesson](https://seathatflo
 
 ## Assignment finish check
 
+Open **Finish** in the [dashboard](https://seathatflowsinourveins.github.io/week9-pixel-studio/) or beside [Stage 7](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/learn.html?view=editor#stage-7). Its blank desk has space for concept and partner roles, iteration results, timestamped full-minute viewings, submission links and the following self-checks. Enter what you actually made and watched.
+
 - Work with your partner on a pixel-level image or video alternative reality.
 - Make a silent piece that changes over one minute. Use color to guide attention.
 - Make the result repeatable for two demonstrations. Seed randomness if you use it.
@@ -61,14 +71,18 @@ Before the Stage 2 mosaic, use the [row → grid loop lesson](https://seathatflo
 
 Use the [assignment source](https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9) for authoritative links and instructions.
 
+Finish saves in this browser. Download process notes as Markdown and iteration/viewing rows as CSV, or use **Progress → Export progress** to transfer the whole desk with your lesson notes and saved steps. Links and checked boxes are self-reported; this page does not submit or verify your work.
+
 ## References
 
 - [processing / p5.js](https://github.com/processing/p5.js) — Used · local drawing library. The lesson previews run p5.js 2.3.4, pinned in this kit. Learn image, get, pixels, loops and time.
 - [processing / p5.js-web-editor](https://github.com/processing/p5.js-web-editor) — Used · official embedded editor. The real p5 editor is beside the guide. Edit and Run there. Sign in inside the editor to save to your account.
 - [radix-ui / primitives](https://github.com/radix-ui/primitives) — Design reference · no installed dependency. Reference for clear component states and accessible dialog behavior. This dashboard uses the browser’s native dialog.
+- [Code Hike focus](https://codehike.org/docs/code/focus) — Design reference · no installed dependency or copied source. The guide uses the idea of focusing code in response to a learner’s action, implemented with its existing native DOM controls.
 - [p5 reference](https://p5js.org/reference/) — Primary learning reference. Look up the exact drawing command when a word is new.
+- [p5.Image pixels](https://p5js.org/reference/p5.Image/pixels/) — Primary reference for the RGBA buffer and the required `loadPixels()` call before reading it.
 - [HTML dialog standard](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element) — Primary interface reference. The dashboard opens above your lesson. Close or Escape returns to the same editor.
 
 ## Keep your own work
 
-Use p5 Save for code. Use Progress Export/Import for notes and saved steps. Keep screenshots, source files, tested iterations and actual timed observations with your project. The dashboard never invents observations or marks your work complete.
+Use p5 Save for code. Use Progress Export/Import for lesson notes, saved steps and the Finish desk. Keep screenshots, source files, tested iterations and actual timed observations with your project. The dashboard never invents observations or marks your work complete.
