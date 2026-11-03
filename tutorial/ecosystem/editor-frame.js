@@ -59,8 +59,12 @@
     var steps = element('ol', 'p5-native-save-steps');
     steps.appendChild(element('li', '',
       'Keep your latest edits: click the code in the p5 pane, then Ctrl+A and Ctrl+C (⌘ on Mac), or use p5 File → Download. Copy guide code copies only the prepared guide, not your pane edits.'));
-    steps.appendChild(element('li', '',
-      'Open p5 & save opens a full tab for sign-in. For your first copy, choose File → Duplicate. Paste your latest code into sketch.js, then Run and Save.'));
+    var signIn = element('li', '',
+      'Open p5 & save opens a full tab for sign-in. If sign-in is blocked here, copy this p5 link into Chrome or Edge. For your first copy, choose File → Duplicate. Paste your latest code into sketch.js, then Run and Save.');
+    var copyLink = element('button', 'p5-native-copy-link', 'Copy p5 link');
+    copyLink.type = 'button';
+    signIn.appendChild(copyLink);
+    steps.appendChild(signIn);
     var remember = element('li', '', 'Optional: keep your saved sketch URL here. It also appears in Finish.');
     var fieldLabel = element('label', 'p5-native-project-field');
     fieldLabel.appendChild(element('span', '', 'Your saved p5 sketch'));
@@ -155,12 +159,21 @@
         status.textContent = 'Copy unavailable. Use Download sketch.js in the guide to keep the prepared guide code. Keep pane edits with p5 File → Download.';
       }
     }
+    async function copyProjectLink() {
+      try {
+        await view.navigator.clipboard.writeText(open.href);
+        status.textContent = 'p5 link copied. Paste it into Chrome or Edge to sign in and save.';
+      } catch (_) {
+        status.textContent = 'Copy unavailable. Right-click Open p5 & save and copy its link for Chrome or Edge.';
+      }
+    }
 
     setSuggestedProject(suggestedURL, options.label);
     refreshSavedProject();
     load.addEventListener('click', loadSuggested);
     keep.addEventListener('click', keepProject);
     copy.addEventListener('click', copyGuideCode);
+    copyLink.addEventListener('click', copyProjectLink);
     if (view) {
       view.addEventListener('icm-progress-restored', refreshSavedProject);
       view.addEventListener('icm-progress-change', refreshSavedProject);

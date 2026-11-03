@@ -5,7 +5,8 @@
 .p5-native-header a{font-size:.75rem}
 .p5-native-header .p5-native-open{display:inline-block;padding:8px 11px;border:1px solid var(--accent);border-radius:6px;background:var(--accent);color:var(--ink);font-weight:750;line-height:1.4;text-decoration:none}
 .p5-native-open:hover{filter:brightness(1.08)}
-.p5-native-copy,.p5-native-keep,.p5-native-load{font-size:.72rem;line-height:1.4;padding:8px 9px}
+.p5-native-copy,.p5-native-copy-link,.p5-native-keep,.p5-native-load{font-size:.72rem;line-height:1.4;padding:8px 9px}
+.p5-native-copy-link{display:block;margin-top:7px}
 .p5-native-help{margin:8px 0 0;padding:0;border:0}
 .p5-native-help>summary{font-size:.74rem;color:var(--muted)}
 .p5-native-save-steps{margin:10px 0 0;padding:0 0 0 21px;max-height:min(43vh,330px);overflow:auto;scrollbar-gutter:stable;font-size:.76rem;line-height:1.6;color:var(--muted)}

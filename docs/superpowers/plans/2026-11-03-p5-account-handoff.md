@@ -12,4 +12,6 @@ Stack: existing native HTML/CSS/JavaScript and pinned p5.js; no added dependenci
 
 Key failure cases: stale suggested examples must not replace an own saved link; invalid URL or unreadable/full storage must not erase notes; clipboard failure must not be called success; no action silently transfers unsaved iframe code; no iframe reload during guide/save-help/progress interactions.
 
-Before publication: 91 native tests pass; static build contains86 public files. Reviewer finding on the Finish change event is fixed. Browser tests verified copy, invalid/kept/cleared links, saved-project startup, stage persistence and phone-width fit. Native p5 account save was independently reloaded and rendered. Publication and final live verification follow these checks.
+Before publication: 93 native tests pass; static build contains86 public files. Reviewer finding on the Finish change event is fixed. Browser tests verified copy, invalid/kept/cleared links, saved-project startup, stage persistence and phone-width fit. Native p5 account save was independently reloaded and rendered. Publication and final live verification follow these checks.
+
+The first publication a3594f8 passed GitHub Pages deployment 41739420620. The copy-link follow-up also covers in-app browser fallback; its final deployment and live hashes are recorded in the session evidence.

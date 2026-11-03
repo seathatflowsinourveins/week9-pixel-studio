@@ -243,6 +243,38 @@ test('an unavailable guide callback does not copy an empty backup', async () => 
   assert.match(find(aside, 'p5-native-status').textContent, /Download sketch\.js/);
 });
 
+test('Copy p5 link copies the current saved or suggested destination without navigating', async () => {
+  const copied = [];
+  const aside = container({ writeText: async value => { copied.push(value); } });
+  let saved = OWN;
+  const instance = host.mount({ container: aside, url: ROW, readProjectURL: () => saved });
+  const copyLink = find(find(aside, 'p5-native-help'), 'p5-native-copy-link');
+  await copyLink.click();
+  saved = '';
+  aside.ownerDocument.defaultView.dispatch('icm-assignment-change');
+  await copyLink.click();
+  instance.setSuggestedProject(MOSAIC, 'Mosaic');
+  await copyLink.click();
+  assert.deepEqual(copied, [OWN, ROW, MOSAIC]);
+  assert.match(find(aside, 'p5-native-status').textContent, /p5 link copied/i);
+  assert.match(find(aside, 'p5-native-status').textContent, /Chrome or Edge/);
+  assert.deepEqual(instance.iframe.srcWrites, [OWN]);
+});
+
+test('failed link copying gives a manual browser handoff without claiming success', async () => {
+  for (const clipboard of [undefined, { writeText: async () => { throw new Error('Permission denied'); } }]) {
+    const aside = container(clipboard);
+    const instance = host.mount({ container: aside, url: ROW });
+    await find(aside, 'p5-native-copy-link').click();
+    const status = find(aside, 'p5-native-status').textContent;
+    assert.match(status, /copy unavailable/i);
+    assert.match(status, /Open p5 & save/);
+    assert.match(status, /Chrome or Edge/);
+    assert.doesNotMatch(status, /link copied/i);
+    assert.deepEqual(instance.iframe.srcWrites, [ROW]);
+  }
+});
+
 test('native save help preserves the same editor and explains the manual transfer boundary', () => {
   const aside = container();
   const instance = host.mount({ container: aside, url: ROW });

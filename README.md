@@ -27,7 +27,7 @@ Open the same dashboard URL. To move learning notes, saved steps and the Finish 
 
 Progress stays in each browser until you transfer it. It is not automatically synced or uploaded to GitHub. **Open p5 & save ↗** opens the original p5 website as a full page, where account sign-in and saving work independently of the embedded practice pane. The header remembers a valid saved p5 link in **Finish → p5 code**; it also travels with Progress export/import.
 
-Before switching, keep your latest pane edits with p5 **File → Download**, or select its code and copy it. **Copy guide code** copies the prepared current lesson, not edits you made in the embedded p5 editor. In the full p5 tab, duplicate the example for your first copy, paste into sketch.js, Run and Save. Opening a link never transfers unsaved pane edits. p5 has its own theme setting.
+Before switching, keep your latest pane edits with p5 **File → Download**, or select its code and copy it. **Copy guide code** copies the prepared current lesson, not edits you made in the embedded p5 editor. In the full p5 tab, duplicate the example for your first copy, paste into sketch.js, Run and Save. Opening a link never transfers unsaved pane edits. If sign-in is blocked inside the in-app browser, use **Copy p5 link** in the save help and paste it into Chrome or Edge. You can keep the guide and signed-in p5 page beside each other with your browser’s split view. p5 has its own theme setting.
 
 ## The learning order
 
