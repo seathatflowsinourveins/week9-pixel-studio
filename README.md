@@ -60,7 +60,7 @@ npm test
 
 Edit browser files under `tutorial/ecosystem/`; lesson content lives under `tutorial/data/`. The source code generator is `tutorial/project-core.cjs`. Pushing to `main` runs tests, builds only public assets and publishes GitHub Pages through [.github/workflows/pages.yml](.github/workflows/pages.yml).
 
-The build creates the seven reference sketches from source in a fresh temporary folder. It does not copy your working project, journals, browser progress, backups or runtime files into the website. `dist/site-manifest.json` records the published file hashes.
+The build creates the seven reference sketches from source in a fresh temporary folder. It does not copy your working project, journals, browser progress, backups or runtime files into the website. `dist/site-manifest.json` records the published file hashes and browser bundle version. Owned scripts, styles and lesson-data requests carry this version so refreshing receives matching controls and data.
 
 The two complete workbooks and the PNG are included. Optional full-workbook/image regeneration uses `node tutorial/build.cjs` and requires Sharp (`npm install --no-save sharp`); normal site builds do not need it.
 
