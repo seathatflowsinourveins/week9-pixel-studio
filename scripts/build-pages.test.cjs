@@ -4,6 +4,7 @@ test('static export contains all stages and resolves assets below a project URL'
  t.after(async()=>{const resolved=await fs.realpath(temp),parent=await fs.realpath(os.tmpdir());assert.equal(path.dirname(resolved).toLowerCase(),parent.toLowerCase());assert(path.basename(resolved).startsWith('pixel-pages-test-'));await fs.rm(resolved,{recursive:true,force:true});});
  const out=path.join(temp,'dist'),manifest=await buildPages({destination:out}),names=new Set(manifest.files.map(f=>f.path));
  assert.equal(manifest.stages.length,7);assert.equal(manifest.foundations,20);
+ assert(![...names].some(name=>name.split('/').some(part=>part.startsWith('.'))),'Public manifest must exclude dotfiles omitted by the Pages uploader');
  for(const name of names)assert(!/(^|\/)(backups|\.runtime|my-project|journal|evidence|node_modules|\.git)(\/|$)|\.(cjs|test.js|log|zip)$/.test(name),name);
  for(let n=1;n<=7;n++)assert(names.has('workspace/stage-0'+n+'/sketch.js'));
  for(const page of ['index.html','ecosystem/index.html','ecosystem/learn.html','ecosystem/loops.html']){
