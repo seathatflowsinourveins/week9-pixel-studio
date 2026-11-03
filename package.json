@@ -1,0 +1,12 @@
+{
+  "name": "week9-pixel-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An illustrated Week 9 p5.js learning studio, from one image to a one-minute piece.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node tutorial/ecosystem/build-course.cjs && node scripts/build-pages.cjs",
+    "test": "node --test tutorial/*.test.cjs tutorial/ecosystem/*.test.cjs scripts/*.test.cjs",
+    "preview": "node scripts/preview.cjs"
+  }
+}

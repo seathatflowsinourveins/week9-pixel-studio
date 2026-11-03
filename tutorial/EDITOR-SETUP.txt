@@ -1,0 +1,97 @@
+WEB EDITOR SETUP FOR A COMPLETE BEGINNER
+
+The workbook previews are ready to run. These steps are for your separate
+saved and shareable class sketch at https://editor.p5js.org/ . Internet is
+needed there to load the library and manage your project.
+
+CREATE AND RUN
+1. Open the Web Editor. Create a new sketch. Log in to save and upload files.
+2. Open the file panel. The English accessibility label for its opening
+   control is "Open Sketch files navigation".
+3. Choose sketch.js. Select all its text and paste one complete numbered
+   example from this workbook. Do not append it below an existing setup.
+4. Choose index.html. Locate the main p5 library script tag. Replace its
+   quoted src address with:
+   https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js
+   Keep the sketch.js script. For these silent examples, omit old sound scripts.
+   You may instead replace index.html with editor-starter/index.html supplied here.
+5. Return to sketch.js and press the Run triangle. The square stops the sketch.
+6. In the browser developer console, p5.VERSION should report "2.3.4".
+   Version is a property on the p5 library object, not a function call.
+
+UPLOAD THE SAMPLE IMAGE
+1. Extract the ZIP first so assets/sample.png is an ordinary local file.
+2. In the editor, log in. Without a login the upload action is disabled and
+   the interface says "Log in to upload files".
+3. Open Sketch Files. Open its options control, whose accessibility label is
+   "Toggle open/close sketch file options". Choose "Upload file".
+4. In "Drop files here or click to use the file browser", select sample.png
+   from the extracted assets folder. Wait for the upload to finish.
+5. Confirm sample.png is in the project file list beside sketch.js. The code
+   loadImage("sample.png") refers to that project file, not your computer path.
+6. A file stored under an assets folder in the editor needs
+   loadImage("assets/sample.png") instead. File names and paths must match.
+7. Press Run. A missing-file error calls for checking the path; adding more
+   pixel code will not repair a missing image.
+
+EVERY LINE OF THE STARTER HTML
+HTML describes a page. JavaScript gives it behavior. The browser reads this
+HTML and loads the p5 library before running your sketch. You mainly edit
+sketch.js during this course.
+
+01 <!doctype html>
+   Tell the browser to use modern HTML page rules.
+02 <html lang="en">
+   Begin the page and identify its language as English for assistive tools.
+03 <head>
+   Begin the information about the page, rather than visible page content.
+04 <meta charset="utf-8">
+   Interpret text using UTF-8 so names and punctuation are decoded correctly.
+05 <meta name="viewport" content="width=device-width,initial-scale=1">
+   Let the layout use the device width rather than a pretend wide phone page.
+06 <title>My creative coding sketch</title>
+   Set the title shown on the browser tab.
+07 <style>
+   Begin a group of CSS rules controlling how the page is laid out.
+08 html, body { margin: 0; padding: 0; }
+   Remove the browser's default outer and inner page spacing. A canvas made
+   with windowWidth and windowHeight can now begin at (0,0) and fit the page.
+09 canvas { display: block; }
+   Display the canvas as a block rather than inline text. This removes the
+   small text-baseline gap that could otherwise cause vertical scrolling.
+10 </style>
+   Finish these layout rules.
+11 <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script>
+   Load the p5 library. Src is its source address. @2.3.4 pins the version.
+   The closing script tag ends the element. Keep this before sketch.js.
+12 </head>
+   Finish the page information group. The slash marks a closing tag.
+13 <body>
+   Begin the visible page content.
+14 <main></main>
+   Provide a main content area. p5 can place its drawing canvas here.
+15 <script src="sketch.js"></script>
+   Load the code in your project file sketch.js after the library is present.
+16 </body>
+   Close the visible page content.
+17 </html>
+   Close the page.
+
+FILES AND COMMON WORDS
+A file is a named unit of saved information. Its extension hints at its format:
+.js is JavaScript, .html is page markup, .png is an image, .mp4 is a video container.
+Renaming a file extension does not convert the underlying file format.
+A folder groups files. A path says where a file is relative to your page.
+An upload copies a local file into your editor project. It does not automatically
+add the code that displays it. loadImage requests it; image draws it.
+
+VERSION DIFFERENCE
+p5 v2 uses async function setup() and await loadImage(...).
+Older v1 examples often use function preload(). Follow one version consistently.
+The starter has no sound add-on because the Week 9 project is silent.
+
+VERIFIED EDITOR LABEL SOURCES
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/translations/locales/en-US/translations.json
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/Sidebar.jsx
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/FileUploader.jsx
+https://p5js.org/tutorials/v2_transition/

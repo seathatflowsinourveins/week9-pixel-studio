@@ -1,0 +1,13 @@
+workspace/
+backups/
+evidence/
+.runtime/
+node_modules/
+*.zip
+PACKAGE-VALIDATION.json
+progress.txt
+/dist/
+/SOURCE-MANIFEST.json
+*.tmp
+*.log
+*.DS_Store

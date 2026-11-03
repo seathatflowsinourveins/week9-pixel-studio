@@ -1,0 +1,21 @@
+SEVEN COMPLETE PROJECT VERSIONS
+
+stage-1.js  Load and draw the source image.
+stage-2.js  Sample a grid with get(x,y).
+stage-3.js  Read the same source via RGBA array addresses.
+stage-4.js  Keep one region in color while its surroundings turn gray.
+stage-5.js  Grow that color transformation over sixty seconds.
+stage-6.js  Add click-to-replay and viewport resizing.
+stage-7.js  Final working mechanism, ready for your own iterations.
+
+Each file is a COMPLETE replacement for sketch.js. Do not append them together.
+Use p5 2.3.4 and upload sample.png beside sketch.js, following EDITOR-SETUP.txt.
+These static files use the default region/color settings. In the interactive
+studio, your chosen controls generate their own complete downloadable version.
+
+The code is a learning mechanism, not your finished creative interpretation.
+Choose your own material and intent, test meaningful rule changes, and record
+the required collaborations, iterations and real timed observations.
+
+The default project has no randomness. If you add random or noise rules, follow
+the class seed requirements; foundation 15 explains a seeded noise extension.

@@ -1,0 +1,1419 @@
+{
+  "version": 1,
+  "p5": "2.3.4",
+  "editor": "https://editor.p5js.org/",
+  "stageOne": "https://editor.p5js.org/739955940fc/sketches/HMn4vZWL4",
+  "html": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <title>My creative coding sketch</title>\n  <style>\n    html, body { margin: 0; padding: 0; }\n    canvas { display: block; }\n  </style>\n  <script src=\"https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js\"></script>\n</head>\n<body>\n  <main></main>\n  <script src=\"sketch.js\"></script>\n</body>\n</html>\n",
+  "stages": [
+    {
+      "title": "Show one image",
+      "subtitle": "A file becomes a picture on your drawing surface.",
+      "outcome": "Display sample.png, then explain why its source size and canvas size are different.",
+      "illustrationHint": "This is a real p5 sketch. The source is 320 × 240 pixels; its canvas is 640 × 480. A still image is the expected result.",
+      "experiment": {
+        "instruction": "In your p5 editor, change only createCanvas(640, 480) to createCanvas(320, 240). Run, compare, then restore 640, 480 and save.",
+        "expect": "The displayed picture becomes smaller. The original image file stays 320 × 240."
+      },
+      "checkpoint": "I can load the image, save the sketch, and explain that loadImage loads while image draws.",
+      "actions": [
+        {
+          "title": "Put the two workspaces beside each other",
+          "here": "Keep this lesson visible beside your usual browser’s p5 editor. Read one action here, then perform its editor instruction. You can revisit any action without starting your project again.",
+          "editor": "Open your saved Stage 1 sketch. You already confirmed its image runs in your usual browser. Keep that browser for editing if the in-app preview is blank.",
+          "why": "Separate pages hold separate code.",
+          "expect": "Both windows remain readable.",
+          "question": "Where will your saved, shareable sketch live?",
+          "choices": [
+            "In the p5 Web Editor project",
+            "Only in this instruction page"
+          ],
+          "correct": 0,
+          "explanation": "Save and share through the editor.",
+          "repair": "Narrow each window by dragging its edge."
+        },
+        {
+          "title": "Run the untouched workbook example",
+          "here": "Press Restart p5. Look for the window, sun, hills and plant in the illustration. This establishes the result you will recognize when you run your own sketch.",
+          "editor": "Keep your saved sketch as it is. Compare its preview with this illustration. Stage 1 draws once; it does not yet animate.",
+          "why": "Recognize a working baseline first.",
+          "expect": "A still enlarged source appears.",
+          "question": "Should this first stage already animate for a minute?",
+          "choices": [
+            "Yes, every stage animates",
+            "No, this stage displays the original"
+          ],
+          "correct": 1,
+          "explanation": "Animation arrives in a later stage.",
+          "repair": "Read the Run status and first error."
+        },
+        {
+          "title": "Download the actual image file",
+          "here": "Choose Download sample.png and locate the downloaded image file. Its stored size is 320 × 240. Keep its exact filename for the upload step.",
+          "editor": "Your prepared Stage 1 already has this image. When rebuilding the exercise, upload the actual file. A Downloads folder path pasted into code does not upload it.",
+          "why": "The editor needs its own asset.",
+          "expect": "Downloads contains a 320 × 240 source.",
+          "question": "Does a 640 × 480 display make the source file 640 × 480?",
+          "choices": [
+            "No, display size and stored size differ",
+            "Yes, displaying it doubles the stored pixels"
+          ],
+          "correct": 0,
+          "explanation": "Display enlargement leaves the source unchanged.",
+          "repair": "Check downloads, allow downloading, then retry."
+        },
+        {
+          "title": "Create a project and find its files",
+          "here": "Identify the three jobs: index.html loads the page and p5 library, sketch.js contains your program, and sample.png supplies the image. Your existing saved project is ready; these steps also let you recreate it.",
+          "editor": "Open the file panel with Open Sketch files navigation. Find index.html, sketch.js and sample.png. Use a new sketch if you want to rebuild the exercise separately from your saved version.",
+          "why": "Each file has a different purpose.",
+          "expect": "Both named project files are visible.",
+          "question": "Which file will hold the drawing instructions?",
+          "choices": [
+            "sample.png",
+            "sketch.js"
+          ],
+          "correct": 1,
+          "explanation": "sketch.js contains the drawing program.",
+          "repair": "Log in, then reopen the file panel."
+        },
+        {
+          "title": "Copy the complete pinned editor page",
+          "here": "Choose Copy index.html. This copies the complete page setup for p5 2.3.4. Use the HTML explanation link when you want to understand its 17 lines.",
+          "editor": "Select index.html. Click inside its code, press Ctrl+A, then Ctrl+V to replace that whole file. The prepared Stage 1 already has this setup. Keep sketch.js as a separate file.",
+          "why": "index.html loads the library and sketch.",
+          "expect": "The complete page pins p5 2.3.4.",
+          "question": "Where should the complete copied HTML go?",
+          "choices": [
+            "Over all text in index.html",
+            "Below the JavaScript in sketch.js"
+          ],
+          "correct": 0,
+          "explanation": "The HTML template belongs in index.html.",
+          "repair": "If pasted into the wrong file, select index.html and replace its whole text correctly. Restore sketch.js with the complete stage code at the later copy step."
+        },
+        {
+          "title": "Upload the real sample.png file",
+          "here": "Have the downloaded sample.png file ready. Its name in the project must match the quoted text in loadImage(\"sample.png\"). The supplied image lets you recognize a working result before choosing your own material.",
+          "editor": "If sample.png is already beside sketch.js, this step is done. Otherwise use the + button next to Sketch Files, choose upload file, then Drop files here or click to use the file browser. Select sample.png and confirm it appears in the file list.",
+          "why": "The saved project needs its own image.",
+          "expect": "sample.png appears in the project file list.",
+          "question": "For sample.png beside sketch.js, which quoted path matches?",
+          "choices": [
+            "\"sample.png\"",
+            "Your computer’s Downloads folder path"
+          ],
+          "correct": 0,
+          "explanation": "Use the project-relative filename in loadImage.",
+          "repair": "If upload says “Log in to upload files”, log in first. Check the actual folder: an image under assets needs \"assets/sample.png\" instead."
+        },
+        {
+          "title": "Replace every line of sketch.js",
+          "here": "Choose Copy sketch.js. It copies this stage’s complete eight-line program. Select a code line to read its explanation, or use Next line to move through the program in order.",
+          "editor": "Select sketch.js, click inside its code, press Ctrl+A, then paste. Replace the entire old program. The first line is let picture; and there is one async function setup().",
+          "why": "Avoid duplicate programs and declarations.",
+          "expect": "Only this complete stage remains.",
+          "question": "How should you paste a complete stage?",
+          "choices": [
+            "Below the existing program",
+            "Over all of the existing sketch.js text"
+          ],
+          "correct": 1,
+          "explanation": "Complete stages replace the whole file.",
+          "repair": "Select all and paste the complete stage again."
+        },
+        {
+          "title": "Run, compare and save your first version",
+          "here": "Press Restart p5 and compare the illustration with your editor. Write two short statements: “source: 320 × 240” and “canvas: 640 × 480.” Seeing the result and saving the project are separate checks.",
+          "editor": "Press the Run triangle. Confirm the image appears, give the sketch a recognizable title and choose File → Save. Reopen its actual saved address to check that your code and asset were saved.",
+          "why": "Running and saving are separate checks.",
+          "expect": "The editor picture matches and is saved.",
+          "question": "If loading fails, what should you inspect first?",
+          "choices": [
+            "The uploaded filename and quoted path",
+            "The color mathematics from a later stage"
+          ],
+          "correct": 0,
+          "explanation": "Fix missing assets before pixel mathematics.",
+          "repair": "Compare the first error with the filename."
+        },
+        {
+          "title": "Try one reversible size change",
+          "here": "Select the createCanvas line and read its explanation. Predict what a smaller canvas will do. This lesson’s reference stays available while you make the practice change in your editor.",
+          "editor": "Change only createCanvas(640, 480) to createCanvas(320, 240), then Run. Compare the display. Restore 640, 480, Run again and Save. Explain what changed before continuing.",
+          "why": "One change isolates display size.",
+          "expect": "Smaller canvas; unchanged source file.",
+          "question": "What did changing createCanvas change?",
+          "choices": [
+            "The original image’s stored dimensions",
+            "The destination drawing surface"
+          ],
+          "correct": 1,
+          "explanation": "createCanvas changes the destination surface.",
+          "repair": "Restore this complete stage if syntax breaks."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Sketch",
+          "meaning": "A small p5 program. Your editor project contains the program and its supporting files."
+        },
+        {
+          "term": "Source and canvas",
+          "meaning": "The source is the stored picture, 320 × 240 pixels here. The canvas is the drawing surface, initially 640 × 480."
+        },
+        {
+          "term": "File and path",
+          "meaning": "A file has a name such as sample.png. A path tells the program where that file sits inside its project."
+        },
+        {
+          "term": "setup",
+          "meaning": "Instructions p5 performs once when this sketch starts. Await waits for the picture to finish loading."
+        }
+      ],
+      "id": "studio-0",
+      "foundations": [
+        {
+          "id": "00-start",
+          "title": "Meet your drawing machine"
+        },
+        {
+          "id": "01-language",
+          "title": "Read code and name values"
+        },
+        {
+          "id": "02-coordinates",
+          "title": "Place shapes and control drawing order"
+        },
+        {
+          "id": "10-image",
+          "title": "Open an image: a file becomes material"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5/loadImage/",
+        "https://p5js.org/reference/p5/image/",
+        "https://p5js.org/tutorials/v2_transition/"
+      ],
+      "practice": [
+        {
+          "task": "Show the supplied image at its stored size, then enlarge its display. Describe what changed.",
+          "hint": "Read the final width and height arguments of image. Compare them with the image’s own dimension properties.",
+          "solution": "Drawing at the image’s width and height shows its original size. Larger destination dimensions enlarge the visible picture; the stored source dimensions stay unchanged. Match the width-to-height ratio to avoid stretching."
+        },
+        {
+          "task": "Replace the source with your own image and keep one successful version.",
+          "hint": "Check the uploaded file list before editing the quoted path. A .jpg filename and a .png filename are different.",
+          "solution": "Upload the real file, match its exact path in loadImage, and run. If loading fails, inspect the first error and filename before changing drawing mathematics. Save the working sketch and note your source credit."
+        }
+      ],
+      "idea": "Your source is the material; the canvas is the surface where you arrange it. Enlarging its display does not add detail to the file."
+    },
+    {
+      "title": "Make a mosaic",
+      "subtitle": "Read one color, draw one block, and repeat.",
+      "outcome": "Build a mosaic and explain how the sampling step controls its detail.",
+      "illustrationHint": "Each block uses one color sampled from the source. The loops visit a row from left to right, then move to the next row.",
+      "experiment": {
+        "instruction": "Compare tile values 8, 16 and 40 while keeping the source image fixed. Inspect the illustration and the generated const tile line after each change.",
+        "expect": "The three settings use 1,200, 300 and 48 samples. Larger steps make fewer, larger blocks."
+      },
+      "checkpoint": "I can explain why increasing tile makes the mosaic coarser, and I saved one tested version.",
+      "actions": [
+        {
+          "title": "Establish the stage’s baseline",
+          "here": "Set tile to 16 and press Restart p5. Compare this mosaic with the smooth Stage 1 picture. Keep the same source image while learning the sampling rule.",
+          "editor": "Choose Copy sketch.js, select all of sketch.js in the editor, and replace it. Run and Save this stage. Keep the same sample.png and index.html.",
+          "why": "Keep the sampling comparison controlled.",
+          "expect": "Rectangular blocks replace the smooth display.",
+          "question": "What does tile = 16 measure here?",
+          "choices": [
+            "Sixteen source pixels between samples",
+            "Sixteen seconds of animation"
+          ],
+          "correct": 0,
+          "explanation": "tile measures source-pixel sampling distance.",
+          "repair": "Confirm this stage replaced all sketch.js text."
+        },
+        {
+          "title": "Make the invisible sampling grid visible",
+          "here": "Look at the block edges: they form a grid even though no outline is drawn. At tile 16, the 320 × 240 source is visited in 20 columns and 15 rows. Trace one row with your eyes, then move down.",
+          "editor": "Keep the program unchanged. Find noStroke(), which removes rectangle outlines. The blocks still meet along grid boundaries because rect places them next to one another.",
+          "why": "Reveal where samples originate.",
+          "expect": "Twenty block columns and fifteen rows cover the image.",
+          "question": "Why can you recognize a grid without drawn outlines?",
+          "choices": [
+            "The filled rectangles meet along regular boundaries",
+            "The image must contain a hidden grid file"
+          ],
+          "correct": 0,
+          "explanation": "The rectangle positions create the grid; outlines are optional.",
+          "repair": "Use tile 40 temporarily so the block edges are easier to count, then restore 16."
+        },
+        {
+          "title": "Read one color and move to its neighbor",
+          "here": "Select the picture.get(x, y) line, then the fill line. Imagine the first two visits: source (0, 0), then (16, 0). Each visit reads a color before drawing its rectangle. Stage 3 adds an address inspector.",
+          "editor": "Read const shade = picture.get(x, y); as “remember the color at this source location.” Read shade[0], shade[1], shade[2], shade[3] as red, green, blue and alpha.",
+          "why": "Read color before drawing its block.",
+          "expect": "You can follow a source color from get into fill and then into one block.",
+          "question": "What does picture.get(x, y) supply?",
+          "choices": [
+            "A source color at that location",
+            "A new canvas size"
+          ],
+          "correct": 0,
+          "explanation": "get supplies the sampled source color.",
+          "repair": "Read the get and fill explanations consecutively with Next line."
+        },
+        {
+          "title": "Follow the two loops without editing them",
+          "here": "Select the line beginning for (let y, then the following for (let x line. Use Next line to reach rect. Say: “choose a row, visit its columns, then choose the next row.”",
+          "editor": "Find the same two loops without changing them. At tile 16, calculate 320 ÷ 16 = 20 columns and 240 ÷ 16 = 15 rows. Multiply to get 300 samples.",
+          "why": "Columns finish before rows advance.",
+          "expect": "Twenty columns × fifteen rows = 300 samples.",
+          "question": "How many samples does this baseline make?",
+          "choices": [
+            "35",
+            "300"
+          ],
+          "correct": 1,
+          "explanation": "Multiply rows by columns: 300.",
+          "repair": "Calculate both divisions; never set tile zero."
+        },
+        {
+          "title": "Change only the sampling step",
+          "here": "Change tile to 8, then 40. Compare the detail in the window and plant. Only one setting changes, so you can connect that setting with the result.",
+          "editor": "Change only const tile = 16; to const tile = 8; and Run. Then try 40 and Run. Keep the two loop steps as y += tile and x += tile.",
+          "why": "Change one spatial rule.",
+          "expect": "Step 8: 1200 samples; step 40: 48.",
+          "question": "Which has fewer sampled blocks?",
+          "choices": [
+            "Step 40",
+            "Step 8"
+          ],
+          "correct": 0,
+          "explanation": "Larger sampling steps visit fewer locations.",
+          "repair": "Check tile in both separate windows."
+        },
+        {
+          "title": "Explain how a source position reaches the canvas",
+          "here": "Restore tile 16. Select the rect line and read its explanation. x / picture.width gives a fraction of the source; multiplying by width finds the matching position on the canvas.",
+          "editor": "Restore const tile = 16; and Run. Work out one example: source x 160 is halfway across 320, so its destination is halfway across 640, at x 320.",
+          "why": "Fractions connect differently sized rectangles.",
+          "expect": "Source x 160 maps to canvas x 320.",
+          "question": "Where does source x = 160 map on a 640-wide display?",
+          "choices": [
+            "x = 160",
+            "x = 320"
+          ],
+          "correct": 1,
+          "explanation": "Half of 640 is 320.",
+          "repair": "Divide first; label source and canvas widths."
+        },
+        {
+          "title": "Keep one observed result",
+          "here": "Choose a tested tile value and write what became easier or harder to recognize. Include the setting and a specific feature, such as the doorway or plant. This is evidence for a design decision.",
+          "editor": "Run and Save your chosen version. Preserve its complete code before trying a different stage if you want to keep this iteration.",
+          "why": "Connect a decision to visible evidence.",
+          "expect": "A saved mosaic and actual observation remain.",
+          "question": "Which note can guide your next decision?",
+          "choices": [
+            "“At step 40 the doorway disappeared”",
+            "“I probably did the mosaic”"
+          ],
+          "correct": 0,
+          "explanation": "Concrete observations guide further decisions.",
+          "repair": "Compare 8 and 40 again before writing."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Sample",
+          "meaning": "Read a color at one chosen source location rather than drawing every original pixel."
+        },
+        {
+          "term": "tile",
+          "meaning": "The named source-pixel step between samples. It also determines each displayed block’s size."
+        },
+        {
+          "term": "Loop",
+          "meaning": "An instruction that repeats while its condition stays true. The row loop contains a column loop."
+        },
+        {
+          "term": "Coordinate",
+          "meaning": "A location written as x and y: x increases rightward, y increases downward, starting at the top left."
+        }
+      ],
+      "id": "studio-1",
+      "foundations": [
+        {
+          "id": "02-coordinates",
+          "title": "Place shapes and control drawing order"
+        },
+        {
+          "id": "05-functions",
+          "title": "Reuse a rule with functions"
+        },
+        {
+          "id": "06-mapping",
+          "title": "Convert one range into another"
+        },
+        {
+          "id": "07-loops",
+          "title": "Repeat instructions across a grid"
+        },
+        {
+          "id": "08-collections",
+          "title": "Store lists and related information"
+        },
+        {
+          "id": "11-sampling",
+          "title": "Sample an image: turn detail into a mosaic"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5.Image/get/",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for",
+        "https://p5js.org/reference/p5/rect/"
+      ],
+      "practice": [
+        {
+          "task": "Compare tile sizes 8, 16 and 32 using the same source.",
+          "hint": "Change one value, run, and keep the display dimensions fixed.",
+          "solution": "Larger steps visit fewer locations and create larger blocks. Smaller steps retain more detail but ask the sketch to draw more blocks. Record your actual preference and what becomes obscured."
+        },
+        {
+          "task": "Explain one source-to-canvas position without reading the whole formula aloud.",
+          "hint": "Choose a source x halfway across its width.",
+          "solution": "Dividing that x by the source width gives 0.5. Multiplying by canvas width places the block halfway across the canvas, even when the two rectangles have different dimensions."
+        }
+      ],
+      "idea": "A mosaic reads a few locations and makes a new drawing from them. Sampling distance controls both detail and the number of blocks."
+    },
+    {
+      "title": "Find a pixel’s four numbers",
+      "subtitle": "A rectangular picture is stored as a long list.",
+      "outcome": "Connect a source coordinate to the red, green, blue and alpha entries in its pixel buffer.",
+      "illustrationHint": "The mosaic can look exactly like Stage 2. The change is how the program reads colors: this stage uses picture.pixels instead of get.",
+      "experiment": {
+        "instruction": "At tile 16, inspect source sample (16, 16). Calculate 4 × (16 + 16 × 320) before reading the inspector’s answer.",
+        "expect": "The red address is 20544; green, blue and alpha are at 20545, 20546 and 20547. Their stored values are separate numbers."
+      },
+      "checkpoint": "I can calculate one pixel’s four addresses and distinguish an address from a color amount.",
+      "actions": [
+        {
+          "title": "Install the buffer-reading stage",
+          "here": "Set tile 16 and press Restart p5. A mosaic matching Stage 2 is correct. Select picture.pixelDensity(1) and picture.loadPixels() to see how the source buffer is prepared.",
+          "editor": "Choose Copy sketch.js, replace all editor sketch.js, then Run and Save. Check that picture.pixelDensity(1); and picture.loadPixels(); appear after loading.",
+          "why": "Prepare the buffer before reading it.",
+          "expect": "Same mosaic, now read from picture.pixels.",
+          "question": "Must a new reading method make a new visible effect?",
+          "choices": [
+            "No, it can read the same colors",
+            "Yes, the picture must look different"
+          ],
+          "correct": 0,
+          "explanation": "Different methods can produce matching colors.",
+          "repair": "Check loadPixels and the uploaded image path."
+        },
+        {
+          "title": "Start with pixel zero",
+          "here": "Read the source coordinate beside the sample inspector. Begin with sample (0, 0); use Next sample to follow the row and return through the sequence if necessary. Its channel addresses are 0, 1, 2 and 3.",
+          "editor": "Find const i = 4 * (x + y * picture.width);. Substitute x = 0 and y = 0 on paper. The first red address is zero, not one.",
+          "why": "Array counting begins at zero.",
+          "expect": "First pixel addresses: 0, 1, 2, 3.",
+          "question": "What is the first pixel’s red address?",
+          "choices": [
+            "1",
+            "0"
+          ],
+          "correct": 1,
+          "explanation": "The first array address is zero.",
+          "repair": "Use the inspector’s coordinate label to distinguish sample (0, 0) from a later sample."
+        },
+        {
+          "title": "Calculate one later address by hand",
+          "here": "With tile 16, use Next sample until the coordinate reads (16, 16). Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.",
+          "editor": "Calculate: 16 complete rows × 320 pixels = 5120; add x = 16 to get 5136 pixels; multiply by 4 RGBA entries to get address 20544.",
+          "why": "Convert pixels into channel entries.",
+          "expect": "Selected pixel starts at address 20544.",
+          "question": "Which width belongs in this source-buffer calculation?",
+          "choices": [
+            "Source width 320",
+            "Canvas width 640"
+          ],
+          "correct": 0,
+          "explanation": "Source-buffer calculations use source width.",
+          "repair": "Confirm tile 16 and coordinate (16, 16), then calculate using source width 320."
+        },
+        {
+          "title": "Separate the address from the amount",
+          "here": "Read the selected sample’s RGBA values. Write one channel address and its stored value with separate labels: “where” and “how much.” A large address can hold an ordinary channel amount between 0 and 255.",
+          "editor": "Find const g = picture.pixels[i + 1];. Say: “go to the green address and remember the amount found there.” The +1 changes the address; it does not increase the green amount.",
+          "why": "Distinguish location from stored amount.",
+          "expect": "Large addresses hold values within 0–255.",
+          "question": "Does an address of 20545 mean a green amount of 20545?",
+          "choices": [
+            "Yes, they are the same number",
+            "No, an address points to a stored amount"
+          ],
+          "correct": 1,
+          "explanation": "Addresses locate values; they are not amounts.",
+          "repair": "Label each number “where” or “how much”."
+        },
+        {
+          "title": "Read alpha and the density assumption",
+          "here": "Inspect alpha, the fourth channel. The supplied image is opaque, so its alpha is 255. Compare the explanations for picture.pixelDensity(1) and pixelDensity(1): they belong to different drawing objects.",
+          "editor": "Keep both density lines. This starter reads source RGB and draws opaque tiles with fill(r, g, b). It does not copy arbitrary source transparency into the result.",
+          "why": "Image density differs from canvas density.",
+          "expect": "This opaque starter draws alpha 255.",
+          "question": "Are transparent pixels and opaque black equivalent?",
+          "choices": [
+            "No, their opacity differs",
+            "Yes, both are simply black"
+          ],
+          "correct": 0,
+          "explanation": "Transparent pixels differ from opaque black.",
+          "repair": "Use the supplied source for this exercise."
+        },
+        {
+          "title": "Keep the original buffer unchanged",
+          "here": "Select fill(r, g, b). Compare a sampled source color with its mosaic block. The program reads the original buffer, then draws new rectangles; it leaves the source values available for later comparisons.",
+          "editor": "Find the three channel-reading lines. There is no assignment back into picture.pixels and no picture.updatePixels() call. Reading a buffer does not require updating that buffer.",
+          "why": "Preserve a reliable original source.",
+          "expect": "Source and displayed RGB match.",
+          "question": "Do these reads need updatePixels to become visible?",
+          "choices": [
+            "Yes, every read needs it",
+            "No, fill and rect draw the result"
+          ],
+          "correct": 1,
+          "explanation": "Reading needs no updatePixels; drawing uses rect.",
+          "repair": "Restore the complete stage after accidental assignments."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Buffer or array",
+          "meaning": "An ordered list of numbers. Its first position is numbered zero."
+        },
+        {
+          "term": "RGBA",
+          "meaning": "Four consecutive channel amounts: red, green, blue and alpha. Alpha describes opacity."
+        },
+        {
+          "term": "Address or index",
+          "meaning": "The numbered position in the list, rather than the channel amount stored at that position."
+        },
+        {
+          "term": "Density one",
+          "meaning": "One stored pixel per image coordinate here. This stage’s simple address formula depends on that assumption."
+        }
+      ],
+      "id": "studio-2",
+      "foundations": [
+        {
+          "id": "01-language",
+          "title": "Read code and name values"
+        },
+        {
+          "id": "07-loops",
+          "title": "Repeat instructions across a grid"
+        },
+        {
+          "id": "08-collections",
+          "title": "Store lists and related information"
+        },
+        {
+          "id": "12-rgba",
+          "title": "Read RGBA: four numbers make one pixel"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5/pixels/",
+        "https://p5js.org/reference/p5.Image/pixelDensity/",
+        "https://p5js.org/reference/p5.Image/updatePixels/",
+        "https://p5js.org/reference/p5/colorMode/"
+      ],
+      "practice": [
+        {
+          "task": "Calculate the addresses for (1, 1), then compare with the diagram.",
+          "hint": "Skip one row of four pixels, add one pixel, then multiply by four.",
+          "solution": "The first address is 4 × (1 + 1 × 4) = 20. Red, green, blue and alpha occupy addresses 20, 21, 22 and 23. Those addresses do not tell you their stored colors."
+        },
+        {
+          "task": "Explain a pixel whose values are [100, 40, 180, 255]. Predict an inverted green channel.",
+          "hint": "Green is the second channel. Inversion subtracts its value from 255.",
+          "solution": "The transformed displayed color is [100, 215, 180, 255] if only green is inverted. Red, blue and opacity stay unchanged. Reading from the original again preserves a reliable comparison."
+        }
+      ],
+      "idea": "An address tells you where to look. The number stored at that address tells you a channel amount. They are different kinds of information."
+    },
+    {
+      "title": "Choose what keeps its color",
+      "subtitle": "A condition decides where a color rule applies.",
+      "outcome": "Keep a chosen left-hand region colored while changing the remaining samples toward gray.",
+      "illustrationHint": "focus chooses where the boundary sits. strength chooses how far the selected colors move toward their targets. Change one at a time.",
+      "experiment": {
+        "instruction": "First compare focus 40% and 70% at full strength. Restore 40%, then compare strength 50% and 100%.",
+        "expect": "Changing focus moves the region boundary. Changing strength changes the color amount outside that boundary."
+      },
+      "checkpoint": "I can explain the position test and blend amount, and describe one visual consequence I actually observed.",
+      "actions": [
+        {
+          "title": "Set a known color-rule baseline",
+          "here": "Choose the focus color rule, tile 16, focus 40% and strength 100%. Press Restart p5. Samples in the left-hand region keep their color; the remaining samples become gray.",
+          "editor": "Choose Copy sketch.js, replace all sketch.js, then Run and Save. Find const focus = 0.4; and const strength = 1; near the top.",
+          "why": "Set a reproducible color-rule baseline.",
+          "expect": "Left forty percent colored; outside gray.",
+          "question": "Does this rule recognize the main subject automatically?",
+          "choices": [
+            "No, it tests source position",
+            "Yes, focus detects the subject"
+          ],
+          "correct": 0,
+          "explanation": "focus tests position, not object identity.",
+          "repair": "Confirm focus mode and strength 100%."
+        },
+        {
+          "title": "Read the condition as a sentence",
+          "here": "Select if (x / picture.width >= focus). Read it as a sentence: “If this sample is at or beyond the boundary, use gray targets.” At focus 0.4, source x 128 is exactly on the boundary.",
+          "editor": "Find the same condition. The >= symbol means “greater than or equal to,” so a sample exactly at the boundary is included in the transformed region.",
+          "why": "Convert position to a fraction.",
+          "expect": "Boundary samples join the transformed region.",
+          "question": "At the boundary itself, does this condition select gray?",
+          "choices": [
+            "No, only samples strictly beyond it",
+            "Yes, >= includes equality"
+          ],
+          "correct": 1,
+          "explanation": "The >= comparison includes equality.",
+          "repair": "Compare one sample’s fraction with 0.4."
+        },
+        {
+          "title": "Move only the region boundary",
+          "here": "Keep strength 100% and change focus from 40% to 70%. Inspect which parts of the source now retain color. Restore 40% before the next experiment.",
+          "editor": "Change only const focus = 0.4; to const focus = 0.7; and Run. Compare, then restore 0.4 and Run again.",
+          "why": "Change where, not how much.",
+          "expect": "At 70%, more left-side samples retain color.",
+          "question": "What did this experiment change?",
+          "choices": [
+            "Where color is retained",
+            "How long the sketch runs"
+          ],
+          "correct": 0,
+          "explanation": "focus changes a spatial boundary.",
+          "repair": "Check focus, then Run the edited sketch."
+        },
+        {
+          "title": "Blend toward gray at half strength",
+          "here": "Keep focus 40% and lower strength to 50%. Look outside the retained region. Select the fill line containing lerp to connect the partial color change with the code.",
+          "editor": "Change only const strength = 1; to const strength = 0.5; and Run. Find paintTiles(strength): the chosen amount is passed into the drawing rule.",
+          "why": "Separate region selection from blending.",
+          "expect": "Half strength retains some outside color.",
+          "question": "What does strength zero display?",
+          "choices": [
+            "Fully transformed target colors",
+            "Original source colors"
+          ],
+          "correct": 1,
+          "explanation": "Amount zero returns original channel values.",
+          "repair": "Inspect a colorful sample outside the region."
+        },
+        {
+          "title": "Compare one different target rule",
+          "here": "Restore strength 100% and choose the invert rule. Read the regenerated targetR, targetG and targetB explanations. For any channel, the inverted target is 255 minus its original value.",
+          "editor": "Choose Copy sketch.js again and replace the complete file, then Run. Changing a rule generates a complete matching program; do not combine the old focus branch with the new inversion branch.",
+          "why": "Inversion chooses different channel targets.",
+          "expect": "Each channel targets 255 minus its source.",
+          "question": "What is the inverted target for a channel amount of 40?",
+          "choices": [
+            "215",
+            "40"
+          ],
+          "correct": 0,
+          "explanation": "255 minus 40 equals 215.",
+          "repair": "Return to focus mode for boundary control."
+        },
+        {
+          "title": "Choose and record a deliberate rule",
+          "here": "Return to the focus rule, focus 40% and strength 100%. Write one actual comparison and what you noticed first. The rule tests horizontal position; it does not recognize objects automatically.",
+          "editor": "Copy the restored complete code, replace sketch.js, Run and Save. Preserve a different tested version separately if you want to return to it.",
+          "why": "Meaning needs an observed consequence.",
+          "expect": "A saved rule and specific comparison remain.",
+          "question": "Which statement is supported by your single viewing?",
+          "choices": [
+            "Every viewer must look at the same feature",
+            "I noticed a particular feature first"
+          ],
+          "correct": 1,
+          "explanation": "Your viewing supports your own observation.",
+          "repair": "Compare two boundaries with everything else fixed."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Condition",
+          "meaning": "A question in code with a true or false answer. Here it asks whether a sample lies beyond the boundary."
+        },
+        {
+          "term": "focus",
+          "meaning": "The source-width fraction that keeps its color, initially 0.4: the left forty percent."
+        },
+        {
+          "term": "strength",
+          "meaning": "How far the displayed color moves toward the target: zero keeps the original; one reaches the target."
+        },
+        {
+          "term": "lerp",
+          "meaning": "A blend between a starting number and a target number, controlled by an amount from zero to one."
+        }
+      ],
+      "id": "studio-3",
+      "foundations": [
+        {
+          "id": "04-decisions",
+          "title": "React to the mouse and make decisions"
+        },
+        {
+          "id": "05-functions",
+          "title": "Reuse a rule with functions"
+        },
+        {
+          "id": "06-mapping",
+          "title": "Convert one range into another"
+        },
+        {
+          "id": "09-color",
+          "title": "Use color to direct attention"
+        },
+        {
+          "id": "12-rgba",
+          "title": "Read RGBA: four numbers make one pixel"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5/lerp/",
+        "https://p5js.org/reference/p5/colorMode/",
+        "https://github.com/ITPNYU/ICM-2026-Media/blob/c6594912cbbad97b5fbb4058fba264c70c4b8b2b/weeks/02_pixels.md"
+      ],
+      "practice": [
+        {
+          "task": "Move the boundary to keep one important subject in color.",
+          "hint": "Look at the subject’s position as a fraction of source width, then compare before and after.",
+          "solution": "Choose a threshold that places the subject within the retained region. Record whether you actually noticed it earlier. The condition is spatial, so other objects in that region also retain color."
+        },
+        {
+          "task": "Compare half strength and full strength without moving the boundary.",
+          "hint": "Keep the original source and all other settings identical.",
+          "solution": "Half strength mixes original channels with the gray target; full strength makes those channels equal outside the region. Note whether partial color better supports the idea than complete desaturation."
+        }
+      ],
+      "idea": "A condition chooses where a rule applies; strength chooses how far the rule changes each selected color."
+    },
+    {
+      "title": "Shape one minute",
+      "subtitle": "Use elapsed time to move gradually toward an ending.",
+      "outcome": "Turn the static rule into a sixty-second transformation that holds its final state.",
+      "illustrationHint": "Restart p5 begins the real timed preview. Teaching time lets you inspect a selected moment; it does not move your separate editor’s clock or change the exported 60000 milliseconds.",
+      "experiment": {
+        "instruction": "Inspect teaching times 0, 30 and 60 seconds. Then restart the actual p5 sketch and watch a full minute with a separate timer.",
+        "expect": "Progress is 0, 0.5 and 1 at those checkpoints. After a minute, constrain keeps progress at 1 and the ending holds."
+      },
+      "checkpoint": "I can explain elapsed progress and final strength separately, and I watched a real full-minute run.",
+      "actions": [
+        {
+          "title": "Install the timed version",
+          "here": "Choose the focus rule, focus 40%, strength 100% and tile 16. Press Restart p5. Its real timed run starts near zero; the separate Teaching time control is for inspecting moments.",
+          "editor": "Choose Copy sketch.js, replace every line of sketch.js and Run. Find let start; and function draw(). Keep a separate timer ready.",
+          "why": "Start timing at the first draw.",
+          "expect": "The actual p5 run begins near zero.",
+          "question": "Does moving Teaching time here move the separate editor’s clock?",
+          "choices": [
+            "No, they are independent",
+            "Yes, both clocks are connected"
+          ],
+          "correct": 0,
+          "explanation": "Teaching and editor clocks are independent.",
+          "repair": "Press editor Run to restart its minute."
+        },
+        {
+          "title": "Locate where the clock starts",
+          "here": "Select if (start === undefined), then start = millis(). Use Next line to reach the progress calculation. The start reading is assigned on the first draw frame and retained on later frames.",
+          "editor": "Keep this first-frame condition inside draw. Moving the start assignment into every frame would keep resetting elapsed time; moving it into async setup can conflict with this p5 version’s startup clock reset.",
+          "why": "Avoid the p5 v2 startup-clock reset.",
+          "expect": "Later frames keep the original start.",
+          "question": "Should start be reassigned on every frame?",
+          "choices": [
+            "Yes, so it always stays current",
+            "No, retain the original starting reading"
+          ],
+          "correct": 1,
+          "explanation": "Repeated resets would prevent elapsed progress.",
+          "repair": "Restore the first-frame condition if progress stalls."
+        },
+        {
+          "title": "Inspect three states without waiting",
+          "here": "Set Teaching time to 0, then 30, then 60 seconds. Compare the three states. Calculate t = elapsed milliseconds ÷ 60000 before checking the displayed fraction.",
+          "editor": "Find constrain((millis() - start) / 60000, 0, 1). Leave the actual run and divisor unchanged while inspecting the teaching states.",
+          "why": "Inspect states without claiming elapsed viewing.",
+          "expect": "At 0/30/60 seconds, t = 0/0.5/1.",
+          "question": "What progress should remain after seventy seconds?",
+          "choices": [
+            "1",
+            "1.1667 continuing beyond the endpoint"
+          ],
+          "correct": 0,
+          "explanation": "constrain holds the ending at one.",
+          "repair": "Choose one Teaching time value at a time and compare the displayed progress with seconds divided by 60."
+        },
+        {
+          "title": "Distinguish progress from final strength",
+          "here": "Set Teaching time to 30 seconds. Lower strength from 100% to 50%, compare, then restore 100%. At t = 0.5 and strength = 0.5, the drawing amount is 0.25.",
+          "editor": "For one experiment, change only const strength = 1; to 0.5 and Run. Read paintTiles(t * strength). Restore 1 before continuing. The divisor remains 60000.",
+          "why": "Progress and strength control different quantities.",
+          "expect": "Half strength ends halfway after sixty seconds.",
+          "question": "Does half strength shorten the duration?",
+          "choices": [
+            "Yes, it finishes in thirty seconds",
+            "No, it changes the endpoint amount"
+          ],
+          "correct": 1,
+          "explanation": "Strength changes endpoint, not duration.",
+          "repair": "Check that the divisor remains 60000."
+        },
+        {
+          "title": "Use a quick rehearsal correctly",
+          "here": "Move Teaching time quickly from 0 to 60 to rehearse the sequence of states. This is a quick inspection, not a full-minute viewing. Read the generated progress line: its divisor remains 60000.",
+          "editor": "Keep the divisor at 60000. If you manually tried a shorter duration such as 6000, restore 60000 before saving or presenting. Controls on this page do not edit your online sketch.",
+          "why": "Quick inspection differs from full pacing.",
+          "expect": "You can inspect the ending quickly while the copied program still uses 60000 milliseconds.",
+          "question": "Does quick inspection with Teaching time export a shorter sketch?",
+          "choices": [
+            "No, the generated divisor stays 60000",
+            "Yes, inspection changes the exported duration"
+          ],
+          "correct": 0,
+          "explanation": "Teaching inspection and the exported elapsed-time program serve different purposes.",
+          "repair": "Inspect and restore any manually changed divisor."
+        },
+        {
+          "title": "Watch one real minute and record it",
+          "here": "Prepare notes for the beginning, middle and ending. A quiz answer or a scrubbed image does not count as watching the whole experience. Record what you actually see and when you see it.",
+          "editor": "Press Run and start a separate timer as the image appears. Watch sixty seconds and a few seconds beyond. Confirm the ending holds, record actual timestamps and Save the working version.",
+          "why": "Measure the visible experience directly.",
+          "expect": "The ending holds beyond sixty seconds.",
+          "question": "What verifies the pacing more directly?",
+          "choices": [
+            "Counting a requested number of frames",
+            "Watching a full run with a separate timer"
+          ],
+          "correct": 1,
+          "explanation": "Frame-rate requests do not guarantee elapsed duration.",
+          "repair": "Time from visible start; inspect a stalled clock."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "draw",
+          "meaning": "The function p5 calls repeatedly to make visible frames."
+        },
+        {
+          "term": "millisecond",
+          "meaning": "One thousandth of a second: 60000 milliseconds is sixty seconds."
+        },
+        {
+          "term": "Elapsed time",
+          "meaning": "The current clock reading minus a remembered starting reading."
+        },
+        {
+          "term": "Progress t",
+          "meaning": "The fraction of the minute completed, constrained between zero and one. It is multiplied by strength."
+        }
+      ],
+      "id": "studio-4",
+      "foundations": [
+        {
+          "id": "01-language",
+          "title": "Read code and name values"
+        },
+        {
+          "id": "03-animation",
+          "title": "Understand setup draw and motion"
+        },
+        {
+          "id": "06-mapping",
+          "title": "Convert one range into another"
+        },
+        {
+          "id": "14-time",
+          "title": "A real minute: turn elapsed time into a color journey"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5/millis/",
+        "https://p5js.org/reference/p5/constrain/",
+        "https://p5js.org/reference/p5/frameRate/",
+        "https://p5js.org/reference/p5/lerp/"
+      ],
+      "practice": [
+        {
+          "task": "Try a six-second rehearsal, then restore the assignment duration.",
+          "hint": "Change the duration setting rather than the pixel or color formulas.",
+          "solution": "Six thousand milliseconds compresses the same progression for inspection. Restore sixty thousand, replay, and verify a complete minute before presenting."
+        },
+        {
+          "task": "Keep a full-minute duration but reduce the final transformation strength.",
+          "hint": "Scale the amount passed to the blend, leaving the clock calculation alone.",
+          "solution": "A final strength of one-half covers only half the color journey over the same minute. Compare whether the quieter endpoint communicates your intended change."
+        }
+      ],
+      "idea": "Time progress and transformation strength are separate values. A minute can travel toward a subtle endpoint or a dramatic one."
+    },
+    {
+      "title": "Replay and present",
+      "subtitle": "Make the same journey work again at the viewing size.",
+      "outcome": "Restart by clicking and check the composition in wide and narrow viewports.",
+      "illustrationHint": "This stage uses the viewport dimensions. A click restarts its clock. The starter stretches to fit; wide and narrow previews help you notice that design choice.",
+      "experiment": {
+        "instruction": "Compare the wide and narrow preview widths, then click inside the running p5 canvas after it has changed.",
+        "expect": "The drawing follows the viewport and its proportions can change. Clicking returns the color journey to its beginning."
+      },
+      "checkpoint": "I tested replay and resizing, then opened and watched my actual saved presentation link.",
+      "actions": [
+        {
+          "title": "Install replay and window sizing",
+          "here": "Press Restart p5. Read the lines for createCanvas(windowWidth, windowHeight), mousePressed and windowResized. Keep the source and color settings fixed while testing presentation behavior.",
+          "editor": "Choose Copy sketch.js, replace all sketch.js, then Run and Save. Confirm those three functions or calls appear in the new version.",
+          "why": "Test the actual saved project.",
+          "expect": "Viewport canvas and click replay are available.",
+          "question": "Which version should receive your final share links?",
+          "choices": [
+            "The saved editor project you test",
+            "An unsaved workbook control state"
+          ],
+          "correct": 0,
+          "explanation": "Share links belong to the editor project.",
+          "repair": "Confirm the new stage replaced sketch.js completely."
+        },
+        {
+          "title": "Compare replay states in the workbook",
+          "here": "Compare Teaching time 0, 30 and 60 without changing the source or rules. Repeat the same three values. Press Restart p5 when you want to begin a real timed preview again.",
+          "editor": "Keep your project unchanged during this comparison. Note the same three moments you will look for during full runs.",
+          "why": "Check matching states under unchanged rules.",
+          "expect": "Matching teaching times show matching states; Restart p5 starts a new actual preview.",
+          "question": "Does Restart p5 on this page also save your online editor project?",
+          "choices": [
+            "No, editor saving is a separate action",
+            "Yes, restarting saves both workspaces"
+          ],
+          "correct": 0,
+          "explanation": "The local preview and your saved editor project are separate.",
+          "repair": "Compare source, settings and selected sample first."
+        },
+        {
+          "title": "Restart the actual sketch with a click",
+          "here": "Select the mousePressed explanation. Let the actual p5 preview change, then click inside its canvas. Watch the return to original colors before the journey develops again.",
+          "editor": "Click your running sketch’s canvas after it has progressed. Restart your separate timer. Repeat once with the same source and rule, then compare matching moments.",
+          "why": "Restart timing without changing source.",
+          "expect": "Clicking the sketch begins its journey again.",
+          "question": "What needs resetting for this default replay?",
+          "choices": [
+            "The starting clock reading",
+            "Every original source channel"
+          ],
+          "correct": 0,
+          "explanation": "The unchanged source needs no restoration.",
+          "repair": "Click the canvas; verify mousePressed exists."
+        },
+        {
+          "title": "Test a wide and a narrow window",
+          "here": "Use the wide and narrow preview widths. Inspect the window, plant and edges. Select resizeCanvas(windowWidth, windowHeight), then the rect line. The source fractions adapt positions, but independent width and height can stretch shapes.",
+          "editor": "Resize your browser or editor preview and inspect the actual sketch. Decide whether stretching suits your idea. Record any presentation size that makes important content hard to read.",
+          "why": "Check composition in real presentation spaces.",
+          "expect": "The canvas fits; proportions may stretch.",
+          "question": "Does filling any viewport automatically preserve image proportions?",
+          "choices": [
+            "Yes, every aspect ratio stays identical",
+            "No, this starter stretches to fit"
+          ],
+          "correct": 1,
+          "explanation": "Independent width and height can distort proportions.",
+          "repair": "Record the failed size before revising layout."
+        },
+        {
+          "title": "Open the actual presentation link",
+          "here": "Keep your notes ready for a link check. This local illustration demonstrates the mechanism; it cannot verify the asset paths or latest saved version of a separate online project.",
+          "editor": "Save. Use File → Share to obtain the actual fullscreen link and open it in a new tab. Keep the sketch-code link separately. Verify that the intended image and behavior load.",
+          "why": "Verify the actual share destination.",
+          "expect": "Saved fullscreen page loads the intended sketch.",
+          "question": "What is the strongest check of the fullscreen link?",
+          "choices": [
+            "Open the exact link and watch it",
+            "Assume the workbook preview proves it"
+          ],
+          "correct": 0,
+          "explanation": "Only opening a link checks its destination.",
+          "repair": "Verify assets, Save, and reopen the link."
+        },
+        {
+          "title": "Rehearse twice and preserve the result",
+          "here": "Record two full presentation rehearsals and any resizing issue. The starter uses no randomness. The optional seeded extension remains available in the foundations if your own concept needs it.",
+          "editor": "At the intended display size, watch two complete silent runs and restart deliberately. Save the tested version and preserve its full code. These checks do not replace the class’s required iterations and observations.",
+          "why": "Test the complete presentation twice.",
+          "expect": "Matching moments repeat with unchanged inputs.",
+          "question": "Are randomSeed and noiseSeed interchangeable?",
+          "choices": [
+            "Yes, either controls both generators",
+            "No, each controls its own generator"
+          ],
+          "correct": 1,
+          "explanation": "Each seed controls its own generator.",
+          "repair": "Compare inputs; restore the simple working version."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Viewport",
+          "meaning": "The available browser page area. windowWidth and windowHeight describe its current size."
+        },
+        {
+          "term": "Replay",
+          "meaning": "Restart the clock while keeping the same source and visual rules."
+        },
+        {
+          "term": "Resize handler",
+          "meaning": "A named function, windowResized, that p5 calls when the available page size changes."
+        },
+        {
+          "term": "Fullscreen link",
+          "meaning": "The editor’s shareable presentation-page link. It differs from the code link and from the browser’s own fullscreen mode."
+        }
+      ],
+      "id": "studio-5",
+      "foundations": [
+        {
+          "id": "02-coordinates",
+          "title": "Place shapes and control drawing order"
+        },
+        {
+          "id": "04-decisions",
+          "title": "React to the mouse and make decisions"
+        },
+        {
+          "id": "06-mapping",
+          "title": "Convert one range into another"
+        },
+        {
+          "id": "13-mirror",
+          "title": "Transform a drawing without damaging its source"
+        },
+        {
+          "id": "15-project",
+          "title": "Your one-minute alternative reality"
+        }
+      ],
+      "refs": [
+        "https://p5js.org/reference/p5/windowResized/",
+        "https://p5js.org/reference/p5/resizeCanvas/",
+        "https://p5js.org/reference/p5/noiseSeed/",
+        "https://p5js.org/reference/p5/randomSeed/",
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9"
+      ],
+      "practice": [
+        {
+          "task": "Replay twice and compare three matching moments.",
+          "hint": "Keep the source and controls fixed. Use the same elapsed-time positions for comparison.",
+          "solution": "The default starter should reproduce its displayed states at matching progress values. If results differ, inspect changing inputs or state that was not reset before adding more effects."
+        },
+        {
+          "task": "Test the actual fullscreen link and resize the browser.",
+          "hint": "Check important edges, labels, background and source proportions.",
+          "solution": "Adjust proportional placement where necessary. A viewport-sized canvas does not itself invoke browser fullscreen; the shared fullscreen presentation page must also be tested."
+        }
+      ],
+      "idea": "Repeatability includes source material, timing, procedural choices and human actions. Seeds address only the procedural generators they control."
+    },
+    {
+      "title": "Refine and document together",
+      "subtitle": "Turn a working mechanism into an observed creative project.",
+      "outcome": "Preserve real experiments, timed observations, collaboration and checked submission links.",
+      "illustrationHint": "The starter code is the same as Stage 6. This stage adds your creative decisions, genuine iterations and documentation; a new visual effect is not required just to show progress.",
+      "experiment": {
+        "instruction": "With your partner, preserve one version, change one rule, save the new version and watch a whole minute. Compare your independent notes before deciding what to revise.",
+        "expect": "You have a specific changed rule and an actual observed result. Continue until the assignment’s full iteration, viewing and documentation requirements are satisfied."
+      },
+      "checkpoint": "I checked the live assignment against actual work, tested every submitted link and named any remaining work honestly.",
+      "actions": [
+        {
+          "title": "Review the actual assignment and color examples together",
+          "here": "Open the full workbook’s submission checklist and follow its Week 9 assignment link. With your partner, work through all linked Color Theory examples. Write two or three genuine observations you might explore.",
+          "editor": "Keep your working sketch saved while examining examples in separate tabs. An answer on this learning card does not complete the example exploration.",
+          "why": "Base ideas on shared exploration.",
+          "expect": "Two or three genuine color observations exist.",
+          "question": "What counts as completing the example exploration?",
+          "choices": [
+            "Both partners working through all linked examples",
+            "Selecting the answer on this card"
+          ],
+          "correct": 0,
+          "explanation": "Answering cards does not perform class activities.",
+          "repair": "Finish all actual examples together before claiming completion."
+        },
+        {
+          "title": "Agree on a concept and divide real responsibilities",
+          "here": "Use the partner log from the full workbook. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.",
+          "editor": "Save a baseline version both partners can identify. Preserve each person’s actual tested variation or agreed contribution before discussing the results.",
+          "why": "Make contributions and shared decisions visible.",
+          "expect": "Named roles precede actual contribution records.",
+          "question": "Which record describes collaboration accurately?",
+          "choices": [
+            "“We both did everything” without detail",
+            "What each did alone and what you decided together"
+          ],
+          "correct": 1,
+          "explanation": "Specific records show how collaboration shaped work.",
+          "repair": "Assign concrete tasks and reunite to compare."
+        },
+        {
+          "title": "Preserve at least three algorithm iterations",
+          "here": "Use the iteration log. For each version, record the rule changed, your prediction, what actually happened and the next decision. Keep the source and settings identifiable. Blank rows are not evidence of completed work.",
+          "editor": "Develop, test and preserve at least three algorithm iterations. Save the complete code for each before replacing it. Copy sketch.js here supplies a starting program; your tested changes make the iterations.",
+          "why": "Connect changed rules with observed results.",
+          "expect": "Three preserved tested algorithm versions exist.",
+          "question": "Which is useful iteration evidence?",
+          "choices": [
+            "A saved changed version plus its observed result",
+            "Three planned filenames with no tested sketches"
+          ],
+          "correct": 0,
+          "explanation": "Planned filenames alone are not iterations.",
+          "repair": "Recover overwritten versions or test another honestly."
+        },
+        {
+          "title": "Watch at least three full runs with a timer",
+          "here": "Use the timed observation log. Prepare rows for viewing number, actual timestamp, what you noticed and your interpretation. Keep each partner’s initial attention notes separate before discussing them.",
+          "editor": "Watch at least three complete runs with a separate timer. Restart deliberately, keep the project silent and record real moments. Inspecting a few slider states does not replace watching the entire minute.",
+          "why": "Watch pacing, not just isolated states.",
+          "expect": "Three full viewings have real timestamped observations.",
+          "question": "Can inspecting 0, 30 and 60 seconds on a slider replace a full viewing?",
+          "choices": [
+            "Yes, those three states are enough",
+            "No, watch the complete minute"
+          ],
+          "correct": 1,
+          "explanation": "Scrubbing cannot replace complete timed viewing.",
+          "repair": "Label interruptions and watch another full run."
+        },
+        {
+          "title": "Compile the class spreadsheet and write the process blog",
+          "here": "Compile real iterations and observations in the class spreadsheet linked from the live assignment. Use the full workbook’s blog outline to organize collaboration, experiments, timed observations, credits and related projects.",
+          "editor": "Choose the iteration you will post, Save it and verify its title and links. Preserve other versions so your blog can show meaningful differences.",
+          "why": "Prepare evidence for actual submission destinations.",
+          "expect": "Spreadsheet and blog contain real process evidence.",
+          "question": "Do downloaded local logs replace the class spreadsheet?",
+          "choices": [
+            "No, compile the requested material there too",
+            "Yes, downloading the blank files submits it"
+          ],
+          "correct": 0,
+          "explanation": "Local templates do not replace class submissions.",
+          "repair": "Consult live instructions for unclear destinations."
+        },
+        {
+          "title": "Check the actual blog, code and fullscreen links",
+          "here": "Use the full submission checklist to audit actual deliverables: blog, sketch-code link, fullscreen link, source and inspiration credits, collaboration record, iterations and timed observations.",
+          "editor": "Open the exact saved code and fullscreen links. Check the intended image and behavior, then rehearse two silent runs at presentation size. Repair any failed link or unintended sound before submitting.",
+          "why": "Check what your intended viewer opens.",
+          "expect": "All three links reach intended current artifacts.",
+          "question": "What proves a link is usable?",
+          "choices": [
+            "Its label looks complete in a note",
+            "Opening the exact link and checking the result"
+          ],
+          "correct": 1,
+          "explanation": "A candidate URL needs actual destination verification.",
+          "repair": "Repair failed links, Save, and test again."
+        },
+        {
+          "title": "Finish separate preparation and make an honest final audit",
+          "here": "Return to the live assignment for separate sound preparation, its specified reading or exercises and the actual deadline. List completed evidence and remaining work. Mark a learning checkpoint only when you can support it with your own work.",
+          "editor": "Keep this one-minute project silent. Save after tested changes and retain a backup of the exact code and image used by the submitted version.",
+          "why": "Audit real work without invented completion.",
+          "expect": "Required evidence and separate preparation are accounted for.",
+          "question": "Does separate sound preparation change this project’s silent requirement?",
+          "choices": [
+            "No, complete that preparation separately",
+            "Yes, add sound to satisfy it"
+          ],
+          "correct": 0,
+          "explanation": "Sound preparation remains separate; this artifact stays silent.",
+          "repair": "Name missing work and complete the actual activity."
+        }
+      ],
+      "vocabulary": [
+        {
+          "term": "Iteration",
+          "meaning": "A preserved version with a deliberate rule change and a record of the result you actually observed."
+        },
+        {
+          "term": "Observation",
+          "meaning": "What you noticed and when. An interpretation explains what you think that observation means."
+        },
+        {
+          "term": "Collaboration record",
+          "meaning": "An honest account of what each partner did independently and what you decided or tested together."
+        },
+        {
+          "term": "Deliverable",
+          "meaning": "An item the assignment asks you to submit, such as a process blog, code link or fullscreen link."
+        }
+      ],
+      "id": "studio-6",
+      "foundations": [
+        {
+          "id": "05-functions",
+          "title": "Reuse a rule with functions"
+        },
+        {
+          "id": "09-color",
+          "title": "Use color to direct attention"
+        },
+        {
+          "id": "15-project",
+          "title": "Your one-minute alternative reality"
+        },
+        {
+          "id": "19-debug",
+          "title": "Practice: find the first error and repair one thing"
+        }
+      ],
+      "refs": [
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9",
+        "https://p5js.org/tutorials/field-guide-to-debugging/"
+      ],
+      "practice": [
+        {
+          "task": "Run one honest iteration-and-viewing cycle with your partner.",
+          "hint": "Choose one rule change, save it, watch the full minute, and write actual timestamps.",
+          "solution": "Record the changed rule and its observed effect. Compare your separate attention notes before agreeing on a revision. Repeat until you have at least three iterations and three full timed viewings; one cycle alone is incomplete."
+        },
+        {
+          "task": "Audit the submission from the viewer’s perspective.",
+          "hint": "Use the project checklist, open every link, and check the class spreadsheet destination.",
+          "solution": "Verify the blog, code and fullscreen links; source and inspiration credits; collaboration record; color observations; iteration evidence; and timed viewings. Rehearse two silent runs. Fill gaps with real work rather than invented documentation."
+        }
+      ],
+      "idea": "A useful process record lets someone connect a decision, a changed rule and an observed result. Your partner can help question that connection."
+    }
+  ],
+  "lineMeanings": [
+    {
+      "pattern": "^let picture;$",
+      "meaning": "Create a name that will remember the loaded image."
+    },
+    {
+      "pattern": "^const tile = \\d+;$",
+      "meaning": "Set the distance between sampled source pixels."
+    },
+    {
+      "pattern": "^const strength = \\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?;$",
+      "meaning": "Set the final amount of color change."
+    },
+    {
+      "pattern": "^const focus = \\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?;$",
+      "meaning": "Set the left-hand width fraction that keeps its color."
+    },
+    {
+      "pattern": "^let start;$",
+      "meaning": "Reserve a name for the starting clock reading."
+    },
+    {
+      "pattern": "^async function setup\\(\\) \\{$",
+      "meaning": "Begin setup once; allow waiting for the image."
+    },
+    {
+      "pattern": "^picture = await loadImage\\(\"sample\\.png\"\\);$",
+      "meaning": "Load sample.png, wait, then remember the image as picture."
+    },
+    {
+      "pattern": "^createCanvas\\(\\d+, \\d+\\);$",
+      "meaning": "Create the drawing surface at this width and height."
+    },
+    {
+      "pattern": "^createCanvas\\(windowWidth, windowHeight\\);$",
+      "meaning": "Create a canvas filling the available window."
+    },
+    {
+      "pattern": "^pixelDensity\\(1\\);$",
+      "meaning": "Use one canvas pixel per coordinate unit."
+    },
+    {
+      "pattern": "^picture\\.pixelDensity\\(1\\);$",
+      "meaning": "Keep source pixels at density one for simple indexing."
+    },
+    {
+      "pattern": "^picture\\.loadPixels\\(\\);$",
+      "meaning": "Make the source image’s channel values available to read."
+    },
+    {
+      "pattern": "^noStroke\\(\\);$",
+      "meaning": "Draw shapes without outlines."
+    },
+    {
+      "pattern": "^image\\(picture, 0, 0, width, height\\);$",
+      "meaning": "Draw picture from the top-left, filling the canvas."
+    },
+    {
+      "pattern": "^describe\\(\"(?:[^\"\\\\]|\\\\.)*\"\\);$",
+      "meaning": "Describe the canvas in words for assistive technology."
+    },
+    {
+      "pattern": "^for \\(let y = 0; y < picture\\.height; y \\+= tile\\) \\{$",
+      "meaning": "Visit source rows from top to bottom, stepping by tile."
+    },
+    {
+      "pattern": "^for \\(let x = 0; x < picture\\.width; x \\+= tile\\) \\{$",
+      "meaning": "Within this row, visit source columns from left to right."
+    },
+    {
+      "pattern": "^const shade = picture\\.get\\(x, y\\);$",
+      "meaning": "Read the source color at this x and y."
+    },
+    {
+      "pattern": "^fill\\(shade\\[0\\], shade\\[1\\], shade\\[2\\], shade\\[3\\]\\);$",
+      "meaning": "Choose the sampled red, green, blue, and opacity."
+    },
+    {
+      "pattern": "^const i = 4 \\* \\(x \\+ y \\* picture\\.width\\);$",
+      "meaning": "Find this pixel’s first RGBA address in the source list."
+    },
+    {
+      "pattern": "^const r = picture\\.pixels\\[i\\];$",
+      "meaning": "Read red from the first channel address."
+    },
+    {
+      "pattern": "^const g = picture\\.pixels\\[i \\+ 1\\];$",
+      "meaning": "Read green from the next channel address."
+    },
+    {
+      "pattern": "^const b = picture\\.pixels\\[i \\+ 2\\];$",
+      "meaning": "Read blue from the third channel address."
+    },
+    {
+      "pattern": "^fill\\(r, g, b\\);$",
+      "meaning": "Choose the original red, green, and blue."
+    },
+    {
+      "pattern": "^const gray = \\(r \\+ g \\+ b\\) / 3;$",
+      "meaning": "Average red, green, and blue into a gray target."
+    },
+    {
+      "pattern": "^let targetR = r;$",
+      "meaning": "Keep original red as the starting target."
+    },
+    {
+      "pattern": "^let targetG = g;$",
+      "meaning": "Keep original green as the starting target."
+    },
+    {
+      "pattern": "^let targetB = b;$",
+      "meaning": "Keep original blue as the starting target."
+    },
+    {
+      "pattern": "^if \\(x / picture\\.width >= focus\\) \\{$",
+      "meaning": "Select samples at or beyond the horizontal boundary."
+    },
+    {
+      "pattern": "^targetR = gray;$",
+      "meaning": "Change the selected sample’s red target to gray."
+    },
+    {
+      "pattern": "^targetG = gray;$",
+      "meaning": "Change the selected sample’s green target to gray."
+    },
+    {
+      "pattern": "^targetB = gray;$",
+      "meaning": "Change the selected sample’s blue target to gray."
+    },
+    {
+      "pattern": "^const targetR = gray;$",
+      "meaning": "Use gray as every sample’s red target."
+    },
+    {
+      "pattern": "^const targetG = gray;$",
+      "meaning": "Use gray as every sample’s green target."
+    },
+    {
+      "pattern": "^const targetB = gray;$",
+      "meaning": "Use gray as every sample’s blue target."
+    },
+    {
+      "pattern": "^const targetR = 255 - r;$",
+      "meaning": "Choose inverted red: 255 minus the original amount."
+    },
+    {
+      "pattern": "^const targetG = 255 - g;$",
+      "meaning": "Choose inverted green: 255 minus the original amount."
+    },
+    {
+      "pattern": "^const targetB = 255 - b;$",
+      "meaning": "Choose inverted blue: 255 minus the original amount."
+    },
+    {
+      "pattern": "^fill\\(lerp\\(r, targetR, amount\\), lerp\\(g, targetG, amount\\), lerp\\(b, targetB, amount\\)\\);$",
+      "meaning": "Blend original channels toward their targets by amount."
+    },
+    {
+      "pattern": "^rect\\(x / picture\\.width \\* width, y / picture\\.height \\* height, tile / picture\\.width \\* width, tile / picture\\.height \\* height\\);$",
+      "meaning": "Draw this tile using source fractions scaled to the canvas."
+    },
+    {
+      "pattern": "^paintTiles\\(strength\\);$",
+      "meaning": "Draw the tiles using the chosen static strength."
+    },
+    {
+      "pattern": "^function paintTiles\\(amount\\) \\{$",
+      "meaning": "Define a drawing rule that receives a change amount."
+    },
+    {
+      "pattern": "^background\\(12, 18, 28\\);$",
+      "meaning": "Clear the canvas with a dark background."
+    },
+    {
+      "pattern": "^function draw\\(\\) \\{$",
+      "meaning": "Repeat these drawing instructions for each frame."
+    },
+    {
+      "pattern": "^if \\(start === undefined\\) \\{$",
+      "meaning": "Initialize the clock only when no start exists yet."
+    },
+    {
+      "pattern": "^start = millis\\(\\);$",
+      "meaning": "Remember the current clock reading as the start."
+    },
+    {
+      "pattern": "^const t = constrain\\(\\(millis\\(\\) - start\\) / 60000, 0, 1\\);$",
+      "meaning": "Convert elapsed milliseconds into progress, clamped between zero and one."
+    },
+    {
+      "pattern": "^paintTiles\\(t \\* strength\\);$",
+      "meaning": "Draw using time progress multiplied by final strength."
+    },
+    {
+      "pattern": "^function mousePressed\\(\\) \\{$",
+      "meaning": "Run this group when the sketch receives a mouse press."
+    },
+    {
+      "pattern": "^function windowResized\\(\\) \\{$",
+      "meaning": "Respond when the available window size changes."
+    },
+    {
+      "pattern": "^resizeCanvas\\(windowWidth, windowHeight\\);$",
+      "meaning": "Resize the canvas to the new window dimensions."
+    },
+    {
+      "pattern": "^\\}$",
+      "meaning": "End this group."
+    }
+  ]
+}

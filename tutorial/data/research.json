@@ -1,0 +1,160 @@
+{
+  "checkedDate": "2026-11-03T03:06:52Z",
+  "repos": [
+    {
+      "name": "processing/p5.js",
+      "url": "https://github.com/processing/p5.js",
+      "commit": "65e96de91f3d219cbd148c54400fce34a749c882",
+      "commitUrl": "https://github.com/processing/p5.js/commit/65e96de91f3d219cbd148c54400fce34a749c882",
+      "updatedAt": "2026-11-03T03:05:15Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "headCommittedAt": "2026-11-03T00:25:46Z",
+      "license": "LGPL-2.1 (GitHub SPDX identification)",
+      "whyUseful": "Maintained implementation and tests provide the technical check behind the beginner's pixel diagrams and exercises.",
+      "evidenceUrls": [
+        "https://github.com/processing/p5.js/blob/65e96de91f3d219cbd148c54400fce34a749c882/src/image/pixels.js",
+        "https://github.com/processing/p5.js/blob/65e96de91f3d219cbd148c54400fce34a749c882/test/unit/image/pixels.js",
+        "https://p5js.org/reference/p5/pixels/"
+      ],
+      "adoptedIdea": "Teach one pixel as four adjacent RGBA slots; show read, edit, then update as a visible three-step cycle.",
+      "caveat": "Upstream main is not a stable installed release. No project p5 dependency existed during this research. Ordinary 2D density-one indexing must not be generalized to all renderers or pixel densities. Tests were inspected as source, not run."
+    },
+    {
+      "name": "processing/p5.js-website",
+      "url": "https://github.com/processing/p5.js-website",
+      "commit": "3103c4e4e53f51de35f24416be11287276c0d0a3",
+      "commitUrl": "https://github.com/processing/p5.js-website/commit/3103c4e4e53f51de35f24416be11287276c0d0a3",
+      "updatedAt": "2026-10-30T15:36:38Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "headCommittedAt": "2026-10-30T15:36:31Z",
+      "license": "MIT in root LICENSE; separately credited media require their own checks",
+      "whyUseful": "Current official beginner tutorials explicitly state prerequisites, combine illustrations with editable sketches, and build one visible result in small steps.",
+      "evidenceUrls": [
+        "https://github.com/processing/p5.js-website/blob/3103c4e4e53f51de35f24416be11287276c0d0a3/src/content/tutorials/en/variables-and-change.mdx",
+        "https://github.com/processing/p5.js-website/blob/3103c4e4e53f51de35f24416be11287276c0d0a3/src/content/tutorials/en/conditionals-and-interactivity.mdx",
+        "https://github.com/processing/p5.js-website/blob/3103c4e4e53f51de35f24416be11287276c0d0a3/src/content/tutorials/en/repeating-with-loops.mdx",
+        "https://github.com/processing/p5.js-website/blob/3103c4e4e53f51de35f24416be11287276c0d0a3/src/content/contributor-docs/en/web_accessibility.mdx",
+        "https://github.com/processing/p5.js-website/blob/3103c4e4e53f51de35f24416be11287276c0d0a3/LICENSE"
+      ],
+      "adoptedIdea": "Use an objective, a small diagram, an editable example, a one-value experiment, and a plain-language checkpoint in every lesson. Add predict and reflect prompts as our instructional synthesis.",
+      "caveat": "The sources support run/experiment/observe and incremental exercises. This review did not establish that they explicitly prescribe the complete named predict-run-change-reflect method, or measure its learning effectiveness."
+    },
+    {
+      "name": "processing/p5.js-web-editor",
+      "url": "https://github.com/processing/p5.js-web-editor",
+      "commit": "0c06787525688a5724234611419c69b3d2c0164e",
+      "commitUrl": "https://github.com/processing/p5.js-web-editor/commit/0c06787525688a5724234611419c69b3d2c0164e",
+      "updatedAt": "2026-11-01T19:52:40Z",
+      "defaultBranch": "develop",
+      "archived": false,
+      "headCommittedAt": "2026-11-01T19:42:35Z",
+      "license": "LGPL-2.1 (GitHub SPDX identification)",
+      "whyUseful": "Maintained beginner editor offers concrete accessibility guidance and unit tests for recognizable Play and Stop controls.",
+      "evidenceUrls": [
+        "https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/contributor_docs/accessibility.md",
+        "https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/Header/Toolbar.unit.test.jsx",
+        "https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/Header/Toolbar.jsx"
+      ],
+      "adoptedIdea": "Provide labeled, keyboard-usable Play, Pause, and Reset controls, visible numeric values, high contrast, and text explanations alongside colorful diagrams.",
+      "caveat": "The source recommends semantic HTML, keyboard access, contrast, and alternatives to color-only meaning. Our extra Pause/Reset and slider choices are design decisions, not claims about identical upstream controls. A guide is not proof of accessibility conformance."
+    },
+    {
+      "name": "CodingTrain/thecodingtrain.com",
+      "url": "https://github.com/CodingTrain/thecodingtrain.com",
+      "commit": "4ecd70ac7c07f682aa111323f9e70959de9ecfd4",
+      "commitUrl": "https://github.com/CodingTrain/thecodingtrain.com/commit/4ecd70ac7c07f682aa111323f9e70959de9ecfd4",
+      "updatedAt": "2026-10-31T03:59:48Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "headCommittedAt": "2026-08-25T20:55:53Z",
+      "license": "MIT code; README excludes brand and visual assets from reuse permission",
+      "whyUseful": "Current non-archived Coding Train source organizes a programming course for novices and a dedicated Pixels track.",
+      "evidenceUrls": [
+        "https://github.com/CodingTrain/thecodingtrain.com/blob/4ecd70ac7c07f682aa111323f9e70959de9ecfd4/content/tracks/main-tracks/code-programming-with-p5-js/index.json",
+        "https://github.com/CodingTrain/thecodingtrain.com/blob/4ecd70ac7c07f682aa111323f9e70959de9ecfd4/content/tracks/side-tracks/pixels/index.json",
+        "https://github.com/CodingTrain/thecodingtrain.com/blob/4ecd70ac7c07f682aa111323f9e70959de9ecfd4/README.md#license"
+      ],
+      "adoptedIdea": "Sequence coordinates and drawing, variables, conditions, loops, functions, arrays, then pixels; offer pixel mirrors and photobooth effects as optional transfer exercises.",
+      "caveat": "Recent repository activity does not make every video recent: the fundamentals track is dated 2019. Check old examples against the chosen p5 version. Create original diagrams instead of copying Coding Train artwork or branding."
+    },
+    {
+      "name": "ITPNYU/ICM-2026-Media",
+      "url": "https://github.com/ITPNYU/ICM-2026-Media",
+      "commit": "c6594912cbbad97b5fbb4058fba264c70c4b8b2b",
+      "commitUrl": "https://github.com/ITPNYU/ICM-2026-Media/commit/c6594912cbbad97b5fbb4058fba264c70c4b8b2b",
+      "updatedAt": "2026-11-02T18:41:25Z",
+      "defaultBranch": "main",
+      "archived": false,
+      "headCommittedAt": "2026-11-02T18:41:21Z",
+      "license": "No license detected by GitHub API; no blanket reuse permission inferred",
+      "whyUseful": "The user's actual course connects media expression, pixel data, capture, brightness mirrors, and video exercises.",
+      "evidenceUrls": [
+        "https://github.com/ITPNYU/ICM-2026-Media/blob/c6594912cbbad97b5fbb4058fba264c70c4b8b2b/weeks/01_pixels.md",
+        "https://github.com/ITPNYU/ICM-2026-Media/blob/c6594912cbbad97b5fbb4058fba264c70c4b8b2b/README.md",
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9"
+      ],
+      "adoptedIdea": "Finish with a one-minute creative brief and an explicit readiness checklist connecting foundations to the user's Week 9 task.",
+      "caveat": "The wiki is a separate mutable source and is not pinned by the main repository commit. The course itself warns that older video editor interfaces differ. Summarize the assignment and link it; do not reproduce course material wholesale."
+    },
+    {
+      "name": "CodingTrain/website",
+      "url": "https://github.com/CodingTrain/website",
+      "commit": "2376ce633dfb610f70a5c4cb193910e39a10c894",
+      "commitUrl": "https://github.com/CodingTrain/website/commit/2376ce633dfb610f70a5c4cb193910e39a10c894",
+      "updatedAt": "2026-11-01T16:52:03Z",
+      "defaultBranch": "main",
+      "archived": true,
+      "headCommittedAt": "2022-07-05T00:30:46Z",
+      "license": "MIT (GitHub SPDX identification); media provenance requires separate review",
+      "whyUseful": "Legacy pixel-sorting sample visibly preserves an original image beside a transformed copy and explicitly demonstrates RGBA channel swaps.",
+      "evidenceUrls": [
+        "https://github.com/CodingTrain/website/blob/2376ce633dfb610f70a5c4cb193910e39a10c894/README.md",
+        "https://github.com/CodingTrain/website/blob/2376ce633dfb610f70a5c4cb193910e39a10c894/CodingChallenges/CC_047_PixelSorting/P5/sketch.js"
+      ],
+      "adoptedIdea": "Show an original and transformed image side by side; make it easy to reset and compare before and after changing one channel.",
+      "caveat": "Archived, explicitly no longer maintained, and last head commit is from 2022 despite recent metadata updatedAt. Sample uses v1 preload and warns that its JavaScript algorithm is very slow. Adopt the comparison teaching pattern, not its sorting algorithm as a beginner default."
+    }
+  ],
+  "technicalNotes": [
+    "Tutorial checkpoint: p5 v2.3.4 is an explicit hold for reproducible examples, separately verified at https://github.com/processing/p5.js/blob/v2.3.4/package.json (version 2.3.4). Async loadImage was checked in that tag's src/image/loading_displaying.js; p5.Image pixelDensity and get were checked in src/image/p5.Image.js; randomSeed was checked in src/math/random.js. Recheck when upgrading this tutorial's pinned library. This release is not claimed to equal upstream main or latest.",
+    "Metadata came from GitHub REST GET /repos/{owner}/{repo} and /commits/{default_branch}; exact teaching paths came from complete recursive Git trees. All six selected trees reported truncated=false. Source excerpts were fetched from raw.githubusercontent.com at the pinned commits. Native PowerShell lookup commands exited 0; individual HTTP failures were caught and retained below.",
+    "updatedAt is repository metadata, not evidence of an instructional update. Maintenance observations use archived flag and default-branch head date separately. These sources were selected for fit and evidence, not ranked as state-of-the-art or empirically best.",
+    "Baseline alternative: official p5 references plus the course assignment. Adopt the additional sources only for concrete instructional patterns: incremental exercises, ordered prerequisites, accessible controls, and before/after comparison. No external teaching framework or package dependency is required.",
+    "Context7 successfully resolved /processing/p5.js and supplied primary implementation references during technical checks. Current p5js.org reference is v2-oriented. No installed version was established from the initially empty workspace; match tutorial code to its explicitly chosen version.",
+    "https://p5js.org/reference/p5/pixels/ confirms RGBA slots and loadPixels/updatePixels. At density one on an ordinary 2D canvas the index is 4*(x+y*width). For an image use the image's width and pixel buffer. https://p5js.org/reference/p5/pixelDensity/ documents that the default follows display density.",
+    "https://p5js.org/reference/p5/colorMode/ concerns interpretation of color-function arguments. Raw pixels remain RGBA. RGB serves channel editing; HSB makes hue/saturation/brightness adjustments easier to explain.",
+    "https://p5js.org/reference/p5/millis/ and https://p5js.org/reference/p5/frameRate/ support elapsed-time animation: record a start and use constrain((millis()-start)/60000,0,1). A requested frame rate is not guaranteed, so 3600 drawn frames do not guarantee 60 seconds.",
+    "https://p5js.org/reference/p5/noiseSeed/ and https://p5js.org/reference/p5/randomSeed/ document seeded repeatability. Matching random call order and noise coordinates/settings are necessary practical limits; seeds do not freeze camera input or guarantee identical rendering across future versions.",
+    "https://p5js.org/tutorials/v2_transition/ confirms v1 preload versus native v2 async setup/await asset loading and optional compatibility add-ons. https://github.com/processing/p5.js-compatibility/blob/main/README.md states that the old sound library bundled with v1 does not work with v2. Sound is optional for this pixel-focused tutorial.",
+    "Repository/source inspection is evidence for design adoption, not evidence that the resulting local tutorial is correct or accessible. Run the local tutorial's applicable interaction, code-example, and accessibility checks independently before claiming completion. Recheck these sources when changing the pinned p5 version or course brief.",
+    "Project-first dark revision: exact p5 v2.3.4 src/core/main.js resets _millisStart after async setup. A delayed-setup browser regression observed negative elapsed time with setup-based start; timers now initialize on first draw. Source snapshot saved in evidence/p5-2.3.4-main.js. Dependency held at 2.3.4; no additional runtime libraries. Existing six source pins retained for applicable teaching patterns."
+  ],
+  "failedLookups": [
+    {
+      "url": "https://api.github.com/repos/processing/p5.js-accessibility",
+      "result": "HTTP 404; guessed repository name rejected; used official website accessibility sources instead"
+    },
+    {
+      "url": "https://api.github.com/repos/CodingTrain/Intro-to-Programming-ICM",
+      "result": "HTTP 404; used verified CodingTrain/thecodingtrain.com novice course instead"
+    },
+    {
+      "url": "https://api.github.com/repos/CodingTrain/learning-p5.js",
+      "result": "HTTP 404; used verified novice and pixel track files instead"
+    },
+    {
+      "url": "https://p5js.org/tutorials/moving-from-p5js-1x-to-2x/",
+      "result": "Web tool inaccessible/internal error; official /tutorials/v2_transition/ succeeded"
+    },
+    {
+      "url": "https://p5js.org/reference/p5/preload/",
+      "result": "HTTP 404; official v2 transition guide confirms v1/v2 distinction"
+    },
+    {
+      "url": "https://github.com/processing/p5.js-compatibility/README.md",
+      "result": "HTTP 404; correct /blob/main/README.md succeeded"
+    }
+  ]
+}

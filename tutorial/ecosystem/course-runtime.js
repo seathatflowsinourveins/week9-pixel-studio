@@ -1,0 +1,39 @@
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../project-core.cjs'));else root.courseRuntime=factory(root.projectCore);})(typeof globalThis!=='undefined'?globalThis:this,function(C){
+ 'use strict';
+ function lessonProject(stage,options,size){
+  const built=C.buildProject(stage,options);
+  if(stage===0&&Number(size)===320){built.lines[3]=['  createCanvas(320, 240);','Create a 320 × 240 canvas, the same dimensions as the supplied source. Changing the canvas does not resize the stored source file.'];built.code=built.lines.map(l=>l[0]).join('\n');}
+  return built;
+ }
+ function frameHTML({code,stage,token}){
+  const executable=code.replace('loadImage("sample.png")','loadImage("../assets/sample.png")').replace(/<\/script/gi,'<\\/script');
+  const bridge=`
+const courseToken=${JSON.stringify(token)};
+const courseOrigin=new URL(document.baseURI).origin;
+let teachingSeconds=null,lastReport=0;
+function tell(kind,extra={}){parent.postMessage({kind,token:courseToken,...extra},courseOrigin);}
+window.addEventListener('error',e=>tell('course-error',{message:e.message}));
+window.addEventListener('unhandledrejection',e=>tell('course-error',{message:String(e.reason)}));
+${stage>=4?`
+const normalDraw=window.draw;
+window.draw=function(){
+ if(teachingSeconds!==null)paintTiles(teachingSeconds/60*strength);else normalDraw();
+ if(teachingSeconds!==null||performance.now()-lastReport>200){lastReport=performance.now();tell('course-time',{seconds:teachingSeconds!==null?teachingSeconds:Math.max(0,Math.min(60,(millis()-start)/1000)),teaching:teachingSeconds!==null});}
+};
+${stage>=5?`const normalMouse=window.mousePressed;window.mousePressed=function(){teachingSeconds=null;normalMouse();loop();};`:''}
+window.addEventListener('message',event=>{
+ if(event.source !== parent||event.origin!==courseOrigin||event.data?.token!==courseToken)return;
+ if(event.data.kind==='course-seek'){teachingSeconds=Math.max(0,Math.min(60,Number(event.data.seconds)||0));noLoop();redraw();}
+ if(event.data.kind==='course-play'){teachingSeconds=null;start=undefined;loop();}
+});`:''}
+let checks=0;const readyCheck=setInterval(()=>{
+ const canvas=document.querySelector('canvas');
+ if(canvas&&canvas.getContext('2d')?.getImageData(0,0,1,1).data[3]){clearInterval(readyCheck);tell('course-ready',{version:p5.VERSION,width:canvas.width,height:canvas.height});}
+ else if(++checks>150){clearInterval(readyCheck);tell('course-error',{message:'No painted canvas yet. Restart p5 or open the complete local reference.'});}
+},100);
+`;
+  const displayPercent=stage===0&&code.includes('createCanvas(320, 240)')?50:100;
+  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;background:#0c121c;overflow:hidden}canvas{display:block;width:'+displayPercent+'%!important;height:auto!important}</style><script src="../vendor/p5.min.js"></script></head><body><main></main><script>'+executable+'\n'+bridge+'</script></body></html>';
+ }
+ return {lessonProject,frameHTML};
+});

@@ -1,0 +1,48 @@
+const fs=require('node:fs');
+const path=require('node:path');
+const crypto=require('node:crypto');
+let sharp;try{sharp=require('sharp');}catch{throw Error('Optional image regeneration needs Sharp. Run npm install --no-save sharp in the repository root. The included PNG and dashboard build need no install.');}
+const root=__dirname;
+async function build(){
+ const scene=`<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240"><rect width="320" height="240" fill="#94c9cf"/><circle cx="259" cy="45" r="26" fill="#f8db75"/><path d="M0 160 Q100 90 180 160 T320 150 V240 H0Z" fill="#469b91"/><rect x="0" y="180" width="320" height="60" fill="#294d57"/><rect x="38" y="29" width="160" height="170" rx="6" fill="#eee4ca"/><rect x="50" y="41" width="136" height="142" fill="#345d71"/><rect x="60" y="51" width="116" height="122" fill="#edb46a"/><path d="M60 120L100 88L144 119L176 99V173H60Z" fill="#ac6164"/><path d="M118 51V173M60 110H176" stroke="#eee4ca" stroke-width="8"/><rect x="26" y="188" width="188" height="14" rx="3" fill="#e6d5b0"/><path d="M240 205Q220 165 240 131Q267 153 240 205M242 180Q265 131 283 151Q285 180 242 180M238 165Q197 160 212 137Q233 134 238 165" fill="#193d3c"/><path d="M222 201H264L258 230H228Z" fill="#d9704d"/><circle cx="82" cy="207" r="10" fill="#e2976e"/><circle cx="108" cy="211" r="7" fill="#daba7c"/></svg>`;
+ fs.mkdirSync(path.join(root,'assets'),{recursive:true});
+ fs.writeFileSync(path.join(root,'assets','sample.svg'),scene);
+ await sharp(Buffer.from(scene)).png().toFile(path.join(root,'assets','sample.png'));
+ const lessons=[...require('./data/lessons-foundations.cjs'),...require('./data/lessons-media.cjs'),...require('./data/lessons-extensions.cjs')];
+ const research=JSON.parse(fs.readFileSync(path.join(root,'data','research.json'),'utf8').replace(/^\uFEFF/,''));
+ const p5=fs.readFileSync(path.join(root,'vendor','p5.min.js'),'utf8');
+ const sample='data:image/png;base64,'+fs.readFileSync(path.join(root,'assets','sample.png')).toString('base64');
+ const stages=require('./data/studio-stages.cjs');
+ const projectCore=require('./project-core.cjs');
+ const guidedWalkthroughs=require('./data/guided-walkthroughs.cjs');
+ const editorPageHTML=fs.readFileSync(path.join(root,'editor-starter','index.html'),'utf8');
+ const editorSetupText=fs.readFileSync(path.join(root,'EDITOR-SETUP.txt'),'utf8');
+ const data={lessons,stages,guidedWalkthroughs,editorPageHTML,editorSetupText,research,sample,version:'2.3.4',p5:Buffer.from(p5).toString('base64')};
+ const safe=JSON.stringify(data).replace(/</g,'\\u003c');
+ const core=require('./core.cjs');
+ const coreText=`window.workbookCore={pixelIndex:${core.pixelIndex.toString()},minuteProgress:${core.minuteProgress.toString()}};`;
+ const app=['project-core.cjs','ecosystem/study-sync.js','guided-coach.js','project-studio.js','workbook.js'].map(name=>fs.readFileSync(path.join(root,name),'utf8')).join('\n').replace(/<\/script/gi,'<\\/script');
+ const css=['workbook.css','dark.css','studio.css','guided-coach.css'].map(name=>fs.readFileSync(path.join(root,name),'utf8')).join('\n');
+ const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creative Coding Foundations — ICM Week 9 Workbook</title><style>${css}</style></head><body><a class="skip" href="#content">Skip to lesson</a><div class="shell"><aside><div class="brand">Creative coding<br>from the beginning<small>ICM WEEK 9 WORKBOOK</small></div><div class="progress"><span id="progress-label"></span><progress id="progress" max="${lessons.length}" value="0" aria-label="Lessons practiced"></progress></div><nav id="nav" aria-label="Workbook lessons"></nav><div class="sideactions"><button id="export">Export progress</button><button id="import">Import progress</button><button id="print">Print workbook</button></div><input id="import-file" type="file" accept="application/json" hidden><p id="storage-status" class="small" role="status"></p><p class="small" data-study-backup role="status"></p></aside><main><div class="topline"><span>Learn by making small changes</span><span>p5.js 2.3.4 · works offline</span></div><label for="mobile-nav" class="sr-only">Choose a workbook section</label><select class="mobile" id="mobile-nav"></select><div id="content" tabindex="-1"></div><footer>Original lessons and illustrations. Prepared November 2, 2026 in America/New_York. p5.js is included under LGPL 2.1; license and upstream links accompany the download. This workbook is an independent study aid.</footer></main></div><script id="workbook-data" type="application/json">${safe}</script><script>${coreText}\n${app}</script></body></html>`;
+ const studioHTML=html.replace('Creative Coding Foundations — ICM Week 9 Workbook','ICM Week 9 Project Studio').replace('Creative coding<br>from the beginning<small>ICM WEEK 9 WORKBOOK</small>','Week 9<br>Pixel project studio<small>YOUR GUIDE FROM THE BEGINNING</small>').replace('Learn by making small changes','Build your one minute image').replace('aria-label="Lessons practiced"','aria-label="Project stages practiced"');
+ fs.writeFileSync(path.join(root,'ICM-Week-9-Workbook.html'),studioHTML);
+ fs.writeFileSync(path.join(root,'Week-9-Project-Studio.html'),studioHTML);
+ fs.mkdirSync(path.join(root,'sketches'),{recursive:true});
+ for(const l of lessons)fs.writeFileSync(path.join(root,'sketches',l.id+'.js'),l.lines.map(x=>x[0]).join('\n')+'\n');
+ const manifest={title:'Creative Coding Foundations for ICM Week 9',audience:'Complete beginner',checkedLocalDate:'2026-11-02',timezone:'America/New_York',runtime:{library:'p5.js',version:'2.3.4',source:'https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js',sha256:crypto.createHash('sha256').update(p5).digest('hex'),license:'LGPL-2.1'},offlineEntry:'ICM-Week-9-Workbook.html',sourceImage:'assets/sample.png',scope:'Foundations for the Week 9 pixel assignment, not all of JavaScript',lessons:lessons.map((l,i)=>({id:l.id,title:l.title,stage:l.stage,prerequisites:i?[lessons[Math.min(i-1,15)].id]:[],suggestedMinutes:l.minutes,codeLines:l.lines.length,practiceCount:l.practice.length,preview:l.preview!==false,sketch:'sketches/'+l.id+'.js',references:l.refs})),assignment:'https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9',research:'data/research.json'};
+ manifest.offlineEntry='Week-9-Project-Studio.html';
+ manifest.theme='dark';
+ manifest.projectStages=stages.map((s,i)=>({id:s.id,title:s.title,goal:s.goal,foundations:s.foundations,practiceCount:s.practice.length,sketch:`project-sketches/stage-${i+1}.js`,references:s.refs}));
+ manifest.guidedWalkthroughs=guidedWalkthroughs.map(g=>({stage:g.stage,actions:g.actions.length,vocabularyTerms:g.vocabulary.length,mode:'Offline workbook and p5 Web Editor side by side'}));
+ manifest.ecosystem={configuredLocalDate:'2026-11-03',launcher:'Start-Week-9.cmd',stopper:'Stop-Week-9.cmd',studyHome:'ecosystem/index.html',studyMap:'ecosystem/study-map.json',workingProject:'workspace/my-project',referenceProjects:'workspace/stage-01 through workspace/stage-07',journal:'workspace/journal',binding:'127.0.0.1',runtime:'Existing Node.js runtime; checked v26.13.0',onlineEditor:'https://editor.p5js.org/'};
+ manifest.ecosystem.automation={startup:'ecosystem/setup.cjs',doctor:'Check-Week-9.cmd',resume:'ecosystem/learn.html?view=lines',protocol:2,progressBackups:'backups/progress',savedSourceSnapshots:'backups/sessions',privateBackupsExcludedFromKit:true};
+ manifest.ecosystem.cleanCourse={entry:'ecosystem/learn.html#stage-1',stages:7,actions:47,illustrations:'Actual local p5.js with teaching controls',progress:'Shared workbook state with three-way merge protection'};
+ const walkthroughText=['WEEK 9 SIDE BY SIDE WALKTHROUGH','Use the workbook to investigate a rule, then save your own version in the p5 Web Editor.',''].concat(guidedWalkthroughs.flatMap((g,i)=>['STAGE '+(i+1)+' '+stages[i].title,g.welcome,'WORDS: '+g.vocabulary.map(v=>v.term+' = '+v.meaning).join('\n'),...g.actions.flatMap((a,j)=>['','SMALL STEP '+(j+1)+' '+a.title,'WORKBOOK: '+a.workbook,'P5 EDITOR: '+a.editor,'WHY: '+a.why,'EXPECTED: '+a.expect,'CHECK: '+a.question,'REASONING: '+a.explanation,'IF STUCK: '+a.repair]),''])).join('\n\n');
+ fs.writeFileSync(path.join(root,'SIDE-BY-SIDE-WALKTHROUGH.txt'),walkthroughText+'\n\nCOMPLETE EDITOR PAGE HTML\n\n'+editorPageHTML+'\n\nEDITOR SETUP AND EVERY HTML LINE EXPLAINED\n\n'+editorSetupText);
+ fs.mkdirSync(path.join(root,'project-sketches'),{recursive:true});
+ for(let i=0;i<stages.length;i++)fs.writeFileSync(path.join(root,'project-sketches',`stage-${i+1}.js`),projectCore.buildProject(i).code+'\n');
+ fs.writeFileSync(path.join(root,'curriculum-manifest.json'),JSON.stringify(manifest,null,2));
+ const lines=lessons.reduce((n,l)=>n+l.lines.length,0),practices=lessons.reduce((n,l)=>n+l.practice.length,0),words=lessons.map(l=>l.intro.join(' ')+' '+l.lines.map(x=>x[1]).join(' ')+' '+l.practice.map(p=>Object.values(p).join(' ')).join(' ')).join(' ').split(/\s+/).length;
+ console.log(JSON.stringify({projectStages:stages.length,lessons:lessons.length,lines,practices,words,htmlBytes:Buffer.byteLength(studioHTML),p5Sha256:manifest.runtime.sha256}));
+}
+build().catch(e=>{console.error(e);process.exitCode=1;});

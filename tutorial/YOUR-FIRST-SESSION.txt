@@ -1,0 +1,85 @@
+YOUR FIRST SESSION
+Use the workbook and p5 Web Editor side by side
+
+YOUR GOAL TODAY
+Display one supplied image in your own saved p5 sketch and explain how it got
+there. This is a complete first milestone. Continue to pixel sampling after
+the image appears reliably.
+
+WHAT THE TWO WINDOWS DO
+The workbook is your guide and experiment space. It contains explanations,
+interactive controls and generated code. The Web Editor is where you save
+your own project and obtain code/fullscreen links for class.
+
+1. Double-click Start-Week-9.cmd. Your last lesson opens automatically.
+   Keep this local address each session so progress shares the same origin.
+2. Keep your usual browser's saved p5 sketch beside the course. The Saved
+   Stage1 link opens your prepared project. Later stages explain File->Duplicate
+   before replacing code, so the Stage1 baseline remains available.
+3. Read the current small action. Here explains the course control to try;
+   In your p5 editor explains what to do in the separate saved project.
+4. Use the p5 illustration and its controls. Use Explain the code to read
+   one line at a time. Copy complete files with the matching file buttons.
+5. Open Check your understanding, make a prediction, then try the experiment.
+   Your picture and your explanation are separate learning checkpoints.
+6. Choose Next step. Write your own observation, then Export workbook progress.
+   Only mark a stage tested when you have actually tested and understood it.
+
+The standalone Week-9-Project-Studio.html is an offline fallback. If you used
+it earlier, export progress there and import it into the served workbook.
+
+THE FIRST WORKING IMAGE IN YOUR EDITOR
+Follow the Stage 1 actions in order. These are the important dependencies:
+
+FIRST: prove the supplied example works in the workbook.
+THEN: download sample.png from the workbook and save it somewhere you can find.
+THEN: use the guide's Copy editor page HTML helper; replace ALL index.html
+      in your editor with it. This pins p5 2.3.4. Keep sketch.js separate.
+THEN: upload the real sample.png into the editor project beside sketch.js.
+THEN: copy the COMPLETE Stage 1 code from the workbook. Replace everything
+      in sketch.js, rather than adding a second setup function at its end.
+THEN: press the editor Run triangle. If the image appears, save the sketch.
+
+If you see a missing-image error, check the project file list and quoted
+filename. A computer path such as C:\Downloads\sample.png does not refer to an
+uploaded editor file. The code uses "sample.png" when it is beside sketch.js.
+If it is inside an assets folder, use "assets/sample.png" instead.
+
+THE EIGHT LINES YOU ARE LEARNING
+The exact current generated code appears in the workbook's line reader.
+
+let picture;
+  Reserve a name that can remember the loaded image.
+async function setup() {
+  Define the preparation instructions p5 calls once. Async permits waiting.
+  picture = await loadImage("sample.png");
+  Request the named file and wait until it is ready, then remember the image.
+  createCanvas(640, 480);
+  Make a drawing surface 640 pixels wide and 480 pixels tall.
+  pixelDensity(1);
+  Keep coordinate-to-buffer arithmetic simple: one stored pixel per unit.
+  image(picture, 0, 0, width, height);
+  Draw the image from the top-left corner across the canvas dimensions.
+  describe("The original source image displayed across a larger canvas.");
+  Provide a text description for people who cannot see the canvas.
+}
+  Close the setup function's group of instructions.
+
+A SINGLE CONTROLLED CHANGE
+Change createCanvas(640, 480) to createCanvas(320, 240). Run again.
+The display becomes smaller. The source file is still 320 by 240 pixels.
+Restore the larger canvas, run again, and save the working version.
+
+STOP AND EXPLAIN BEFORE GOING ON
+Say these in your own words:
+- What is the difference between the source file and the canvas?
+- Which line loads information, and which line draws it?
+- Why does the filename have to match the uploaded file?
+- What changed when you changed the canvas dimensions?
+
+YOUR NEXT SESSION
+Stage 2 reads selected source colors and draws larger tiles. With a source
+320 pixels wide and a sampling step of 16, there are 20 sampled columns.
+240 / 16 gives 15 rows. Therefore 20 x 15 = 300 sampled tiles.
+You will change one sampling step, inspect what detail disappears, then save
+that new version before moving to the next rule.

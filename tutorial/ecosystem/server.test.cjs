@@ -1,0 +1,18 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs/promises'),os=require('node:os');
+let createStudyServer;try{({createStudyServer}=require('./server.cjs'));}catch{}
+test('serves only study files and reports the actual owned workspace',async t=>{
+ assert.equal(typeof createStudyServer,'function','study server is not implemented');
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'icm-ecosystem-test-'));await fs.mkdir(path.join(dir,'ecosystem'));await fs.mkdir(path.join(dir,'workspace'));await fs.mkdir(path.join(dir,'workspace','stage-01'));await fs.writeFile(path.join(dir,'ecosystem','index.html'),'<title>Study home</title>');await fs.writeFile(path.join(dir,'workspace','stage-01','sketch.js'),'function setup() {}');await fs.writeFile(path.join(dir,'private.txt'),'not a study route');
+ const server=createStudyServer({root:dir});let lastHost;server.on('request',req=>{lastHost=req.headers.host;});await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(async()=>{await new Promise(r=>server.close(r));const resolved=await fs.realpath(dir),tmp=await fs.realpath(os.tmpdir());assert.equal(path.dirname(resolved).toLowerCase(),tmp.toLowerCase());assert(path.basename(resolved).startsWith('icm-ecosystem-test-'));await fs.rm(resolved,{recursive:true,force:true});});const base='http://127.0.0.1:'+server.address().port;
+ const home=await fetch(base+'/');assert.equal(home.status,200);assert.match(await home.text(),/Study home/);
+ const health=await(await fetch(base+'/api/health')).json();assert.equal(health.app,'icm-week9-study');assert.equal(health.p5,'2.3.4');assert.match(health.rootId,/^[0-9a-f]{16}$/);
+ const code=await fetch(base+'/workspace/stage-01/sketch.js');assert.equal(code.status,200);assert.match(await code.text(),/function setup/);
+ for(const [name,body,type] of [['loops.html','<title>Repeat squares</title>','text/html'],['loops.js','window.loopUI=true;','text/javascript'],['loops.css','.loop-columns{display:grid}','text/css'],['loops-core.js','window.loopLesson={};','text/javascript'],['editor-frame.js','window.p5EditorHost={};','text/javascript'],['editor-view.css','.p5-editor-pane{display:flex}','text/css']]){await fs.writeFile(path.join(dir,'ecosystem',name),body);const response=await fetch(base+'/ecosystem/'+name);assert.equal(response.status,200,name+' must be reachable');assert.equal(await response.text(),body);assert(response.headers.get('content-type').startsWith(type));}
+ assert.equal((await fetch(base+'/ecosystem/loops-core.test.cjs')).status,404);
+ for(const [name,type] of [['dashboard.js','text/javascript'],['dashboard-core.js','text/javascript'],['dashboard-art.js','text/javascript'],['dashboard.css','text/css'],['dashboard-data.json','application/json']]){const bytes=name.endsWith('.json')?'{}':'/* dashboard asset */';await fs.writeFile(path.join(dir,'ecosystem',name),bytes);const response=await fetch(base+'/ecosystem/'+name);assert.equal(response.status,200,name+' must be reachable');assert.equal(await response.text(),bytes);assert(response.headers.get('content-type').startsWith(type));}
+ assert.equal((await fetch(base+'/private.txt')).status,404);
+ assert.equal((await fetch(base+'/ecosystem/server.cjs')).status,404);
+ assert.equal((await fetch(base+'/workspace/%2e%2e%2fprivate.txt')).status,400);
+ assert.equal((await fetch(base+'/',{method:'POST',body:'anything'})).status,405);
+ const rejected=await new Promise((resolve,reject)=>{const req=require('node:http').request(base+'/',{headers:{Host:'unrelated.example'}},res=>{res.resume();resolve(res.statusCode);});req.on('error',reject);req.end();});assert.equal(lastHost,'unrelated.example');assert.equal(rejected,403);
+});

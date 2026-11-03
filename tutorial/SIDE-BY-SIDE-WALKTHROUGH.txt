@@ -1,0 +1,1049 @@
+WEEK 9 SIDE BY SIDE WALKTHROUGH
+
+Use the workbook to investigate a rule, then save your own version in the p5 Web Editor.
+
+
+
+STAGE 1 Bring your image into the sketch
+
+Keep this workbook and the p5 Web Editor visible beside each other. The workbook is your instruction sheet and small experiment space. The editor holds the separate project you will save and share. Start with the supplied image so you can recognize a successful result before choosing personal material. You do not need to type a whole program from memory.
+
+WORDS: Sketch = A small p5 program. Your editor project contains the program and its supporting files.
+Source and canvas = The source is the stored picture, 320 × 240 pixels here. The canvas is the drawing surface, initially 640 × 480.
+File and path = A file has a name such as sample.png. A path tells the program where that file sits inside its project.
+setup = Instructions p5 performs once when this sketch starts. Await waits for the picture to finish loading.
+
+
+
+SMALL STEP 1 Put the two workspaces beside each other
+
+WORKBOOK: Keep this page open. Open a second browser window for https://editor.p5js.org/ and place the workbook on the left half of your screen. On Windows, drag its window to the left edge or press Windows+Left.
+
+P5 EDITOR: Place the editor window on the right half using Windows+Right. Keep both windows visible. Click inside each once to learn which window receives your typing.
+
+WHY: Separate pages hold separate code.
+
+EXPECTED: Both windows remain readable.
+
+CHECK: Where will your saved, shareable sketch live?
+
+REASONING: Save and share through the editor.
+
+IF STUCK: Narrow each window by dragging its edge.
+
+
+
+SMALL STEP 2 Run the untouched workbook example
+
+WORKBOOK: Find “Run this stage in p5” below the code explanation and click it once. Wait for the actual p5 preview to appear. Compare its picture with “Original source · unchanged” above.
+
+P5 EDITOR: Leave the editor unchanged for this step. Do not paste anything yet; first establish what a working example looks like.
+
+WHY: Recognize a working baseline first.
+
+EXPECTED: A still enlarged source appears.
+
+CHECK: Should this first stage already animate for a minute?
+
+REASONING: Animation arrives in a later stage.
+
+IF STUCK: Read the Run status and first error.
+
+
+
+SMALL STEP 3 Download the actual image file
+
+WORKBOOK: Click “Download sample.png” in the image area. Locate sample.png in your browser downloads. Keep this filename; changing an extension does not convert an image.
+
+P5 EDITOR: Keep the editor open. Do not paste the downloaded file path into code. You will upload the image itself in a later step.
+
+WHY: The editor needs its own asset.
+
+EXPECTED: Downloads contains a 320 × 240 source.
+
+CHECK: Does a 640 × 480 display make the source file 640 × 480?
+
+REASONING: Display enlargement leaves the source unchanged.
+
+IF STUCK: Check downloads, allow downloading, then retry.
+
+
+
+SMALL STEP 4 Create a project and find its files
+
+WORKBOOK: Leave the example and downloaded sample.png available. Read the next instruction before switching attention to the right window.
+
+P5 EDITOR: Log in to the Web Editor so uploading and saving are available. Create a new sketch. Open the file panel using “Open Sketch files navigation”. Find sketch.js and index.html in the file list.
+
+WHY: Each file has a different purpose.
+
+EXPECTED: Both named project files are visible.
+
+CHECK: Which file will hold the drawing instructions?
+
+REASONING: sketch.js contains the drawing program.
+
+IF STUCK: Log in, then reopen the file panel.
+
+
+
+SMALL STEP 5 Copy the complete pinned editor page
+
+WORKBOOK: Click “Copy editor page HTML”. If clipboard access fails, click inside the supplied read-only HTML, press Ctrl+A, then Ctrl+C. This complete template loads p5 2.3.4 before sketch.js and keeps this project silent.
+
+P5 EDITOR: Select index.html in the file panel. Click inside its text, press Ctrl+A, then Ctrl+V to replace ALL of that file with the copied HTML. Leave the separate sketch.js file in place; you will replace its code in a later step.
+
+WHY: index.html loads the library and sketch.
+
+EXPECTED: The complete page pins p5 2.3.4.
+
+CHECK: Where should the complete copied HTML go?
+
+REASONING: The HTML template belongs in index.html.
+
+IF STUCK: If pasted into the wrong file, select index.html and replace its whole text correctly. Restore sketch.js with the complete stage code at the later copy step.
+
+
+
+SMALL STEP 6 Upload the real sample.png file
+
+WORKBOOK: Locate the sample.png you downloaded earlier. Keep the file itself ready; copying its filename or your computer’s Downloads path does not upload the image.
+
+P5 EDITOR: In Sketch Files, open “Toggle open/close sketch file options” and choose “Upload file”. In “Drop files here or click to use the file browser”, select sample.png and wait. Confirm it appears beside sketch.js, at the project root.
+
+WHY: The saved project needs its own image.
+
+EXPECTED: sample.png appears in the project file list.
+
+CHECK: For sample.png beside sketch.js, which quoted path matches?
+
+REASONING: Use the project-relative filename in loadImage.
+
+IF STUCK: If upload says “Log in to upload files”, log in first. Check the actual folder: an image under assets needs "assets/sample.png" instead.
+
+
+
+SMALL STEP 7 Replace every line of sketch.js
+
+WORKBOOK: Click “Copy complete code” under this stage’s code. If clipboard access fails, open “Edit the complete sketch yourself”, click its text, press Ctrl+A, then Ctrl+C.
+
+P5 EDITOR: Select sketch.js. Click inside its code area, press Ctrl+A, then Ctrl+V. The old starter must disappear. Check that the first line is let picture; and that there is only one async function setup().
+
+WHY: Avoid duplicate programs and declarations.
+
+EXPECTED: Only this complete stage remains.
+
+CHECK: How should you paste a complete stage?
+
+REASONING: Complete stages replace the whole file.
+
+IF STUCK: Select all and paste the complete stage again.
+
+
+
+SMALL STEP 8 Run, compare and save your first version
+
+WORKBOOK: Compare the workbook’s supplied image with the editor result. In your stage observation, write one sentence naming the source size and one naming the canvas size.
+
+P5 EDITOR: Press the Run triangle. Wait for the picture. Give the sketch a recognizable title and use File → Save. In the browser developer console, p5.VERSION can confirm "2.3.4"; it is a property, without parentheses.
+
+WHY: Running and saving are separate checks.
+
+EXPECTED: The editor picture matches and is saved.
+
+CHECK: If loading fails, what should you inspect first?
+
+REASONING: Fix missing assets before pixel mathematics.
+
+IF STUCK: Compare the first error with the filename.
+
+
+
+SMALL STEP 9 Try one reversible size change
+
+WORKBOOK: Read the explanation for createCanvas(640, 480). Predict what a smaller drawing surface would do before touching code. Keep the original example available as your rollback.
+
+P5 EDITOR: Optionally change only createCanvas(640, 480) to createCanvas(320, 240), then Run. Compare the display. Restore createCanvas(640, 480), Run again, and Save the restored working version.
+
+WHY: One change isolates display size.
+
+EXPECTED: Smaller canvas; unchanged source file.
+
+CHECK: What did changing createCanvas change?
+
+REASONING: createCanvas changes the destination surface.
+
+IF STUCK: Restore this complete stage if syntax breaks.
+
+
+
+STAGE 2 Build a grid from sampled colors
+
+Now replace the smooth display with a mosaic. A mosaic uses one sampled color to fill each larger rectangle. Keep the same image while learning this rule; changing both the source and the sampling step would make the comparison harder to explain. Your acceptance check is a working editor mosaic and an explanation of why larger sampling steps produce fewer blocks.
+
+WORDS: Sample = Read a color at one chosen source location rather than drawing every original pixel.
+tile = The named source-pixel step between samples. It also determines each displayed block’s size.
+Loop = An instruction that repeats while its condition stays true. The row loop contains a column loop.
+Coordinate = A location written as x and y: x increases rightward, y increases downward, starting at the top left.
+
+
+
+SMALL STEP 1 Establish the stage’s baseline
+
+WORKBOOK: Set “Sampling step” to 16. Click “Run this stage in p5”. Compare the original with the mosaic before changing any other value.
+
+P5 EDITOR: Copy this stage’s complete code. Select sketch.js, click its code area, press Ctrl+A, then paste. Press Run. Keep the same sample.png and index.html; Save this new stage version.
+
+WHY: Keep the sampling comparison controlled.
+
+EXPECTED: Rectangular blocks replace the smooth display.
+
+CHECK: What does tile = 16 measure here?
+
+REASONING: tile measures source-pixel sampling distance.
+
+IF STUCK: Confirm this stage replaced all sketch.js text.
+
+
+
+SMALL STEP 2 Make the invisible sampling grid visible
+
+WORKBOOK: Click “Show sampling grid”. Look across one row, then down to the next. Click the top-left part of the original image and look for the white sample marker.
+
+P5 EDITOR: Leave the code unchanged. Compare the block boundaries in your editor with the grid in the workbook; the helper grid itself is not part of your exported sketch.
+
+WHY: Reveal where samples originate.
+
+EXPECTED: Outlined cells correspond to mosaic blocks.
+
+CHECK: Does the helper grid have to appear in the saved sketch?
+
+REASONING: The grid is a teaching overlay.
+
+IF STUCK: Toggle the grid and compare both states.
+
+
+
+SMALL STEP 3 Read one color and move to its neighbor
+
+WORKBOOK: Click “Next sampled pixel →” once. Read the source coordinate and the source RGBA values below the images. Move once more and notice which coordinate changes.
+
+P5 EDITOR: Find const shade = picture.get(x, y); in sketch.js. Read it as “remember the color at the current source location”. Read fill(shade[0], shade[1], shade[2], shade[3]) as choosing that color for the next rectangle.
+
+WHY: Read color before drawing its block.
+
+EXPECTED: The marker advances along a row.
+
+CHECK: What does picture.get(x, y) supply?
+
+REASONING: get supplies the sampled source color.
+
+IF STUCK: Click near the original’s top-left corner.
+
+
+
+SMALL STEP 4 Follow the two loops without editing them
+
+WORKBOOK: In the code reader, select the line beginning for (let y. Then select the following for (let x line. Read each explanation before moving on to rect.
+
+P5 EDITOR: Find those same two lines. Do not change their punctuation or steps. Say aloud: “choose one row; visit its columns; then choose the next row.”
+
+WHY: Columns finish before rows advance.
+
+EXPECTED: Twenty columns × fifteen rows = 300 samples.
+
+CHECK: How many samples does this baseline make?
+
+REASONING: Multiply rows by columns: 300.
+
+IF STUCK: Calculate both divisions; never set tile zero.
+
+
+
+SMALL STEP 5 Change only the sampling step
+
+WORKBOOK: Move “Sampling step” to 8. Compare detail with 16, then try 40. Keep the image unchanged. Read the sample count after each change.
+
+P5 EDITOR: Change only const tile = 16; to const tile = 8; and Run. Then change only that number to 40 and Run. Do not alter the loop steps themselves.
+
+WHY: Change one spatial rule.
+
+EXPECTED: Step 8: 1200 samples; step 40: 48.
+
+CHECK: Which has fewer sampled blocks?
+
+REASONING: Larger sampling steps visit fewer locations.
+
+IF STUCK: Check tile in both separate windows.
+
+
+
+SMALL STEP 6 Explain how a source position reaches the canvas
+
+WORKBOOK: Restore sampling step 16. Select the rect line in the code reader. Locate x / picture.width * width and read its explanation slowly.
+
+P5 EDITOR: Restore const tile = 16; and Run. Find the same rect line without editing it. Picture a source location halfway across: its x fraction is 0.5, so its destination is halfway across the canvas.
+
+WHY: Fractions connect differently sized rectangles.
+
+EXPECTED: Source x 160 maps to canvas x 320.
+
+CHECK: Where does source x = 160 map on a 640-wide display?
+
+REASONING: Half of 640 is 320.
+
+IF STUCK: Divide first; label source and canvas widths.
+
+
+
+SMALL STEP 7 Keep one observed result
+
+WORKBOOK: In “Your observation”, write which step you preferred, what became recognizable or hidden, and the actual sample count. Turn off the grid if it distracts from comparing the images.
+
+P5 EDITOR: Choose one tested tile value, Run, and Save. Copy or download the complete working sketch before moving on if you want to preserve this iteration.
+
+WHY: Connect a decision to visible evidence.
+
+EXPECTED: A saved mosaic and actual observation remain.
+
+CHECK: Which note can guide your next decision?
+
+REASONING: Concrete observations guide further decisions.
+
+IF STUCK: Compare 8 and 40 again before writing.
+
+
+
+STAGE 3 Find the four numbers for a pixel
+
+The mosaic will look much like the last stage. What changes is how the program finds each color: it reads a long list of channel numbers directly. Take this slowly. The goal is to distinguish a location in that list from the color amount stored there, then trace one pixel by hand.
+
+WORDS: Buffer or array = An ordered list of numbers. Its first position is numbered zero.
+RGBA = Four consecutive channel amounts: red, green, blue and alpha. Alpha describes opacity.
+Address or index = The numbered position in the list, rather than the channel amount stored at that position.
+Density one = One stored pixel per image coordinate here. This stage’s simple address formula depends on that assumption.
+
+
+
+SMALL STEP 1 Install the buffer-reading stage
+
+WORKBOOK: Set sampling step 16 and Run this stage. Compare its mosaic with your previous saved version; a similar appearance is expected.
+
+P5 EDITOR: Copy this stage’s complete code, select all sketch.js text and replace it. Run and Save. Check that picture.pixelDensity(1); and picture.loadPixels(); now appear after loading.
+
+WHY: Prepare the buffer before reading it.
+
+EXPECTED: Same mosaic, now read from picture.pixels.
+
+CHECK: Must a new reading method make a new visible effect?
+
+REASONING: Different methods can produce matching colors.
+
+IF STUCK: Check loadPixels and the uploaded image path.
+
+
+
+SMALL STEP 2 Start with pixel zero
+
+WORKBOOK: Click the very top-left area of the original. Read the coordinate and address display; aim for sample (0, 0). Read the four channel addresses beneath the color values.
+
+P5 EDITOR: Find const i = 4 * (x + y * picture.width);. Do not edit it. Substitute x = 0 and y = 0 on paper.
+
+WHY: Array counting begins at zero.
+
+EXPECTED: First pixel addresses: 0, 1, 2, 3.
+
+CHECK: What is the first pixel’s red address?
+
+REASONING: The first array address is zero.
+
+IF STUCK: Click nearer the original’s upper-left corner.
+
+
+
+SMALL STEP 3 Calculate one later address by hand
+
+WORKBOOK: At step 16, click inside the second tile of the second row in the original. Use the readout to confirm sample (16, 16). Calculate its address before comparing.
+
+P5 EDITOR: Use the source width 320 in the formula: 16 rows × 320 pixels = 5120; add x = 16 to get 5136 pixels; multiply by 4 to get 20544 entries.
+
+WHY: Convert pixels into channel entries.
+
+EXPECTED: Selected pixel starts at address 20544.
+
+CHECK: Which width belongs in this source-buffer calculation?
+
+REASONING: Source-buffer calculations use source width.
+
+IF STUCK: Recalculate with 320; confirm sample (16,16).
+
+
+
+SMALL STEP 4 Separate the address from the amount
+
+WORKBOOK: Read “Source channels → displayed channels” for the selected sample. Write one address and the value stored there as two separately labeled numbers.
+
+P5 EDITOR: Find const g = picture.pixels[i + 1];. Read it as “go to the green address, then remember the amount found there”. Do not add one to the green amount.
+
+WHY: Distinguish location from stored amount.
+
+EXPECTED: Large addresses hold values within 0–255.
+
+CHECK: Does an address of 20545 mean a green amount of 20545?
+
+REASONING: Addresses locate values; they are not amounts.
+
+IF STUCK: Label each number “where” or “how much”.
+
+
+
+SMALL STEP 5 Read alpha and the density assumption
+
+WORKBOOK: Look at the fourth source channel. For an opaque sample it is 255. Read the explanation for picture.pixelDensity(1), then the one for pixelDensity(1).
+
+P5 EDITOR: Keep both density lines. Notice that one applies to picture and the other to the canvas. This starter reads RGB and draws opaque tiles; it does not copy source alpha into fill.
+
+WHY: Image density differs from canvas density.
+
+EXPECTED: This opaque starter draws alpha 255.
+
+CHECK: Are transparent pixels and opaque black equivalent?
+
+REASONING: Transparent pixels differ from opaque black.
+
+IF STUCK: Use the supplied source for this exercise.
+
+
+
+SMALL STEP 6 Keep the original buffer unchanged
+
+WORKBOOK: Select the fill(r, g, b) explanation. Compare source and displayed channels for one sample; they should match at this stage.
+
+P5 EDITOR: Find the three channel-reading lines and fill(r, g, b). Leave picture.pixels unchanged. Notice that there is no assignment back into picture.pixels and no picture.updatePixels call.
+
+WHY: Preserve a reliable original source.
+
+EXPECTED: Source and displayed RGB match.
+
+CHECK: Do these reads need updatePixels to become visible?
+
+REASONING: Reading needs no updatePixels; drawing uses rect.
+
+IF STUCK: Restore the complete stage after accidental assignments.
+
+
+
+STAGE 4 Choose what keeps its color
+
+You can now choose which part of the mosaic keeps its color. Begin with a simple left-hand region. The rule selects samples by their horizontal position; it does not recognize a person or object. First move the boundary, then change the amount of color loss. Keeping those experiments separate makes their effects understandable.
+
+WORDS: Condition = A question in code with a true or false answer. Here it asks whether a sample lies beyond the boundary.
+focus = The source-width fraction that keeps its color, initially 0.4: the left forty percent.
+strength = How far the displayed color moves toward the target: zero keeps the original; one reaches the target.
+lerp = A blend between a starting number and a target number, controlled by an amount from zero to one.
+
+
+
+SMALL STEP 1 Set a known color-rule baseline
+
+WORKBOOK: Choose “Keep color in a region”. Set sampling step 16, region 40%, and transformation strength 100%. Run this stage and compare the two images.
+
+P5 EDITOR: Copy this stage’s complete code and replace all of sketch.js. Run and Save. Find const focus = 0.4; and const strength = 1; near the top.
+
+WHY: Set a reproducible color-rule baseline.
+
+EXPECTED: Left forty percent colored; outside gray.
+
+CHECK: Does this rule recognize the main subject automatically?
+
+REASONING: focus tests position, not object identity.
+
+IF STUCK: Confirm focus mode and strength 100%.
+
+
+
+SMALL STEP 2 Read the condition as a sentence
+
+WORKBOOK: Select if (x / picture.width >= focus) in the code reader. Read the explanation, then inspect samples on opposite sides of the division.
+
+P5 EDITOR: Find the same line without changing it. Say: “if the sample’s horizontal fraction is at or beyond focus, use gray targets”. At focus 0.4, source x = 128 is exactly at the boundary.
+
+WHY: Convert position to a fraction.
+
+EXPECTED: Boundary samples join the transformed region.
+
+CHECK: At the boundary itself, does this condition select gray?
+
+REASONING: The >= comparison includes equality.
+
+IF STUCK: Compare one sample’s fraction with 0.4.
+
+
+
+SMALL STEP 3 Move only the region boundary
+
+WORKBOOK: Keep strength 100%. Move “Region that keeps color” from 40% to 70%. Compare which recognizable features now remain colored. Restore 40% after observing.
+
+P5 EDITOR: Change only const focus = 0.4; to const focus = 0.7; and Run. Compare. Restore 0.4 and Run again before the next experiment.
+
+WHY: Change where, not how much.
+
+EXPECTED: At 70%, more left-side samples retain color.
+
+CHECK: What did this experiment change?
+
+REASONING: focus changes a spatial boundary.
+
+IF STUCK: Check focus, then Run the edited sketch.
+
+
+
+SMALL STEP 4 Blend toward gray at half strength
+
+WORKBOOK: Keep region 40% and lower strength to 50%. Compare this with 100%, looking especially outside the retained region. Leave 50% visible while reading the blend explanation.
+
+P5 EDITOR: Change only const strength = 1; to const strength = 0.5; and Run. Find paintTiles(strength) and the fill line containing lerp.
+
+WHY: Separate region selection from blending.
+
+EXPECTED: Half strength retains some outside color.
+
+CHECK: What does strength zero display?
+
+REASONING: Amount zero returns original channel values.
+
+IF STUCK: Inspect a colorful sample outside the region.
+
+
+
+SMALL STEP 5 Compare one different target rule
+
+WORKBOOK: Restore strength 100%. Choose “Invert every channel” and inspect the channel readout for one sample. Compare it with the original before trying another rule.
+
+P5 EDITOR: Copy the newly generated complete stage code and replace sketch.js; Run. Find targetR = 255 - r and the corresponding green and blue lines. Do not try to keep an old focus branch alongside them.
+
+WHY: Inversion chooses different channel targets.
+
+EXPECTED: Each channel targets 255 minus its source.
+
+CHECK: What is the inverted target for a channel amount of 40?
+
+REASONING: 255 minus 40 equals 215.
+
+IF STUCK: Return to focus mode for boundary control.
+
+
+
+SMALL STEP 6 Choose and record a deliberate rule
+
+WORKBOOK: Return to “Keep color in a region”, region 40%, strength 100% for the next stage. In the observation field, describe one actual comparison and what it made you notice first.
+
+P5 EDITOR: Copy this restored complete stage, replace sketch.js, Run and Save. Keep an earlier tested variation separately if it supports your concept.
+
+WHY: Meaning needs an observed consequence.
+
+EXPECTED: A saved rule and specific comparison remain.
+
+CHECK: Which statement is supported by your single viewing?
+
+REASONING: Your viewing supports your own observation.
+
+IF STUCK: Compare two boundaries with everything else fixed.
+
+
+
+STAGE 5 Give the change a real minute
+
+Turn the static color rule into a visible journey lasting one minute. The workbook’s time slider is an inspection tool; the actual p5 sketch has its own clock. Use the slider to understand states, then watch the editor run in real time. The acceptance check is a beginning, midpoint and held ending produced over sixty elapsed seconds.
+
+WORDS: draw = The function p5 calls repeatedly to make visible frames.
+millisecond = One thousandth of a second: 60000 milliseconds is sixty seconds.
+Elapsed time = The current clock reading minus a remembered starting reading.
+Progress t = The fraction of the minute completed, constrained between zero and one. It is multiplied by strength.
+
+
+
+SMALL STEP 1 Install the timed version
+
+WORKBOOK: Choose the focus rule, region 40%, strength 100%, and tile 16. Run this stage in p5. The actual preview begins from its own zero even if the teaching slider shows 30 seconds.
+
+P5 EDITOR: Copy the complete new stage, replace every line of sketch.js, and Run. Find let start; and function draw(). Keep a separate timer ready.
+
+WHY: Start timing at the first draw.
+
+EXPECTED: The actual p5 run begins near zero.
+
+CHECK: Does moving the workbook slider move the editor’s clock?
+
+REASONING: Teaching and editor clocks are independent.
+
+IF STUCK: Press editor Run to restart its minute.
+
+
+
+SMALL STEP 2 Locate where the clock starts
+
+WORKBOOK: Select if (start === undefined), then start = millis(), in the code reader. Read both explanations before the progress line.
+
+P5 EDITOR: Find those lines inside draw. Leave them there. They assign a start reading on the first visible frame and keep it for later frames.
+
+WHY: Avoid the p5 v2 startup-clock reset.
+
+EXPECTED: Later frames keep the original start.
+
+CHECK: Should start be reassigned on every frame?
+
+REASONING: Repeated resets would prevent elapsed progress.
+
+IF STUCK: Restore the first-frame condition if progress stalls.
+
+
+
+SMALL STEP 3 Inspect three states without waiting
+
+WORKBOOK: Move “Explore elapsed time” to 0, then 30, then 60 seconds. Compare the images at each stop. Read the t value beside the slider.
+
+P5 EDITOR: Leave your real run alone while inspecting the workbook. Locate constrain((millis() - start) / 60000, 0, 1) without editing it.
+
+WHY: Inspect states without claiming elapsed viewing.
+
+EXPECTED: At 0/30/60 seconds, t = 0/0.5/1.
+
+CHECK: What progress should remain after seventy seconds?
+
+REASONING: constrain holds the ending at one.
+
+IF STUCK: Pause teaching playback before positioning the slider.
+
+
+
+SMALL STEP 4 Distinguish progress from final strength
+
+WORKBOOK: Keep the slider at 30 seconds. Lower strength from 100% to 50%, compare, then restore 100%. Leave the region and tile size fixed.
+
+P5 EDITOR: For this one experiment, change only const strength = 1; to 0.5 and Run. Read paintTiles(t * strength). Restore 1 and Run before continuing.
+
+WHY: Progress and strength control different quantities.
+
+EXPECTED: Half strength ends halfway after sixty seconds.
+
+CHECK: Does half strength shorten the duration?
+
+REASONING: Strength changes endpoint, not duration.
+
+IF STUCK: Check that the divisor remains 60000.
+
+
+
+SMALL STEP 5 Use a quick rehearsal correctly
+
+WORKBOOK: Click “Rehearse in 6 seconds”. Watch it reach the teaching ending, then press “Replay from 0”. Notice that “Play 60 seconds” is a separate choice.
+
+P5 EDITOR: Keep the editor divisor at 60000. Do not assume the workbook’s quick rehearsal edited your code. If you manually tested 6000 in the editor, restore 60000 before saving or presenting.
+
+WHY: Quick inspection differs from full pacing.
+
+EXPECTED: Six-second rehearsal; generated divisor remains 60000.
+
+CHECK: Does the quick workbook rehearsal export a six-second sketch?
+
+REASONING: Quick teaching playback does not change exports.
+
+IF STUCK: Inspect and restore any manually changed divisor.
+
+
+
+SMALL STEP 6 Watch one real minute and record it
+
+WORKBOOK: Prepare your observation field for beginning, middle and ending notes. Use “Play 60 seconds” only if you also want to watch the teaching version afterward.
+
+P5 EDITOR: Press Run and start a separate timer as the picture appears. Watch through sixty seconds and a few seconds beyond. Write actual timestamps and what you noticed; then Save the working version.
+
+WHY: Measure the visible experience directly.
+
+EXPECTED: The ending holds beyond sixty seconds.
+
+CHECK: What verifies the pacing more directly?
+
+REASONING: Frame-rate requests do not guarantee elapsed duration.
+
+IF STUCK: Time from visible start; inspect a stalled clock.
+
+
+
+STAGE 6 Replay and fill the presentation screen
+
+Make the minute dependable in the place where someone will see it. This stage adds click-to-replay and a canvas that follows the available window size. A workbook preview cannot establish whether your saved project’s files or share links work. Test the actual editor project and its presentation page, with the same image and rule each time.
+
+WORDS: Viewport = The available browser page area. windowWidth and windowHeight describe its current size.
+Replay = Restart the clock while keeping the same source and visual rules.
+Resize handler = A named function, windowResized, that p5 calls when the available page size changes.
+Fullscreen link = The editor’s shareable presentation-page link. It differs from the code link and from the browser’s own fullscreen mode.
+
+
+
+SMALL STEP 1 Install replay and window sizing
+
+WORKBOOK: Run this stage and inspect its complete code. Keep the same focus, strength and sampling values you intend to test.
+
+P5 EDITOR: Copy this stage’s complete sketch, replace all of sketch.js, then Run and Save. Find createCanvas(windowWidth, windowHeight), mousePressed, and windowResized.
+
+WHY: Test the actual saved project.
+
+EXPECTED: Viewport canvas and click replay are available.
+
+CHECK: Which version should receive your final share links?
+
+REASONING: Share links belong to the editor project.
+
+IF STUCK: Confirm the new stage replaced sketch.js completely.
+
+
+
+SMALL STEP 2 Compare replay states in the workbook
+
+WORKBOOK: Press Pause, then “Replay from 0”. Inspect 0, 30 and 60 seconds with the slider. Repeat the same positions without changing any visual controls.
+
+P5 EDITOR: Leave the project unchanged during this teaching comparison. Record the same three checkpoints you will inspect in its real runs.
+
+WHY: Check matching states under unchanged rules.
+
+EXPECTED: Replay returns to zero, awaiting Play.
+
+CHECK: What does workbook “Replay from 0” do first?
+
+REASONING: Workbook replay controls only its teaching view.
+
+IF STUCK: Compare source, settings and selected sample first.
+
+
+
+SMALL STEP 3 Restart the actual sketch with a click
+
+WORKBOOK: Read the mousePressed explanation. Keep your timer and three checkpoint notes beside the editor.
+
+P5 EDITOR: Click inside the running sketch’s canvas after it has progressed. Restart your timer and watch the return to original colors. Repeat once with the same rule and compare the beginning and midpoint.
+
+WHY: Restart timing without changing source.
+
+EXPECTED: Clicking the sketch begins its journey again.
+
+CHECK: What needs resetting for this default replay?
+
+REASONING: The unchanged source needs no restoration.
+
+IF STUCK: Click the canvas; verify mousePressed exists.
+
+
+
+SMALL STEP 4 Test a wide and a narrow window
+
+WORKBOOK: Read the rect explanation again: source fractions determine destination positions and block dimensions. Keep the workbook available as a reference.
+
+P5 EDITOR: Make the editor preview wider, then narrower by resizing its window. Inspect important image features and edges. Find resizeCanvas(windowWidth, windowHeight) in windowResized.
+
+WHY: Check composition in real presentation spaces.
+
+EXPECTED: The canvas fits; proportions may stretch.
+
+CHECK: Does filling any viewport automatically preserve image proportions?
+
+REASONING: Independent width and height can distort proportions.
+
+IF STUCK: Record the failed size before revising layout.
+
+
+
+SMALL STEP 5 Open the actual presentation link
+
+WORKBOOK: Keep your notes ready for link checks. The workbook’s preview is useful for learning but cannot verify another project’s published asset paths.
+
+P5 EDITOR: Save. Use File → Share and copy the fullscreen link. Open that link in a new browser tab. Also keep the sketch-code link separately. Run or click the presentation as needed and check that its image loads.
+
+WHY: Verify the actual share destination.
+
+EXPECTED: Saved fullscreen page loads the intended sketch.
+
+CHECK: What is the strongest check of the fullscreen link?
+
+REASONING: Only opening a link checks its destination.
+
+IF STUCK: Verify assets, Save, and reopen the link.
+
+
+
+SMALL STEP 6 Rehearse twice and preserve the result
+
+WORKBOOK: Record two presentation rehearsals and any resizing problem in your notes. Do not mark class documentation finished solely because these local checks worked.
+
+P5 EDITOR: At the intended display size, watch two full silent runs, restarting deliberately. Save your tested sketch and preserve its code. No randomness is needed; explore lesson 15 only if you intentionally want the optional seeded extension.
+
+WHY: Test the complete presentation twice.
+
+EXPECTED: Matching moments repeat with unchanged inputs.
+
+CHECK: Are randomSeed and noiseSeed interchangeable?
+
+REASONING: Each seed controls its own generator.
+
+IF STUCK: Compare inputs; restore the simple working version.
+
+
+
+STAGE 7 Make, watch and document together
+
+The mechanism is ready to become your paired class project. This final stage organizes work you must actually do: explore the assigned color examples, make iterations, watch complete timed runs, and document your decisions. Answering these questions or ticking a workbook box does not perform those activities. Keep the live Week 9 assignment open for its links, destinations and actual deadline.
+
+WORDS: Iteration = A preserved version with a deliberate rule change and a record of the result you actually observed.
+Observation = What you noticed and when. An interpretation explains what you think that observation means.
+Collaboration record = An honest account of what each partner did independently and what you decided or tested together.
+Deliverable = An item the assignment asks you to submit, such as a process blog, code link or fullscreen link.
+
+
+
+SMALL STEP 1 Review the actual assignment and color examples together
+
+WORKBOOK: Open the full submission checklist and follow its Week 9 assignment link. With your partner, open and work through ALL linked Color Theory examples. Write two or three genuine observations you might explore in your project.
+
+P5 EDITOR: Keep your working sketch saved and unchanged while you examine the examples. Use separate browser tabs for examples so you do not replace your project accidentally.
+
+WHY: Base ideas on shared exploration.
+
+EXPECTED: Two or three genuine color observations exist.
+
+CHECK: What counts as completing the example exploration?
+
+REASONING: Answering cards does not perform class activities.
+
+IF STUCK: Finish all actual examples together before claiming completion.
+
+
+
+SMALL STEP 2 Agree on a concept and divide real responsibilities
+
+WORKBOOK: Download “Partner log CSV” from the templates. Together, name your source, intended alternative reality and first rule to test. Assign each partner independent work, then plan when to reunite and compare.
+
+P5 EDITOR: Save a shared baseline version you can both identify. Each partner should preserve their own tested variation or other agreed contribution before bringing it back for discussion.
+
+WHY: Make contributions and shared decisions visible.
+
+EXPECTED: Named roles precede actual contribution records.
+
+CHECK: Which record describes collaboration accurately?
+
+REASONING: Specific records show how collaboration shaped work.
+
+IF STUCK: Assign concrete tasks and reunite to compare.
+
+
+
+SMALL STEP 3 Preserve at least three algorithm iterations
+
+WORKBOOK: Download “Iteration CSV”. For each version, record the rule changed, your prediction, the actual output and your next decision. Keep source and settings identifiable. A blank template is only a place to record work.
+
+P5 EDITOR: Develop and save at least three algorithm iterations. Change one rule per comparison, Run, inspect and preserve that complete version before replacing it. If using this stage’s generated starter, copy all of it over sketch.js as in earlier stages.
+
+WHY: Connect changed rules with observed results.
+
+EXPECTED: Three preserved tested algorithm versions exist.
+
+CHECK: Which is useful iteration evidence?
+
+REASONING: Planned filenames alone are not iterations.
+
+IF STUCK: Recover overwritten versions or test another honestly.
+
+
+
+SMALL STEP 4 Watch at least three full runs with a timer
+
+WORKBOOK: Download “Timed observation CSV”. Prepare separate rows for viewing number, actual timestamp in seconds, what you noticed, and interpretation. Keep your partner’s initial attention notes separate before discussing.
+
+P5 EDITOR: Watch the project at least three complete times with a separate timer. Restart deliberately, watch the entire minute each time, and record real moments such as “at 22 seconds I noticed the doorway”. Keep playback silent.
+
+WHY: Watch pacing, not just isolated states.
+
+EXPECTED: Three full viewings have real timestamped observations.
+
+CHECK: Can inspecting 0, 30 and 60 seconds on a slider replace a full viewing?
+
+REASONING: Scrubbing cannot replace complete timed viewing.
+
+IF STUCK: Label interruptions and watch another full run.
+
+
+
+SMALL STEP 5 Compile the class spreadsheet and write the process blog
+
+WORKBOOK: Use your real logs to compile the iterations and observations in the class spreadsheet linked from the assignment. Open “Blog outline” as a writing aid. Include collaboration, experiments, iterations, timed observations and related or inspiring projects.
+
+P5 EDITOR: Choose the iteration you will post as requested. Save it and verify its title and links. Preserve other versions so the blog can point to meaningful differences rather than describing only the final effect.
+
+WHY: Prepare evidence for actual submission destinations.
+
+EXPECTED: Spreadsheet and blog contain real process evidence.
+
+CHECK: Do downloaded local logs replace the class spreadsheet?
+
+REASONING: Local templates do not replace class submissions.
+
+IF STUCK: Consult live instructions for unclear destinations.
+
+
+
+SMALL STEP 6 Check the actual blog, code and fullscreen links
+
+WORKBOOK: Use the full submission checklist to audit the deliverables against your actual work. Collect the blog link, sketch-code link and fullscreen link. Include source and inspiration credits and the collaboration record.
+
+P5 EDITOR: Save the chosen project. Open its exact code and fullscreen links in separate tabs and verify the image and behavior. Rehearse two silent runs at presentation size; check any planned interaction timing and imported video silence.
+
+WHY: Check what your intended viewer opens.
+
+EXPECTED: All three links reach intended current artifacts.
+
+CHECK: What proves a link is usable?
+
+REASONING: A candidate URL needs actual destination verification.
+
+IF STUCK: Repair failed links, Save, and test again.
+
+
+
+SMALL STEP 7 Finish separate preparation and make an honest final audit
+
+WORKBOOK: Return to the live assignment for the separate sound reading and watching, including its specified book exercises. Confirm the actual class deadline. In your final note, list completed evidence and any remaining work before using the completion checkbox.
+
+P5 EDITOR: Keep the submitted one-minute artifact silent. Make final saves after tested changes and retain a backup of the exact complete code that your shared project runs.
+
+WHY: Audit real work without invented completion.
+
+EXPECTED: Required evidence and separate preparation are accounted for.
+
+CHECK: Does separate sound preparation change this project’s silent requirement?
+
+REASONING: Sound preparation remains separate; this artifact stays silent.
+
+IF STUCK: Name missing work and complete the actual activity.
+
+
+
+COMPLETE EDITOR PAGE HTML
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My creative coding sketch</title>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    canvas { display: block; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script>
+</head>
+<body>
+  <main></main>
+  <script src="sketch.js"></script>
+</body>
+</html>
+
+
+EDITOR SETUP AND EVERY HTML LINE EXPLAINED
+
+WEB EDITOR SETUP FOR A COMPLETE BEGINNER
+
+The workbook previews are ready to run. These steps are for your separate
+saved and shareable class sketch at https://editor.p5js.org/ . Internet is
+needed there to load the library and manage your project.
+
+CREATE AND RUN
+1. Open the Web Editor. Create a new sketch. Log in to save and upload files.
+2. Open the file panel. The English accessibility label for its opening
+   control is "Open Sketch files navigation".
+3. Choose sketch.js. Select all its text and paste one complete numbered
+   example from this workbook. Do not append it below an existing setup.
+4. Choose index.html. Locate the main p5 library script tag. Replace its
+   quoted src address with:
+   https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js
+   Keep the sketch.js script. For these silent examples, omit old sound scripts.
+   You may instead replace index.html with editor-starter/index.html supplied here.
+5. Return to sketch.js and press the Run triangle. The square stops the sketch.
+6. In the browser developer console, p5.VERSION should report "2.3.4".
+   Version is a property on the p5 library object, not a function call.
+
+UPLOAD THE SAMPLE IMAGE
+1. Extract the ZIP first so assets/sample.png is an ordinary local file.
+2. In the editor, log in. Without a login the upload action is disabled and
+   the interface says "Log in to upload files".
+3. Open Sketch Files. Open its options control, whose accessibility label is
+   "Toggle open/close sketch file options". Choose "Upload file".
+4. In "Drop files here or click to use the file browser", select sample.png
+   from the extracted assets folder. Wait for the upload to finish.
+5. Confirm sample.png is in the project file list beside sketch.js. The code
+   loadImage("sample.png") refers to that project file, not your computer path.
+6. A file stored under an assets folder in the editor needs
+   loadImage("assets/sample.png") instead. File names and paths must match.
+7. Press Run. A missing-file error calls for checking the path; adding more
+   pixel code will not repair a missing image.
+
+EVERY LINE OF THE STARTER HTML
+HTML describes a page. JavaScript gives it behavior. The browser reads this
+HTML and loads the p5 library before running your sketch. You mainly edit
+sketch.js during this course.
+
+01 <!doctype html>
+   Tell the browser to use modern HTML page rules.
+02 <html lang="en">
+   Begin the page and identify its language as English for assistive tools.
+03 <head>
+   Begin the information about the page, rather than visible page content.
+04 <meta charset="utf-8">
+   Interpret text using UTF-8 so names and punctuation are decoded correctly.
+05 <meta name="viewport" content="width=device-width,initial-scale=1">
+   Let the layout use the device width rather than a pretend wide phone page.
+06 <title>My creative coding sketch</title>
+   Set the title shown on the browser tab.
+07 <style>
+   Begin a group of CSS rules controlling how the page is laid out.
+08 html, body { margin: 0; padding: 0; }
+   Remove the browser's default outer and inner page spacing. A canvas made
+   with windowWidth and windowHeight can now begin at (0,0) and fit the page.
+09 canvas { display: block; }
+   Display the canvas as a block rather than inline text. This removes the
+   small text-baseline gap that could otherwise cause vertical scrolling.
+10 </style>
+   Finish these layout rules.
+11 <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script>
+   Load the p5 library. Src is its source address. @2.3.4 pins the version.
+   The closing script tag ends the element. Keep this before sketch.js.
+12 </head>
+   Finish the page information group. The slash marks a closing tag.
+13 <body>
+   Begin the visible page content.
+14 <main></main>
+   Provide a main content area. p5 can place its drawing canvas here.
+15 <script src="sketch.js"></script>
+   Load the code in your project file sketch.js after the library is present.
+16 </body>
+   Close the visible page content.
+17 </html>
+   Close the page.
+
+FILES AND COMMON WORDS
+A file is a named unit of saved information. Its extension hints at its format:
+.js is JavaScript, .html is page markup, .png is an image, .mp4 is a video container.
+Renaming a file extension does not convert the underlying file format.
+A folder groups files. A path says where a file is relative to your page.
+An upload copies a local file into your editor project. It does not automatically
+add the code that displays it. loadImage requests it; image draws it.
+
+VERSION DIFFERENCE
+p5 v2 uses async function setup() and await loadImage(...).
+Older v1 examples often use function preload(). Follow one version consistently.
+The starter has no sound add-on because the Week 9 project is silent.
+
+VERIFIED EDITOR LABEL SOURCES
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/translations/locales/en-US/translations.json
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/Sidebar.jsx
+https://github.com/processing/p5.js-web-editor/blob/0c06787525688a5724234611419c69b3d2c0164e/client/modules/IDE/components/FileUploader.jsx
+https://p5js.org/tutorials/v2_transition/

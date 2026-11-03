@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Stage 2 · Repeat squares · Week 9</title>
+  <link rel="stylesheet" href="./learn.css">
+  <link rel="stylesheet" href="./loops.css">
+  <link rel="stylesheet" href="./editor-view.css">
+  <link rel="stylesheet" href="./dashboard.css">
+  <script src="./dashboard-core.js" defer></script>
+  <script src="./course-core.js" defer></script>
+ <script src="./dashboard-art.js" defer></script>
+  <script src="./dashboard.js" defer></script>
+  <script src="./course-runtime.js" defer></script>
+  <script src="./loops-core.js" defer></script>
+  <script src="./editor-frame.js" defer></script>
+  <script src="./loops.js" defer></script>
+ <link rel="stylesheet" href="./progress-transfer.css">
+ <script src="./progress-transfer-core.js" defer></script>
+ <script src="./progress-transfer.js" defer></script>
+</head>
+<body class="loop-lab">
+  <a class="skip" href="#loop-current">Skip to the current step</a>
+  <header class="topbar"><a class="brand" href="./">ICM <span>WEEK 09</span></a><a id="loop-dashboard-link" href="./learn.html?view=editor#stage-2">Stage 2 dashboard</a><a class="inline-mode-link" href="?mode=row&amp;view=editor">p5 beside this guide</a><a id="loop-editor" class="editor-link" href="https://editor.p5js.org/739955940fc/sketches/2jvrA_W0r" target="_blank" rel="noopener noreferrer">Saved row in p5 ↗</a></header>
+  <main class="loop-shell">
+    <header class="loop-heading"><p class="eyebrow">STAGE 2 · LOOPS · ONE SMALL STEP AT A TIME</p><h1>One square. Then repeat.</h1><p class="subtitle">Read on the left. Watch real p5 on the right.</p></header>
+    <nav class="loop-chapters" aria-label="Loop lessons"><button id="loop-row" type="button" aria-pressed="true">1 · One row</button><button id="loop-grid" type="button" aria-pressed="false">2 · Add rows</button></nav>
+    <div class="loop-columns">
+      <section class="card loop-code-panel" aria-labelledby="loop-current">
+        <div class="card-top"><p class="eyebrow" id="loop-chapter-label">ONE ROW · FIVE SQUARES</p><span class="quiet" id="loop-step-count"></span></div>
+        <h2 id="loop-current">Start with x.</h2>
+        <p class="quiet" id="loop-line-label"></p>
+        <pre class="loop-focus-code"><code id="loop-current-code"></code></pre>
+        <p id="loop-meaning" class="loop-meaning" aria-live="polite"></p>
+        <ol class="loop-flow" aria-label="Order of a for loop"><li data-phase="start">Start</li><li data-phase="check">Check</li><li data-phase="draw">Draw</li><li data-phase="update">Move</li><li data-phase="finish">Finish</li></ol>
+        <div class="loop-step-buttons"><button id="loop-previous" type="button">← Previous</button><button id="loop-next" type="button" class="primary">Next small step →</button></div>
+        <p class="loop-small-note">A loop repeats the code inside its <code>{ }</code>.</p>
+        <details id="loop-syntax"><summary>The three parts of <code>for (...)</code></summary><dl><div><dt><code>let x = 40</code></dt><dd>Start x at 40.</dd></div><div><dt><code>x &lt; 500</code></dt><dd>Keep going while x is below 500.</dd></div><div><dt><code>x = x + 100</code></dt><dd>Move x 100 pixels right after drawing.</dd></div></dl></details>
+        <details id="loop-all-code"><summary>Complete p5 code · every line explained</summary><p class="quiet">This is the full program. Copy it into sketch.js.</p><table class="loop-source-table"><thead><tr><th scope="col">Code</th><th scope="col">Simple meaning</th></tr></thead><tbody id="loop-source-lines"></tbody></table></details>
+        <div class="file-actions"><button id="loop-copy" type="button">Copy complete sketch.js</button><button id="loop-download" type="button">Download sketch.js</button></div><p id="loop-copy-status" class="quiet" role="status"></p>
+        <a class="loop-next-course" href="./learn.html?view=editor#stage-2">After these loops: sample a new color for every tile →</a>
+      </section>
+      <section class="card loop-preview-panel" aria-labelledby="loop-preview-title">
+        <div class="card-top"><p class="eyebrow"><span class="live-dot"></span>REAL p5 · 2.3.4</p><button id="loop-restart" type="button" class="text-button">Restart preview</button></div>
+        <h2 id="loop-preview-title">Watch the squares repeat.</h2>
+        <p class="loop-readout" id="loop-readout" aria-live="polite"></p>
+        <div class="preview-wrap"><iframe id="loop-preview" title="Real p5 loop illustration" sandbox="allow-scripts allow-same-origin"></iframe></div>
+        <p class="preview-status" id="loop-preview-status" role="status">Starting p5…</p>
+        <p class="loop-trace-caption">Illustrated execution order: each click shows the squares drawn so far. Normal ▶ Run draws the complete loop immediately.</p>
+        <div class="loop-position-strip" id="loop-positions" aria-label="The five horizontal square positions"></div>
+        <p class="loop-small-note" id="loop-geometry">Each square is 80 pixels wide. Moving 100 leaves a 20-pixel gap.</p>
+        <p class="loop-small-note">All squares use the same <code>pixelColor</code>. Next, the mosaic will read a different source color for each tile.</p>
+      </section>
+    </div>
+    <footer><span>One square → one row → rows → mosaic.</span><div><a href="https://editor.p5js.org/739955940fc/sketches/AoTEocjNb" target="_blank" rel="noopener noreferrer">Previous: one square ↗</a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for" target="_blank" rel="noopener noreferrer">JavaScript for reference ↗</a><a href="https://p5js.org/reference/p5/rect/" target="_blank" rel="noopener noreferrer">p5 rectangle reference ↗</a></div></footer>
+  </main>
+  <noscript>This lesson needs JavaScript. Use the Stage 2 dashboard for the full written walkthrough.</noscript>
+</body>
+</html>

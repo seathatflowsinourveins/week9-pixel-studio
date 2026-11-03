@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "stages": [
+    {
+      "number": 1,
+      "id": "studio-0",
+      "title": "Show one image",
+      "short": "One image",
+      "description": "Load a file. Draw it on a canvas.",
+      "href": "./learn.html?view=editor#stage-1",
+      "checkpoint": "Image → canvas"
+    },
+    {
+      "number": 2,
+      "id": "studio-1",
+      "title": "Make a mosaic",
+      "short": "A mosaic",
+      "description": "Repeat squares. Read a color for each tile.",
+      "href": "./learn.html?view=editor#stage-2",
+      "checkpoint": "Square → row → grid"
+    },
+    {
+      "number": 3,
+      "id": "studio-2",
+      "title": "Find a pixel’s four numbers",
+      "short": "Four numbers",
+      "description": "Find one pixel. Read red, green, blue and alpha.",
+      "href": "./learn.html?view=editor#stage-3",
+      "checkpoint": "Position → RGBA"
+    },
+    {
+      "number": 4,
+      "id": "studio-3",
+      "title": "Choose what keeps its color",
+      "short": "Color focus",
+      "description": "Keep a focus area colorful. Change the rest.",
+      "href": "./learn.html?view=editor#stage-4",
+      "checkpoint": "Position test → color"
+    },
+    {
+      "number": 5,
+      "id": "studio-4",
+      "title": "Shape one minute",
+      "short": "One minute",
+      "description": "Let the colors change over 60 seconds.",
+      "href": "./learn.html?view=editor#stage-5",
+      "checkpoint": "Seconds → progress"
+    },
+    {
+      "number": 6,
+      "id": "studio-5",
+      "title": "Replay and present",
+      "short": "Present",
+      "description": "Restart the same work. Fit the screen.",
+      "href": "./learn.html?view=editor#stage-6",
+      "checkpoint": "Replay → resize"
+    },
+    {
+      "number": 7,
+      "id": "studio-6",
+      "title": "Refine and document together",
+      "short": "Refine",
+      "description": "Compare versions. Record what you see.",
+      "href": "./learn.html?view=editor#stage-7",
+      "checkpoint": "Test → observe → share"
+    }
+  ],
+  "foundations": [
+    {
+      "id": "00-start",
+      "title": "Meet your drawing machine",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#00-start"
+    },
+    {
+      "id": "01-language",
+      "title": "Read code and name values",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#01-language"
+    },
+    {
+      "id": "02-coordinates",
+      "title": "Place shapes and control drawing order",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#02-coordinates"
+    },
+    {
+      "id": "03-animation",
+      "title": "Understand setup draw and motion",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#03-animation"
+    },
+    {
+      "id": "04-decisions",
+      "title": "React to the mouse and make decisions",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#04-decisions"
+    },
+    {
+      "id": "05-functions",
+      "title": "Reuse a rule with functions",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#05-functions"
+    },
+    {
+      "id": "06-mapping",
+      "title": "Convert one range into another",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#06-mapping"
+    },
+    {
+      "id": "07-loops",
+      "title": "Repeat instructions across a grid",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#07-loops"
+    },
+    {
+      "id": "08-collections",
+      "title": "Store lists and related information",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#08-collections"
+    },
+    {
+      "id": "09-color",
+      "title": "Use color to direct attention",
+      "group": "01 · Drawing and code",
+      "href": "../Week-9-Project-Studio.html#09-color"
+    },
+    {
+      "id": "10-image",
+      "title": "Open an image: a file becomes material",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#10-image"
+    },
+    {
+      "id": "11-sampling",
+      "title": "Sample an image: turn detail into a mosaic",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#11-sampling"
+    },
+    {
+      "id": "12-rgba",
+      "title": "Read RGBA: four numbers make one pixel",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#12-rgba"
+    },
+    {
+      "id": "13-mirror",
+      "title": "Transform a drawing without damaging its source",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#13-mirror"
+    },
+    {
+      "id": "14-time",
+      "title": "A real minute: turn elapsed time into a color journey",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#14-time"
+    },
+    {
+      "id": "15-project",
+      "title": "Your one-minute alternative reality",
+      "group": "02 · Pixels and this project",
+      "href": "../Week-9-Project-Studio.html#15-project"
+    },
+    {
+      "id": "16-slit",
+      "title": "Optional: draw time with a slit scan",
+      "group": "03 · Optional media and debugging",
+      "href": "../Week-9-Project-Studio.html#16-slit"
+    },
+    {
+      "id": "17-camera",
+      "title": "Optional: sample a live camera in the editor",
+      "group": "03 · Optional media and debugging",
+      "href": "../Week-9-Project-Studio.html#17-camera"
+    },
+    {
+      "id": "18-video",
+      "title": "Optional: use your own silent video file",
+      "group": "03 · Optional media and debugging",
+      "href": "../Week-9-Project-Studio.html#18-video"
+    },
+    {
+      "id": "19-debug",
+      "title": "Practice: find the first error and repair one thing",
+      "group": "03 · Optional media and debugging",
+      "href": "../Week-9-Project-Studio.html#19-debug"
+    }
+  ],
+  "repos": [
+    {
+      "name": "processing / p5.js",
+      "role": "Used · local drawing library",
+      "url": "https://github.com/processing/p5.js",
+      "detail": "The lesson previews run p5.js 2.3.4, pinned in this kit. Learn image, get, pixels, loops and time."
+    },
+    {
+      "name": "processing / p5.js-web-editor",
+      "role": "Used · official embedded editor",
+      "url": "https://github.com/processing/p5.js-web-editor",
+      "detail": "The real p5 editor is beside the guide. Edit and Run there. Sign in inside the editor to save to your account."
+    },
+    {
+      "name": "radix-ui / primitives",
+      "role": "Design reference · no installed dependency",
+      "url": "https://github.com/radix-ui/primitives",
+      "detail": "Reference for clear component states and accessible dialog behavior. This dashboard uses the browser’s native dialog."
+    },
+    {
+      "name": "p5 reference",
+      "role": "Primary learning reference",
+      "url": "https://p5js.org/reference/",
+      "detail": "Look up the exact drawing command when a word is new."
+    },
+    {
+      "name": "HTML dialog standard",
+      "role": "Primary interface reference",
+      "url": "https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element",
+      "detail": "The dashboard opens above your lesson. Close or Escape returns to the same editor."
+    }
+  ],
+  "assignment": {
+    "url": "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9",
+    "items": [
+      "Work with your partner on a pixel-level image or video alternative reality.",
+      "Make a silent piece that changes over one minute. Use color to guide attention.",
+      "Make the result repeatable for two demonstrations. Seed randomness if you use it.",
+      "Use windowWidth, windowHeight and relative sizing. Test the fullscreen p5 link.",
+      "Together, record 2–3 observations from the color theory examples.",
+      "Keep at least three algorithm iterations: what changed and what happened.",
+      "Watch the complete minute at least three times. Write timestamped observations.",
+      "Record iterations and observations in the class spreadsheet. Explain partner roles in your blog; include references and tested code / fullscreen / blog links.",
+      "Complete the separate sound reading / viewing task. Keep this visual piece silent."
+    ]
+  }
+}

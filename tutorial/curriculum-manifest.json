@@ -1,0 +1,593 @@
+{
+  "title": "Creative Coding Foundations for ICM Week 9",
+  "audience": "Complete beginner",
+  "checkedLocalDate": "2026-11-02",
+  "timezone": "America/New_York",
+  "runtime": {
+    "library": "p5.js",
+    "version": "2.3.4",
+    "source": "https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js",
+    "sha256": "bb8b82b97fcbcd5bb2d5475d1b6a3904f3ab4ed01b821134fd8f1e7710fce559",
+    "license": "LGPL-2.1"
+  },
+  "offlineEntry": "Week-9-Project-Studio.html",
+  "sourceImage": "assets/sample.png",
+  "scope": "Foundations for the Week 9 pixel assignment, not all of JavaScript",
+  "lessons": [
+    {
+      "id": "00-start",
+      "title": "Meet your drawing machine",
+      "stage": "Start",
+      "prerequisites": [],
+      "suggestedMinutes": 25,
+      "codeLines": 6,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/00-start.js",
+      "references": [
+        "https://p5js.org/reference/p5/setup/",
+        "https://p5js.org/reference/p5/createCanvas/",
+        "https://p5js.org/tutorials/v2_transition/"
+      ]
+    },
+    {
+      "id": "01-language",
+      "title": "Read code and name values",
+      "stage": "Foundations",
+      "prerequisites": [
+        "00-start"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 10,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/01-language.js",
+      "references": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Variables",
+        "https://p5js.org/reference/p5/height/"
+      ]
+    },
+    {
+      "id": "02-coordinates",
+      "title": "Place shapes and control drawing order",
+      "stage": "Foundations",
+      "prerequisites": [
+        "01-language"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 12,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/02-coordinates.js",
+      "references": [
+        "https://p5js.org/reference/p5/rect/",
+        "https://p5js.org/reference/p5/line/"
+      ]
+    },
+    {
+      "id": "03-animation",
+      "title": "Understand setup draw and motion",
+      "stage": "Foundations",
+      "prerequisites": [
+        "02-coordinates"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 13,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/03-animation.js",
+      "references": [
+        "https://p5js.org/reference/p5/draw/",
+        "https://p5js.org/reference/p5/frameRate/"
+      ]
+    },
+    {
+      "id": "04-decisions",
+      "title": "React to the mouse and make decisions",
+      "stage": "Foundations",
+      "prerequisites": [
+        "03-animation"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 12,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/04-decisions.js",
+      "references": [
+        "https://p5js.org/reference/p5/mouseIsPressed/",
+        "https://p5js.org/reference/p5/mousePressed/"
+      ]
+    },
+    {
+      "id": "05-functions",
+      "title": "Reuse a rule with functions",
+      "stage": "Foundations",
+      "prerequisites": [
+        "04-decisions"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 10,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/05-functions.js",
+      "references": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Functions"
+      ]
+    },
+    {
+      "id": "06-mapping",
+      "title": "Convert one range into another",
+      "stage": "Foundations",
+      "prerequisites": [
+        "05-functions"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 10,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/06-mapping.js",
+      "references": [
+        "https://p5js.org/reference/p5/map/",
+        "https://p5js.org/reference/p5/constrain/"
+      ]
+    },
+    {
+      "id": "07-loops",
+      "title": "Repeat instructions across a grid",
+      "stage": "Foundations",
+      "prerequisites": [
+        "06-mapping"
+      ],
+      "suggestedMinutes": 40,
+      "codeLines": 11,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/07-loops.js",
+      "references": [
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for"
+      ]
+    },
+    {
+      "id": "08-collections",
+      "title": "Store lists and related information",
+      "stage": "Foundations",
+      "prerequisites": [
+        "07-loops"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 14,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/08-collections.js",
+      "references": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays",
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics"
+      ]
+    },
+    {
+      "id": "09-color",
+      "title": "Use color to direct attention",
+      "stage": "Foundations",
+      "prerequisites": [
+        "08-collections"
+      ],
+      "suggestedMinutes": 40,
+      "codeLines": 10,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/09-color.js",
+      "references": [
+        "https://p5js.org/reference/p5/colorMode/",
+        "https://p5js.org/reference/p5/fill/",
+        "https://github.com/ITPNYU/ICM-2026-Media/blob/main/weeks/02_pixels.md"
+      ]
+    },
+    {
+      "id": "10-image",
+      "title": "Open an image: a file becomes material",
+      "stage": "Media",
+      "prerequisites": [
+        "09-color"
+      ],
+      "suggestedMinutes": 25,
+      "codeLines": 9,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/10-image.js",
+      "references": [
+        "https://p5js.org/reference/p5/loadImage/",
+        "https://p5js.org/reference/p5/image/",
+        "https://p5js.org/tutorials/v2_transition/",
+        "https://github.com/processing/p5.js/blob/v2.3.4/src/image/loading_displaying.js"
+      ]
+    },
+    {
+      "id": "11-sampling",
+      "title": "Sample an image: turn detail into a mosaic",
+      "stage": "Media",
+      "prerequisites": [
+        "10-image"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 16,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/11-sampling.js",
+      "references": [
+        "https://p5js.org/reference/p5.Image/get/",
+        "https://p5js.org/reference/p5/for/",
+        "https://p5js.org/reference/p5/rect/"
+      ]
+    },
+    {
+      "id": "12-rgba",
+      "title": "Read RGBA: four numbers make one pixel",
+      "stage": "Media",
+      "prerequisites": [
+        "11-sampling"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 19,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/12-rgba.js",
+      "references": [
+        "https://p5js.org/reference/p5/pixels/",
+        "https://p5js.org/reference/p5.Image/pixelDensity/",
+        "https://p5js.org/reference/p5.Image/updatePixels/",
+        "https://p5js.org/reference/p5/colorMode/"
+      ]
+    },
+    {
+      "id": "13-mirror",
+      "title": "Transform a drawing without damaging its source",
+      "stage": "Media",
+      "prerequisites": [
+        "12-rgba"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 32,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/13-mirror.js",
+      "references": [
+        "https://p5js.org/reference/p5/push/",
+        "https://p5js.org/reference/p5/pop/",
+        "https://p5js.org/reference/p5/translate/",
+        "https://p5js.org/reference/p5/scale/",
+        "https://p5js.org/reference/p5/pixels/"
+      ]
+    },
+    {
+      "id": "14-time",
+      "title": "A real minute: turn elapsed time into a color journey",
+      "stage": "Media",
+      "prerequisites": [
+        "13-mirror"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 30,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/14-time.js",
+      "references": [
+        "https://p5js.org/reference/p5/millis/",
+        "https://p5js.org/reference/p5/frameRate/",
+        "https://p5js.org/reference/p5/lerp/",
+        "https://p5js.org/reference/p5/constrain/"
+      ]
+    },
+    {
+      "id": "15-project",
+      "title": "Your one-minute alternative reality",
+      "stage": "Media",
+      "prerequisites": [
+        "14-time"
+      ],
+      "suggestedMinutes": 50,
+      "codeLines": 41,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/15-project.js",
+      "references": [
+        "https://p5js.org/reference/p5/noiseSeed/",
+        "https://p5js.org/reference/p5/randomSeed/",
+        "https://p5js.org/reference/p5/noise/",
+        "https://p5js.org/reference/p5/millis/",
+        "https://p5js.org/reference/p5/windowResized/",
+        "https://github.com/processing/p5.js/blob/v2.3.4/package.json",
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9"
+      ]
+    },
+    {
+      "id": "16-slit",
+      "title": "Optional: draw time with a slit scan",
+      "stage": "Extensions",
+      "prerequisites": [
+        "15-project"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 26,
+      "practiceCount": 3,
+      "preview": true,
+      "sketch": "sketches/16-slit.js",
+      "references": [
+        "https://p5js.org/reference/p5/createGraphics/",
+        "https://p5js.org/reference/p5/copy/",
+        "https://github.com/processing/p5.js/blob/v2.3.4/src/image/pixels.js",
+        "https://p5js.org/reference/p5/millis/"
+      ]
+    },
+    {
+      "id": "17-camera",
+      "title": "Optional: sample a live camera in the editor",
+      "stage": "Extensions",
+      "prerequisites": [
+        "15-project"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 29,
+      "practiceCount": 3,
+      "preview": false,
+      "sketch": "sketches/17-camera.js",
+      "references": [
+        "https://p5js.org/reference/p5/createCapture/",
+        "https://p5js.org/reference/p5.MediaElement/loadPixels/",
+        "https://p5js.org/reference/p5.Element/hide/",
+        "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/readyState"
+      ]
+    },
+    {
+      "id": "18-video",
+      "title": "Optional: use your own silent video file",
+      "stage": "Extensions",
+      "prerequisites": [
+        "15-project"
+      ],
+      "suggestedMinutes": 30,
+      "codeLines": 30,
+      "practiceCount": 3,
+      "preview": false,
+      "sketch": "sketches/18-video.js",
+      "references": [
+        "https://p5js.org/reference/p5/createVideo/",
+        "https://p5js.org/reference/p5.MediaElement/loop/",
+        "https://p5js.org/reference/p5.MediaElement/volume/",
+        "https://p5js.org/reference/p5.MediaElement/pause/",
+        "https://p5js.org/reference/p5/createButton/",
+        "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/readyState"
+      ]
+    },
+    {
+      "id": "19-debug",
+      "title": "Practice: find the first error and repair one thing",
+      "stage": "Practice",
+      "prerequisites": [
+        "15-project"
+      ],
+      "suggestedMinutes": 35,
+      "codeLines": 15,
+      "practiceCount": 4,
+      "preview": true,
+      "sketch": "sketches/19-debug.js",
+      "references": [
+        "https://p5js.org/tutorials/field-guide-to-debugging/",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variable_scope",
+        "https://p5js.org/reference/p5/loadImage/"
+      ]
+    }
+  ],
+  "assignment": "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9",
+  "research": "data/research.json",
+  "theme": "dark",
+  "projectStages": [
+    {
+      "id": "studio-0",
+      "title": "Bring your image into the sketch",
+      "goal": "Load an image you understand, then explain the difference between its stored dimensions and the canvas displaying it.",
+      "foundations": [
+        "00-start",
+        "01-language",
+        "02-coordinates",
+        "10-image"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-1.js",
+      "references": [
+        "https://p5js.org/reference/p5/loadImage/",
+        "https://p5js.org/reference/p5/image/",
+        "https://p5js.org/tutorials/v2_transition/"
+      ]
+    },
+    {
+      "id": "studio-1",
+      "title": "Build a grid from sampled colors",
+      "goal": "Make a mosaic and explain how nested loops visit source locations and place corresponding blocks on the canvas.",
+      "foundations": [
+        "02-coordinates",
+        "05-functions",
+        "06-mapping",
+        "07-loops",
+        "08-collections",
+        "11-sampling"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-2.js",
+      "references": [
+        "https://p5js.org/reference/p5.Image/get/",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for",
+        "https://p5js.org/reference/p5/rect/"
+      ]
+    },
+    {
+      "id": "studio-2",
+      "title": "Find the four numbers for a pixel",
+      "goal": "Trace a source coordinate to its RGBA address and distinguish an array position from the color stored there.",
+      "foundations": [
+        "01-language",
+        "07-loops",
+        "08-collections",
+        "12-rgba"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-3.js",
+      "references": [
+        "https://p5js.org/reference/p5/pixels/",
+        "https://p5js.org/reference/p5.Image/pixelDensity/",
+        "https://p5js.org/reference/p5.Image/updatePixels/",
+        "https://p5js.org/reference/p5/colorMode/"
+      ]
+    },
+    {
+      "id": "studio-3",
+      "title": "Choose what keeps its color",
+      "goal": "Use a spatial condition and transformation strength to test what a viewer notices first.",
+      "foundations": [
+        "04-decisions",
+        "05-functions",
+        "06-mapping",
+        "09-color",
+        "12-rgba"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-4.js",
+      "references": [
+        "https://p5js.org/reference/p5/lerp/",
+        "https://p5js.org/reference/p5/colorMode/",
+        "https://github.com/ITPNYU/ICM-2026-Media/blob/c6594912cbbad97b5fbb4058fba264c70c4b8b2b/weeks/02_pixels.md"
+      ]
+    },
+    {
+      "id": "studio-4",
+      "title": "Give the change a real minute",
+      "goal": "Connect elapsed time to the color transformation and inspect a deliberate beginning, middle and ending.",
+      "foundations": [
+        "01-language",
+        "03-animation",
+        "06-mapping",
+        "14-time"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-5.js",
+      "references": [
+        "https://p5js.org/reference/p5/millis/",
+        "https://p5js.org/reference/p5/constrain/",
+        "https://p5js.org/reference/p5/frameRate/",
+        "https://p5js.org/reference/p5/lerp/"
+      ]
+    },
+    {
+      "id": "studio-5",
+      "title": "Replay and fill the presentation screen",
+      "goal": "Present the same intended journey twice and keep its composition usable at the actual display size.",
+      "foundations": [
+        "02-coordinates",
+        "04-decisions",
+        "06-mapping",
+        "13-mirror",
+        "15-project"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-6.js",
+      "references": [
+        "https://p5js.org/reference/p5/windowResized/",
+        "https://p5js.org/reference/p5/resizeCanvas/",
+        "https://p5js.org/reference/p5/noiseSeed/",
+        "https://p5js.org/reference/p5/randomSeed/",
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9"
+      ]
+    },
+    {
+      "id": "studio-6",
+      "title": "Make, watch and document together",
+      "goal": "Turn your experiments into a silent paired project with real evidence, a rehearsed presentation and complete submission links.",
+      "foundations": [
+        "05-functions",
+        "09-color",
+        "15-project",
+        "19-debug"
+      ],
+      "practiceCount": 2,
+      "sketch": "project-sketches/stage-7.js",
+      "references": [
+        "https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9",
+        "https://p5js.org/tutorials/field-guide-to-debugging/"
+      ]
+    }
+  ],
+  "guidedWalkthroughs": [
+    {
+      "stage": "studio-0",
+      "actions": 9,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-1",
+      "actions": 7,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-2",
+      "actions": 6,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-3",
+      "actions": 6,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-4",
+      "actions": 6,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-5",
+      "actions": 6,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    },
+    {
+      "stage": "studio-6",
+      "actions": 7,
+      "vocabularyTerms": 4,
+      "mode": "Offline workbook and p5 Web Editor side by side"
+    }
+  ],
+  "ecosystem": {
+    "configuredLocalDate": "2026-11-03",
+    "launcher": "Start-Week-9.cmd",
+    "stopper": "Stop-Week-9.cmd",
+    "studyHome": "ecosystem/index.html",
+    "studyMap": "ecosystem/study-map.json",
+    "workingProject": "workspace/my-project",
+    "referenceProjects": "workspace/stage-01 through workspace/stage-07",
+    "journal": "workspace/journal",
+    "binding": "127.0.0.1",
+    "runtime": "Existing Node.js runtime; checked v26.13.0",
+    "onlineEditor": "https://editor.p5js.org/",
+    "automation": {
+      "startup": "ecosystem/setup.cjs",
+      "doctor": "Check-Week-9.cmd",
+      "resume": "ecosystem/learn.html?view=lines",
+      "protocol": 2,
+      "progressBackups": "backups/progress",
+      "savedSourceSnapshots": "backups/sessions",
+      "privateBackupsExcludedFromKit": true
+    },
+    "cleanCourse": {
+      "entry": "ecosystem/learn.html#stage-1",
+      "stages": 7,
+      "actions": 47,
+      "illustrations": "Actual local p5.js with teaching controls",
+      "progress": "Shared workbook state with three-way merge protection"
+    }
+  }
+}

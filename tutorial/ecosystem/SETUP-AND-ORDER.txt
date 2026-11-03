@@ -1,0 +1,128 @@
+WEEK 9 COMPLETE STUDY SETUP
+Prepared November 3, 2026 America/New_York
+
+YOUR SIMPLE STAGE MANIFEST
+Double-click Start-Week-9.cmd. It opens your last course stage automatically.
+The study home also has Resume my lesson.
+The clean course gives each stage one real local p5 illustration, ordered small
+actions, experiments, every-line explanations and links to its foundations.
+Its47 current-step positions and observations share your existing workbook's
+progress on this same local address. Export a backup before closing.
+1. Show an image: upload -> load -> draw. Check: a still image appears.
+2. Make a mosaic: loops read colors and draw blocks. Check: tile size changes detail.
+3. Read RGBA: find four channel values in a list. Check: trace one pixel's address.
+4. Choose a region: keep one area colored. Check: the rest turns gray.
+5. Change over time: spread the change over 60 seconds. Check: watch the whole minute.
+6. Replay and present: click to restart and resize. Check: the saved fullscreen link works.
+7. Refine and document: partner work, iterations, viewings, blog and checked submission.
+
+STAGE 1 SESSION CHECKPOINT
+Your prepared sketch is saved at:
+https://editor.p5js.org/739955940fc/sketches/HMn4vZWL4
+The complete eight-line code and sample.png were saved and restored on reopening.
+You confirmed that the image appears in your usual browser. The in-app preview
+remained blank before the sketch started; use your usual browser for this editor.
+The study home's Stage 1 guide explains every JavaScript line and links the
+17-line page setup explanation. Read each line, try changing only 640x480 to
+320x240, run, compare, restore and save. Understanding the code is your next
+learning checkpoint; rendering alone does not mark the stage's learning complete.
+
+ONE STARTING POINT
+Double-click Start-Week-9.cmd in the main tutorial folder. It checks and starts the local
+study service and opens your last course stage. On this computer Node v26.13.0 is
+already installed. The setup uses its built-in tools; it installs no libraries.
+Keep this starting point instead of opening many unrelated copies of files.
+
+WHAT IS ALREADY CONFIGURED
+- Seven complete reference projects, each with sketch.js, sample.png, local
+  index.html, web-editor page HTML and an explanation for every sketch line.
+- A ready working folder: workspace/my-project. Its first version displays
+  the supplied image. Open-My-Project.cmd opens that folder in File Explorer.
+- Bundled p5 2.3.4 and its license. Local projects need no internet or login.
+- The existing dark workbook, 47 small actions, 20 supporting lessons, code
+  experiments, source files, progress export/import and submission checklist.
+- Blank observation, iteration, partner and blog logs in workspace/journal.
+- workspace/versions is a place to preserve your own real tested versions.
+
+THE TWO WORKSPACES
+The workbook explains a step and records learning progress. The p5 Web Editor
+holds your online sketch and provides saved code/fullscreen links for class.
+The study home's local previews are working references and an offline fallback.
+Notes, checkpoints and your course position now back up automatically into
+backups/progress. Saved local project files get session-start snapshots in
+backups/sessions. Online p5 editor code still uses its normal Save action.
+
+FOLLOW THIS ORDER
+1. Select Stage 1 in the study home.
+2. Click Open workbook for this stage. Keep the current small action visible.
+3. Compare the local reference with what the action says to expect.
+4. Click Explain every line when you need the complete code-to-result account.
+5. Open p5 Web Editor in another window. Follow the exact HTML/code/image
+   setup in the first stage. Saving there uses your normal editor login.
+6. Try one change. Run it and inspect the actual result before another change.
+7. Save and record what happened, then continue with the next small action.
+8. Move to the next stage when you can explain the current mechanism.
+
+SEVEN WORKING MILESTONES
+1. Load an image: know source file versus canvas; save a working image sketch.
+2. Sample a grid: loops visit rows/columns and paint a mosaic.
+3. Read RGBA: locate the four values belonging to one source pixel.
+4. Direct attention: choose where and how much colors change.
+5. Shape a minute: derive transformation strength from elapsed time.
+6. Replay and resize: keep the same intended sequence in the presentation.
+7. Iterate, observe and document: complete the actual paired class workflow.
+
+WHERE EACH FILE GOES
+For the WEB EDITOR:
+- Copy index.web-editor.html into its index.html file.
+- Copy the current stage's complete sketch.js into its sketch.js file.
+- Upload sample.png beside sketch.js; match the exact quoted filename.
+For the LOCAL PROJECT:
+- index.html already points to ../../vendor/p5.min.js.
+- Keep sketch.js and sample.png together in the stage/my-project folder.
+- Run through the study-home local address so image loading works reliably.
+- Keep personal code edits in my-project or saved editor versions. Repeating
+  setup preserves existing workspace files instead of replacing your work.
+
+FINISH EVERY SESSION THE SAME WAY
+1. Save in the p5 Web Editor; verify its actual saved sketch URL.
+2. Open the saved code/fullscreen links and check the intended version.
+3. Export progress in the workbook. This includes notes, checkpoints and the
+   current small step. Keep that JSON where you can find it.
+4. Keep the matching complete code and source image with the tested version.
+5. Record actual observations and partner work; return to the same study home.
+If you previously used the standalone HTML file, export progress there and
+import it into the served workbook. Browser storage belongs to its address;
+it does not automatically transfer between file pages and local server pages.
+
+START, RESUME AND STOP
+- Start-Week-9.cmd reuses this workspace's existing service when it is running.
+- Reopening the study home keeps the same service address where possible.
+- Stop-Week-9.cmd stops only the server identified as belonging to this folder.
+- Stop does not delete your code, logs or browser progress.
+- If the preferred local port is occupied, the launcher chooses another and
+  prints/opens the actual address. Use that address, rather than guessing one.
+
+AUTOMATIC START
+Start-Week-9.cmd finds your installed Node runtime and runs setup.cjs.
+Setup snapshots changed saved local files, preserves existing project files,
+checks the pinned library and all seven reference programs, starts or reuses
+this workspace's compatible service, then opens the paired course.
+The course restores notes, current stage, step and code line from local backup.
+Check-Week-9.cmd reports setup file checks without changing the project.
+Open-Backups.cmd opens your local backup folder. Stop-Week-9.cmd stops only
+this workspace's service. Backups remain on your computer, outside the kit ZIP.
+Browser checks separately verify actual p5 rendering; file checks alone do not.
+
+ONLINE HANDOFF LIMIT
+The maintained p5 editor source has an API import route documented as
+Unreleased. Production availability is unverified. This setup uses the normal
+editor and ready files; it does not request API tokens or alter authentication.
+Your existing Chrome editor was left unchanged when concurrent user input was
+reported. Saving an online project remains part of the normal editor flow.
+
+CLASS CHECK
+Your artifact stays silent. The live assignment is authoritative for paired
+work, color exploration, iterations, full timed viewings, spreadsheet, blog
+and submitted links. These prepared references are starting mechanisms; your
+source choices, observations and final creative interpretation are your work.

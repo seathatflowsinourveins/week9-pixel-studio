@@ -1,0 +1,149 @@
+{
+  "title": "Week 9 Study Home",
+  "p5Version": "2.3.4",
+  "nodeVersion": "v26.13.0",
+  "guide": "/Week-9-Project-Studio.html",
+  "editor": "https://editor.p5js.org/",
+  "initialProject": "/workspace/my-project/index.html",
+  "stages": [
+    {
+      "number": 1,
+      "id": "studio-0",
+      "title": "Bring your image into the sketch",
+      "goal": "Load an image you understand, then explain the difference between its stored dimensions and the canvas displaying it.",
+      "guide": "/Week-9-Project-Studio.html#studio-0",
+      "preview": "/workspace/stage-01/index.html",
+      "explanation": "/workspace/stage-01/explain.html",
+      "files": {
+        "code": "/workspace/stage-01/sketch.js",
+        "editorHTML": "/workspace/stage-01/index.web-editor.html",
+        "image": "/workspace/stage-01/sample.png"
+      }
+    },
+    {
+      "number": 2,
+      "id": "studio-1",
+      "title": "Build a grid from sampled colors",
+      "goal": "Make a mosaic and explain how nested loops visit source locations and place corresponding blocks on the canvas.",
+      "guide": "/Week-9-Project-Studio.html#studio-1",
+      "preview": "/workspace/stage-02/index.html",
+      "explanation": "/workspace/stage-02/explain.html",
+      "files": {
+        "code": "/workspace/stage-02/sketch.js",
+        "editorHTML": "/workspace/stage-02/index.web-editor.html",
+        "image": "/workspace/stage-02/sample.png"
+      }
+    },
+    {
+      "number": 3,
+      "id": "studio-2",
+      "title": "Find the four numbers for a pixel",
+      "goal": "Trace a source coordinate to its RGBA address and distinguish an array position from the color stored there.",
+      "guide": "/Week-9-Project-Studio.html#studio-2",
+      "preview": "/workspace/stage-03/index.html",
+      "explanation": "/workspace/stage-03/explain.html",
+      "files": {
+        "code": "/workspace/stage-03/sketch.js",
+        "editorHTML": "/workspace/stage-03/index.web-editor.html",
+        "image": "/workspace/stage-03/sample.png"
+      }
+    },
+    {
+      "number": 4,
+      "id": "studio-3",
+      "title": "Choose what keeps its color",
+      "goal": "Use a spatial condition and transformation strength to test what a viewer notices first.",
+      "guide": "/Week-9-Project-Studio.html#studio-3",
+      "preview": "/workspace/stage-04/index.html",
+      "explanation": "/workspace/stage-04/explain.html",
+      "files": {
+        "code": "/workspace/stage-04/sketch.js",
+        "editorHTML": "/workspace/stage-04/index.web-editor.html",
+        "image": "/workspace/stage-04/sample.png"
+      }
+    },
+    {
+      "number": 5,
+      "id": "studio-4",
+      "title": "Give the change a real minute",
+      "goal": "Connect elapsed time to the color transformation and inspect a deliberate beginning, middle and ending.",
+      "guide": "/Week-9-Project-Studio.html#studio-4",
+      "preview": "/workspace/stage-05/index.html",
+      "explanation": "/workspace/stage-05/explain.html",
+      "files": {
+        "code": "/workspace/stage-05/sketch.js",
+        "editorHTML": "/workspace/stage-05/index.web-editor.html",
+        "image": "/workspace/stage-05/sample.png"
+      }
+    },
+    {
+      "number": 6,
+      "id": "studio-5",
+      "title": "Replay and fill the presentation screen",
+      "goal": "Present the same intended journey twice and keep its composition usable at the actual display size.",
+      "guide": "/Week-9-Project-Studio.html#studio-5",
+      "preview": "/workspace/stage-06/index.html",
+      "explanation": "/workspace/stage-06/explain.html",
+      "files": {
+        "code": "/workspace/stage-06/sketch.js",
+        "editorHTML": "/workspace/stage-06/index.web-editor.html",
+        "image": "/workspace/stage-06/sample.png"
+      }
+    },
+    {
+      "number": 7,
+      "id": "studio-6",
+      "title": "Make, watch and document together",
+      "goal": "Turn your experiments into a silent paired project with real evidence, a rehearsed presentation and complete submission links.",
+      "guide": "/Week-9-Project-Studio.html#studio-6",
+      "preview": "/workspace/stage-07/index.html",
+      "explanation": "/workspace/stage-07/explain.html",
+      "files": {
+        "code": "/workspace/stage-07/sketch.js",
+        "editorHTML": "/workspace/stage-07/index.web-editor.html",
+        "image": "/workspace/stage-07/sample.png"
+      }
+    }
+  ],
+  "saveRoutine": [
+    "In the p5 Web Editor, Save the sketch and verify its actual saved sketch URL.",
+    "Open the saved code/fullscreen links and check the intended version.",
+    "In the workbook, Export progress to keep notes, checkpoints and your current small step.",
+    "Keep the matching sketch.js and source image together; preserve each tested iteration.",
+    "Update your actual observations and partner log, then begin the next session from the same study-home address."
+  ],
+  "resources": [
+    {
+      "label": "Your first session",
+      "url": "/YOUR-FIRST-SESSION.txt"
+    },
+    {
+      "label": "Full 47-action walkthrough",
+      "url": "/SIDE-BY-SIDE-WALKTHROUGH.txt"
+    },
+    {
+      "label": "Editor setup and every HTML line",
+      "url": "/EDITOR-SETUP.txt"
+    },
+    {
+      "label": "Setup and walkthrough order",
+      "url": "/ecosystem/SETUP-AND-ORDER.txt"
+    },
+    {
+      "label": "Observation log",
+      "url": "/workspace/journal/observations.csv"
+    },
+    {
+      "label": "Iteration log",
+      "url": "/workspace/journal/iterations.csv"
+    },
+    {
+      "label": "Partner log",
+      "url": "/workspace/journal/partner-log.csv"
+    },
+    {
+      "label": "Blog outline",
+      "url": "/workspace/journal/blog-outline.txt"
+    }
+  ]
+}

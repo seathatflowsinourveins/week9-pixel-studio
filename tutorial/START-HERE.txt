@@ -1,0 +1,96 @@
+WEEK 9 PIXEL PROJECT STUDIO
+
+1. Double-click Start-Week-9.cmd. It checks, backs up, starts and resumes
+   your course. Your current stage, step, line and notes back up locally.
+   Week-9-Project-Studio.html also remains a self-contained offline entry.
+2. Continue the lesson that opens. The clean course
+   shows one small action, a real p5 illustration, its experiment and every
+   code line explained. Follow stages1-7 in order. The complete workbook is
+   available from each stage for foundations and the full submission guide.
+   The slow walkthrough contains 47 small actions, one at a time. Each action
+   says what to do here, what to do in the p5 editor, why, what to expect,
+   how to check your understanding, and what to try if stuck.
+3. Each stage links to the foundations you need. Use All foundations for
+   the full 20-lesson reference; 16-18 are optional media extensions.
+
+YOU RECEIVE
+Seven guided project stages, plus 20 foundation lessons with 355 explained
+sketch lines. There are 75 practice tasks in total: 14 project tasks and
+61 foundation tasks, all with hints and solutions. Every generated project
+sketch line also has an explanation. Includes interactive image comparison,
+pixel traversal, RGBA inspector, region/color controls, sixty-second scrubber,
+original illustrations, local image upload and code/source downloads.
+
+FILES
+Start-Week-9.cmd          Start or resume the complete study environment.
+Stop-Week-9.cmd           Stop this workspace's local study service.
+Open-My-Project.cmd       Open your prepared working folder.
+ecosystem/               Study home, launcher/service and setup order.
+workspace/stage-01..07/   Complete runnable reference projects and explanations.
+workspace/my-project/    Ready working copy; existing files are preserved.
+workspace/journal/       Blank logs for your actual process.
+workspace/versions/      Keep your own real tested iterations here.
+Week-9-Project-Studio.html Main interactive project studio; start here.
+ICM-Week-9-Workbook.html  Compatible entry to the same updated dark workbook.
+curriculum-manifest.json Structured course map, prerequisites and references.
+sketches/               Numbered complete p5 2.3.4 examples.
+project-sketches/        Seven progressive complete project versions.
+YOUR-FIRST-SESSION.txt   A focused first session: display and explain one image.
+SIDE-BY-SIDE-WALKTHROUGH.txt All 47 actions and complete editor setup reference.
+assets/sample.png       Original 320 x 240 practice image.
+assets/sample.svg       Editable original vector source for that image.
+editor-starter/         Clean Web Editor page and first sketch.
+EDITOR-SETUP.txt         Exact editor setup and every starter HTML line explained.
+templates/             Blank observation, iteration, partner and blog templates.
+data/research.json      Six GitHub source snapshots, licenses and caveats.
+vendor/                Unmodified p5 2.3.4 and its LGPL 2.1 license.
+evidence/              Validation report and retained failure/retry evidence.
+
+KEEP YOUR WORK
+Mark a project stage or lesson practiced only when you have tried it and can explain it.
+Progress and reflections use browser storage when available. Export progress
+as JSON before changing browsers, moving machines or clearing browser data.
+Project settings/checkpoints/notes and foundation progress export together.
+Your current small-step position also exports and resumes after import.
+Code edits in the practice box are temporary. Copy or download code to keep it.
+Import progress accepts this workbook's exports; unrelated JSON is rejected.
+Older foundation-only exports still import. Custom uploaded images are not
+stored in progress JSON; download their normalized sample.png to keep them.
+
+INTERACTIVE PREVIEW AND CODE
+The controls update a teaching preview and generate the matching p5 sketch.
+Choose Run this stage in p5 to run the actual generated code. The time scrubber
+and six-second rehearsal explore the minute; exported code still uses 60000 ms.
+The first visible draw frame starts the clock, after async setup has finished.
+Changing controls regenerates the code box, so download manual edits first.
+
+FOR YOUR OWN CLASS PROJECT
+Copy a complete numbered .js example into sketch.js in the p5 Web Editor.
+Use EDITOR-SETUP.txt to select p5 2.3.4 and upload sample.png.
+Replace the sample with your own source and revise the transformation.
+Use the class assignment's current submission and spreadsheet links.
+The local logs help preparation; they do not replace the class spreadsheet.
+
+PRINTING
+The workbook's Print complete workbook button displays all lessons and
+answers for printing. Choose your browser's normal print options. PDF page
+pagination has not been individually verified, so review the print preview.
+
+VERIFICATION LIMITS
+The browser checked all seven project stage sketches and all 18 built-in
+foundation sketches offline, actual RGBA output, project endpoint/replay,
+mobile width, dark body text contrast, progress export/import and local upload.
+Camera hardware and user-provided video playback require your own testing.
+The one-minute calculation and endpoint were verified with a controlled clock,
+and delayed async loading was checked against the pinned v2 clock behavior;
+rehearse the final piece for a full minute on your presentation machine.
+
+VERSION AND SOURCES
+Prepared November 2, 2026, America/New_York. Runtime pinned to p5 2.3.4.
+GitHub research distinguishes maintained sources from archived legacy examples.
+Upstream main is not treated as the installed stable release. No claim of
+comparative teaching effectiveness or state-of-the-art ranking is made.
+All tutorial prose, examples and illustrations are original. p5 is distributed
+under LGPL 2.1; see vendor/p5-LICENSE.txt and the exact tag linked in the workbook.
+
+https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9
