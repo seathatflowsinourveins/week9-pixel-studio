@@ -11,7 +11,7 @@ A dark, illustrated p5.js studio for someone starting from zero. Follow one smal
 1. Open the dashboard and choose **Continue with p5** or **Start at Stage 1**.
 2. Read the current line and its meaning. From Stage 2, use **Follow one pixel** to connect a source coordinate, its RGBA values and the marked tile in the real p5 illustration.
 3. Press **Next step** to focus the relevant code line. You can still choose any line yourself. Change one thing in p5, Run, and notice what changes.
-4. Save your own sketch with p5 Save. Record observations in your own words.
+4. Use **Open p5 & save ↗** to sign in and save in a full p5 tab. Keep that sketch URL in **Sign in & keep your edits**. Record observations in your own words.
 
 Try the [pixel-address step](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/learn.html?view=editor#stage-3): with tile size 16, select **(16, 16)** and follow address 20544 through read → fill → rectangle. Later stages show original, target and current color; at 30 seconds and 50% strength, the transformation amount is 0.25. Guide steps and illustration controls keep the official p5 editor open.
 
@@ -25,7 +25,9 @@ Desktop uses the guide and p5 side by side. Small screens stack the panes. The s
 
 Open the same dashboard URL. To move learning notes, saved steps and the Finish desk: **Progress → Export progress**, then **Progress → Import** on the other device. Review the preview and choose **Import and merge**. Matching imported lesson notes and positions replace local values; unrelated notes remain. In Finish, nonempty imported fields replace matching fields, other fields remain, and self-checks are combined.
 
-Progress stays in each browser until you transfer it. It is not automatically synced or uploaded to GitHub. p5 sketches and unsaved editor changes are separate: use the official p5 account Save. If embedded sign-in or uploads are blocked, use **Open saved example** to open p5 directly. p5 has its own theme setting.
+Progress stays in each browser until you transfer it. It is not automatically synced or uploaded to GitHub. **Open p5 & save ↗** opens the original p5 website as a full page, where account sign-in and saving work independently of the embedded practice pane. The header remembers a valid saved p5 link in **Finish → p5 code**; it also travels with Progress export/import.
+
+Before switching, keep your latest pane edits with p5 **File → Download**, or select its code and copy it. **Copy guide code** copies the prepared current lesson, not edits you made in the embedded p5 editor. In the full p5 tab, duplicate the example for your first copy, paste into sketch.js, Run and Save. Opening a link never transfers unsaved pane edits. p5 has its own theme setting.
 
 ## The learning order
 

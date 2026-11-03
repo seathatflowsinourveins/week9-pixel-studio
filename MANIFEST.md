@@ -76,7 +76,7 @@ Finish saves in this browser. Download process notes as Markdown and iteration/v
 ## References
 
 - [processing / p5.js](https://github.com/processing/p5.js) — Used · local drawing library. The lesson previews run p5.js 2.3.4, pinned in this kit. Learn image, get, pixels, loops and time.
-- [processing / p5.js-web-editor](https://github.com/processing/p5.js-web-editor) — Used · official embedded editor. The real p5 editor is beside the guide. Edit and Run there. Sign in inside the editor to save to your account.
+- [processing / p5.js-web-editor](https://github.com/processing/p5.js-web-editor) — Used · official embedded editor. Practice beside the guide. Use Open p5 & save for sign-in and saving in a full browser tab. Keep your saved sketch URL in Finish.
 - [radix-ui / primitives](https://github.com/radix-ui/primitives) — Design reference · no installed dependency. Reference for clear component states and accessible dialog behavior. This dashboard uses the browser’s native dialog.
 - [Code Hike focus](https://codehike.org/docs/code/focus) — Design reference · no installed dependency or copied source. The guide uses the idea of focusing code in response to a learner’s action, implemented with its existing native DOM controls.
 - [p5 reference](https://p5js.org/reference/) — Primary learning reference. Look up the exact drawing command when a word is new.
@@ -85,4 +85,4 @@ Finish saves in this browser. Download process notes as Markdown and iteration/v
 
 ## Keep your own work
 
-Use p5 Save for code. Use Progress Export/Import for lesson notes, saved steps and the Finish desk. Keep screenshots, source files, tested iterations and actual timed observations with your project. The dashboard never invents observations or marks your work complete.
+Use Open p5 & save for account saving in the full p5 tab. Keep current pane edits by copying or downloading them first. Copy guide code copies only the prepared lesson. Your kept p5 sketch link appears in Finish and travels with Progress. Use Progress Export/Import for lesson notes, saved steps and the Finish desk. Keep screenshots, source files, tested iterations and actual timed observations with your project. The dashboard never invents observations or marks your work complete.

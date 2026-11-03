@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto');
 const repository=path.resolve(__dirname,'..'),source=path.join(repository,'tutorial');
-const browserFiles=['assignment-core.js','assignment-panel.js','assignment-panel.css','pixel-flow-core.js','pixel-flow.js','pixel-flow.css','index.html','learn.html','learn.css','learn.js','loops.html','loops.css','loops.js','loops-core.js','editor-frame.js','editor-view.css','course-core.js','course-runtime.js','course-data.json','study-sync.js','dashboard-core.js','dashboard-art.js','dashboard.js','dashboard.css','dashboard-data.json','progress-transfer-core.js','progress-transfer.js','progress-transfer.css'];
+const browserFiles=['account-project.js','assignment-core.js','assignment-panel.js','assignment-panel.css','pixel-flow-core.js','pixel-flow.js','pixel-flow.css','index.html','learn.html','learn.css','learn.js','loops.html','loops.css','loops.js','loops-core.js','editor-frame.js','editor-view.css','course-core.js','course-runtime.js','course-data.json','study-sync.js','dashboard-core.js','dashboard-art.js','dashboard.js','dashboard.css','dashboard-data.json','progress-transfer-core.js','progress-transfer.js','progress-transfer.css'];
 const rootFiles=['Week-9-Project-Studio.html','ICM-Week-9-Workbook.html','YOUR-FIRST-SESSION.txt','SIDE-BY-SIDE-WALKTHROUGH.txt','EDITOR-SETUP.txt','START-HERE.txt'];
 async function buildPages({destination=path.join(repository,'dist')}={}){
  const out=path.resolve(destination);if(out===repository||out===source||!path.relative(out,repository).startsWith('..'))throw Error('Build destination must not contain source.');

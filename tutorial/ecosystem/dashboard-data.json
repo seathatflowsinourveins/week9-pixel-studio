@@ -210,7 +210,7 @@
       "name": "processing / p5.js-web-editor",
       "role": "Used · official embedded editor",
       "url": "https://github.com/processing/p5.js-web-editor",
-      "detail": "The real p5 editor is beside the guide. Edit and Run there. Sign in inside the editor to save to your account."
+      "detail": "Practice beside the guide. Use Open p5 & save for account saving in a full browser tab. Keep your saved sketch link in Finish."
     },
     {
       "name": "radix-ui / primitives",
