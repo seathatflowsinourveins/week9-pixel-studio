@@ -6,6 +6,16 @@
   const seconds=clamp(finite(value),0,60),progress=seconds/60,spacing=Math.floor(5+20*progress);
   return {seconds,progress,hue:30+190*progress,spacing,count:Math.ceil(400/spacing)**2};
  }
+ const sourceLines=new Set([1,2,3,5,6,7,8,10,11,12,13,15,16,18,19,21,22,24,26,27,28,29,30,31,33,34,36,38,39,40,41,42]);
+ function session(value){
+  if(!value||typeof value!=='object'||Array.isArray(value))return {line:1,seconds:0};
+  function readNumber(key){
+   const field=Object.getOwnPropertyDescriptor(value,key)?.value;
+   return typeof field==='number'||typeof field==='string'?finite(field):0;
+  }
+  const line=readNumber('line');
+  return {line:sourceLines.has(line)?line:1,seconds:timeline(readNumber('seconds')).seconds};
+ }
  function snapPoint(x,y,spacing){
   const step=clamp(Math.floor(finite(spacing,5)),1,400);
   return {x:Math.floor(clamp(finite(x),0,399)/step)*step,y:Math.floor(clamp(finite(y),0,399)/step)*step};
@@ -23,5 +33,5 @@
   const channels=h<60?[c,x,0]:h<120?[x,c,0]:h<180?[0,c,x]:h<240?[0,x,c]:h<300?[x,0,c]:[c,0,x];
   return channels.map(value=>Math.round(value*255));
  }
- return {timeline,snapPoint,sampleAt,hsbRGB};
+ return {timeline,session,snapPoint,sampleAt,hsbRGB};
 });

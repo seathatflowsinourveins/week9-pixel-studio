@@ -1,5 +1,24 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const core=require('./group-study-core.js');
+test('a session restores actual source lines and keeps only the line and normalized time',()=>{
+ const lines=require('./group-lessons.js').steps.map(step=>step.line);
+ for(let line=1;line<=42;line++){
+  assert.deepEqual(core.session({line:String(line),seconds:'23.5',playing:true,url:'https://untrusted.test/'}),
+   {line:lines.includes(line)?line:1,seconds:23.5});
+ }
+ assert.deepEqual(core.session({line:42,seconds:0}),{line:42,seconds:0});
+ assert.deepEqual(core.session({line:39,seconds:90}),{line:39,seconds:60});
+ assert.deepEqual(core.session({line:8,seconds:-2}),{line:8,seconds:0});
+});
+test('malformed session data cannot supply a line, a time or automatic playback',()=>{
+ const fallback={line:1,seconds:0};
+ for(const value of [null,'#line-39',[{line:39,seconds:30}],{line:33.1,seconds:Infinity},
+  {line:'<script>',seconds:'30&playing=true'},Object.create({line:33,seconds:30}),
+  {line:[33],seconds:{valueOf(){throw Error('should not coerce objects');}}}]){
+  assert.deepEqual(core.session(value),fallback);
+ }
+ assert.deepEqual(core.session({line:500,seconds:'30'}),{line:1,seconds:30});
+});
 test('one minute maps to the source endpoints and integer grid steps',()=>{
  assert.deepEqual(core.timeline(0),{seconds:0,progress:0,hue:30,spacing:5,count:6400});
  assert.deepEqual(core.timeline(30),{seconds:30,progress:.5,hue:125,spacing:15,count:729});

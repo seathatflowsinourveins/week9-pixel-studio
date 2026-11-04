@@ -1,7 +1,15 @@
 (function(){
  'use strict';
  const core=window.groupStudyCore,lessons=window.groupLessons,$=id=>document.getElementById(id),steps=lessons.steps;
- let current=0,seconds=0,playing=false,origin=0,frame=0,ready=false,failure='',source=null,painter=null,wanted={x:160,y:120},selected={x:160,y:120},sample=null;
+ const query=new URLSearchParams(location.search);
+ if(query.get('embedded')==='dashboard')document.body.classList.add('dashboard-embedded');
+ const hashLine=()=>/^#line-(\d+)$/.exec(location.hash)?.[1];
+ const initial=core.session({line:hashLine(),seconds:query.get('seconds')});
+ let current=steps.findIndex(step=>step.line===initial.line),seconds=initial.seconds,playing=false,origin=0,frame=0,ready=false,failure='',source=null,painter=null,wanted={x:160,y:120},selected={x:160,y:120},sample=null;
+ window.groupStudySession={snapshot:()=>({line:steps[current].line,seconds})};
+ if(query.get('embedded')==='dashboard' && parent!==window)window.addEventListener('keydown',event=>{
+  if(event.key==='Escape' && !event.defaultPrevented){event.preventDefault();parent.postMessage({kind:'studio-group-close'},location.origin);}
+ });
  const number=value=>Number(value.toFixed(2)).toLocaleString('en-US'),rgb=values=>'rgb('+values.join(',')+')';
  const add=(host,tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;host.append(node);return node;};
  function formula(host,text){return add(host,'div',text,'formula');}
@@ -88,8 +96,11 @@
  }
  $('show-original').addEventListener('click',()=>view(true));$('show-model').addEventListener('click',()=>view(false));
  document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();update();}});window.addEventListener('pagehide',stop);
- const fromHash=()=>{const line=Number(location.hash.replace('#line-','')),index=steps.findIndex(step=>step.line===line);if(index>=0)selectStep(index,false);};window.addEventListener('hashchange',fromHash);
- selectStep(0,false);fromHash();update();$('play').disabled=true;
+ window.addEventListener('hashchange',()=>{
+  const requested=hashLine();
+  if(requested){const {line}=core.session({line:requested});selectStep(steps.findIndex(step=>step.line===line),false);}
+ });
+ selectStep(current,false);update();$('play').disabled=true;
  function failed(message){failure=message;$('model-status').textContent=message;$('sample-caption').textContent=message;$('play').disabled=true;drawDiagram();}
  if(typeof window.p5!=='function'){failed('p5 did not load. Reload or open the original.');return;}
  painter=new window.p5(p=>{

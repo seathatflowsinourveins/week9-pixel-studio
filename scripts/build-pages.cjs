@@ -4,6 +4,7 @@ const repository=path.resolve(__dirname,'..'),source=path.join(repository,'tutor
 const browserFiles=['account-project.js','assignment-core.js','assignment-panel.js','assignment-panel.css','pixel-flow-core.js','pixel-flow.js','pixel-flow.css','line-illustration.js','line-illustration.css','index.html','learn.html','learn.css','learn.js','loops.html','loops.css','loops.js','loops-core.js','editor-frame.js','editor-view.css','practice-editor.js','practice-editor.css','course-core.js','course-runtime.js','course-data.json','study-sync.js','dashboard-core.js','dashboard-art.js','dashboard.js','dashboard.css','dashboard-data.json','progress-transfer-core.js','progress-transfer.js','progress-transfer.css'];
 const rootFiles=['Week-9-Project-Studio.html','ICM-Week-9-Workbook.html','YOUR-FIRST-SESSION.txt','SIDE-BY-SIDE-WALKTHROUGH.txt','EDITOR-SETUP.txt','START-HERE.txt'];
 browserFiles.push('group-study.html','group-study.css','group-study.js','group-study-core.js','group-lessons.js');
+browserFiles.push('dashboard-group.js','dashboard-group.css');
 function canonicalText(text){return String(text).replace(/\r\n?/g,'\n');}
 function bundleFingerprint(records){
  const sources=records.map(({name,text})=>[name,canonicalText(text)]).sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);

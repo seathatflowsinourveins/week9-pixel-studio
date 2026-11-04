@@ -21,7 +21,7 @@ Open **Finish** to record your concept, partner roles, iterations, full-minute v
 
 Desktop uses the guide and p5 side by side. Small screens stack the panes. The supplied window-and-plant image is a practice asset, not a required assignment template. The final creative concept, source and observations are yours.
 
-For the group, open **[Samuel’s image-to-circles walkthrough](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/group-study.html)**. Follow all 32 nonblank source lines, move through the intended minute, and select a pixel to connect RGBA addresses, average brightness, HSB hue and circle diameter. This separate teaching model uses our practice image; Samuel’s original code and image remain linked on p5. A clock note explains a p5 2.3.4 timing issue found in the reference source and gives a correction for a separate revision.
+Open **[Group study inside the dashboard](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/?panel=group-study)** from the header, home card or References, at any phase. Follow all 32 nonblank source lines, move through the intended minute, and select a pixel to connect RGBA addresses, average brightness, HSB hue and circle diameter. Close returns to the same phase and code; reopening remembers the group line and time for this page session, paused. The [standalone companion](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/group-study.html) remains available. The model uses our practice image; Samuel’s original stays credited and linked. A clock note explains the reference source’s p5 2.3.4 timing issue and gives a correction for a separate revision.
 
 ## Continue on another device
 

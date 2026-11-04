@@ -174,3 +174,53 @@ details{display:block}
 .workspace{gap:16px}
 .swatches{flex-wrap:wrap}
 }
+
+.dashboard-embedded .top,
+.dashboard-embedded footer,
+.dashboard-embedded .skip {display:none}
+.dashboard-embedded .page {
+  padding:12px 18px 18px;
+}
+.dashboard-embedded .intro {
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:10px;
+}
+.dashboard-embedded .intro h1 {
+  font-size:clamp(21px,2.3vw,26px);
+  margin-bottom:4px;
+}
+.dashboard-embedded .intro p {font-size:13px}
+.dashboard-embedded .intro>div:first-child>p {display:none}
+.dashboard-embedded .intro>div:first-child {padding-top:6px}
+.dashboard-embedded .source-credit {max-width:none;font-size:12px}
+.dashboard-embedded .workspace {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+  gap:12px;
+}
+.dashboard-embedded .chapters {
+  grid-column:1/-1;
+  position:static;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:5px;
+  padding:0;
+  overflow:visible;
+}
+.dashboard-embedded .chapters button {display:flex;gap:5px;padding:6px 8px}
+.dashboard-embedded .chapters .eyebrow {margin:0 6px 0 0}
+.dashboard-embedded .chapters a {display:block;margin:0 0 0 auto}
+.dashboard-embedded .panel {padding:clamp(12px,1.5vw,18px)}
+.dashboard-embedded .lab {position:static}
+.dashboard-embedded .group-section {margin:22px 0;padding:16px 0;gap:14px}
+.dashboard-embedded .bottom-grid {gap:12px}
+.dashboard-embedded .clock-note {margin-top:12px}
+@media(max-width:780px) {
+  .dashboard-embedded .workspace {grid-template-columns:minmax(0,1fr)}
+  .dashboard-embedded .source-credit {padding-top:8px}
+  .dashboard-embedded .chapters a {margin-left:4px}
+  .dashboard-embedded .slots {grid-template-columns:repeat(4,minmax(0,1fr))}
+  .dashboard-embedded .slots div {overflow-wrap:anywhere}
+}

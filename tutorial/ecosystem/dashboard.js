@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   const C = window.studioDashboardCore;
+  const G = window.studioGroupStudy;
   if (!C) return;
   const RESUME = 'icm-studio-resume-v1', WORKBOOK = 'icm-workbook-v1';
   const fallback = {kind:'stage',stage:1};
@@ -8,9 +9,20 @@
   let context = C.validContext(read(RESUME)) || fallback;
   let hasHostContext = false;
   let data = null, failure = false, mounted = false, section = 'Journey', trigger = null;
-  let header, dialog, content, tabs, contextLabel;
+  let header, dialog, content, tabs, contextLabel, groupPanel, groupVisible = false;
+  const headerButtons = new Map();
   const dataURL = new URL('./dashboard-data.json', document.currentScript ? document.currentScript.src : location.href);
-  const sections = ['Journey','Foundations','References','Finish'];
+  const sections = ['Journey','Foundations','Group study','References','Finish'];
+  const tabID = name => 'studio-tab-' + name.toLowerCase().replace(/\s+/g,'-');
+  const requestedGroup = new URL(location.href).searchParams.get('panel') === 'group-study';
+  function syncPanelRoute(open) {
+    if (!G) return;
+    const current = new URL(location.href);
+    if (open || current.searchParams.get('panel') === 'group-study') {
+      const next = G.panelURL(current.href,open);
+      if (next !== current.href) history.replaceState(null,'',next);
+    }
+  }
   function element(tag, className, text) {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -34,8 +46,9 @@
   window.studioDashboard = {
     open(name, from) {
       if(!sections.includes(name)||!mounted)return false;
-      trigger=from||document.activeElement;section=name;renderDialog();
+      trigger=from||document.activeElement;section=name;
       if(!dialog.open)dialog.showModal();
+      renderDialog();
       dialog.querySelector('.studio-close').focus();
       return true;
     },
@@ -104,7 +117,14 @@
     const list = element('div','reference-list');
     for (const repo of data.repos) {
       const row = element('article','reference-item'), link = element('a','',repo.name);
-      link.href = repo.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      link.href = repo.url;
+      if (repo.panel === 'group-study' && G) {
+        link.href = G.panelURL(location.href,true);
+        link.addEventListener('click',event=>{
+          if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+          event.preventDefault();window.studioDashboard.open('Group study',link);
+        });
+      } else { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
       row.append(element('p','reference-role',repo.role),element('h3'));
       row.lastChild.append(link); row.append(element('p','',repo.detail)); list.append(row);
     }
@@ -124,7 +144,25 @@
       const selected = tab.textContent === section;
       tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1;
     }
-    content.setAttribute('aria-labelledby','studio-tab-' + section.toLowerCase());
+    content.setAttribute('aria-labelledby',tabID(section));
+    const studying = section === 'Group study';
+    dialog.classList.toggle('group-study-open',studying && dialog.open);
+    document.body.classList.toggle('studio-group-active',studying && dialog.open);
+    document.getElementById('studio-dialog-title').textContent = studying ? 'Study together' : 'Your Pixel Studio';
+    document.querySelector('.studio-group-standalone').hidden = !studying;
+    syncPanelRoute(studying && dialog.open);
+    if (studying) {
+      if (!dialog.open) { groupPanel?.unmount(); groupVisible=false; return; }
+      if (!groupVisible) { content.replaceChildren(); groupVisible=true; }
+      if (G) {
+        groupPanel ||= G.create({host:content,document,baseURL:dataURL.href});
+        groupPanel.mount();
+      } else if (!content.children.length) {
+        const link=element('a','','Open the group guide');link.href='./group-study.html';content.append(link);
+      }
+      return;
+    }
+    groupPanel?.unmount();groupVisible=false;
     content.replaceChildren();
     if (!data) { content.append(element('p','',failure ? 'Dashboard information is unavailable. Reload this page to try again.' : 'Loading your studio…')); return; }
     content.append(section === 'Journey' ? stageGrid() : section === 'Foundations' ? foundations() : section === 'References' ? references() : assignment());
@@ -155,7 +193,8 @@
     for (const name of sections) {
       const button = element('button','',name); button.type = 'button';
       button.setAttribute('aria-haspopup','dialog'); button.setAttribute('aria-controls','studio-dialog');
-      button.addEventListener('click', () => { trigger = button; section = name; renderDialog(); if (!dialog.open) dialog.showModal(); dialog.querySelector('.studio-close').focus(); });
+      headerButtons.set(name,button);
+      button.addEventListener('click', () => window.studioDashboard.open(name,button));
       nav.append(button);
     }
     contextLabel = element('span','studio-context');
@@ -165,10 +204,12 @@
     const top = element('div','studio-dialog-header'), close = element('button','studio-close','Close');
     close.type = 'button'; close.setAttribute('aria-label','Close studio dashboard'); close.autofocus = true;
     close.addEventListener('click', () => dialog.close());
-    const heading = element('h2','','Your Pixel Studio'); heading.id = 'studio-dialog-title'; top.append(heading,close);
+    const heading = element('h2','','Your Pixel Studio'); heading.id = 'studio-dialog-title';
+    const standalone=element('a','studio-group-standalone','Open standalone ↗');standalone.href='./group-study.html';standalone.target='_blank';standalone.rel='noopener noreferrer';standalone.hidden=true;
+    top.append(heading,standalone,close);
     tabs = element('div','studio-dialog-tabs'); tabs.setAttribute('role','tablist'); tabs.setAttribute('aria-label','Dashboard sections');
     for (const name of sections) {
-      const tab = element('button','',name); tab.type = 'button'; tab.id = 'studio-tab-' + name.toLowerCase();
+      const tab = element('button','',name); tab.type = 'button'; tab.id = tabID(name);
       tab.setAttribute('role','tab'); tab.setAttribute('aria-controls','studio-dialog-content');
       tab.addEventListener('click', () => { section = name; renderDialog(); });
       tabs.append(tab);
@@ -182,8 +223,28 @@
     });
     content = element('div','studio-dialog-content'); content.id = 'studio-dialog-content'; content.setAttribute('role','tabpanel'); content.tabIndex = 0;
     dialog.append(top,tabs,content); document.body.append(dialog);
-    dialog.addEventListener('close', () => { if (trigger?.isConnected) trigger.focus(); });
-    mounted = true; renderHome(); renderDialog();
+    dialog.addEventListener('close', () => {
+      if(dialog.open)return;
+      groupPanel?.unmount();groupVisible=false;dialog.classList.remove('group-study-open');document.body.classList.remove('studio-group-active');syncPanelRoute(false);
+      const back=trigger?.isConnected?trigger:headerButtons.get(section);back?.focus();
+    });
+    for (const link of document.querySelectorAll('[data-studio-group-open]')) {
+      link.addEventListener('click',event=>{
+        if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+        event.preventDefault();window.studioDashboard.open('Group study',link);
+      });
+    }
+    mounted = true; renderHome();
+    if(requestedGroup)window.studioDashboard.open('Group study',headerButtons.get('Group study'));else renderDialog();
+    window.addEventListener('popstate',()=>{
+      const wantsGroup=new URL(location.href).searchParams.get('panel')==='group-study';
+      if(wantsGroup && (!dialog.open || section!=='Group study'))window.studioDashboard.open('Group study',headerButtons.get('Group study'));
+      else if(!wantsGroup && dialog.open && section==='Group study')dialog.close();
+    });
+    window.addEventListener('message',event=>{
+      if(dialog.open && section==='Group study' && event.origin===location.origin &&
+        groupPanel?.owns(event.source) && event.data?.kind==='studio-group-close')dialog.close();
+    });
     fetch(dataURL).then(response => { if (!response.ok) throw new Error('Dashboard HTTP ' + response.status); return response.json(); }).then(value => {
       if (!value || !Array.isArray(value.stages) || !Array.isArray(value.foundations) || !Array.isArray(value.repos) || !Array.isArray(value.assignment?.items)) throw new Error('Invalid dashboard data');
       data = value; renderHome(); renderDialog();

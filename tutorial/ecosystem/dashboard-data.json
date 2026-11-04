@@ -190,8 +190,9 @@
   "repos": [
     {
       "name": "Group study · Samuel’s image to circles",
-      "role": "Interactive companion · line by line",
-      "url": "./group-study.html",
+      "role": "Inside this dashboard · line by line",
+      "url": "./?panel=group-study",
+      "panel": "group-study",
       "detail": "Read the linked sketch together. Move time, follow a pixel and see how RGB becomes a circle’s size and HSB color. Original credited to samuelgoldman."
     },
     {
