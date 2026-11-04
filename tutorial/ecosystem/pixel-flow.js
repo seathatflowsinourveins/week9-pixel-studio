@@ -8,7 +8,7 @@
   head.append(node('h3','Follow one pixel'),node('span','Click the source. Use arrow keys.','flow-hint'));root.append(head);
   const images=node('div',undefined,'flow-images'),sourceFigure=node('figure'),destinationFigure=node('figure'),source=node('canvas'),destination=node('canvas');
   for(const canvas of [source,destination]){canvas.width=320;canvas.height=240;canvas.setAttribute('role','img');}
-  source.tabIndex=0;source.setAttribute('aria-label','Source image. Arrow keys move one sampled tile.');source.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight ArrowUp ArrowDown');
+  source.id='flow-source';source.tabIndex=0;source.setAttribute('aria-label','Source image. Arrow keys move one sampled tile.');source.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight ArrowUp ArrowDown');
   const sourceLabel=node('figcaption','SOURCE · 320 × 240'),destinationLabel=node('figcaption','REAL p5 · 640 × 480');sourceFigure.append(sourceLabel,source);destinationFigure.append(destinationLabel,preview||destination);images.append(sourceFigure,destinationFigure);root.append(images);
   const form=node('div',undefined,'flow-location'),x=node('input'),y=node('input');
   for(const [input,label] of [[x,'Source x'],[y,'Source y']]){input.type='number';input.min='0';input.max=input===x?'319':'239';input.setAttribute('aria-label',label);const wrap=node('label',label);wrap.append(input);form.append(wrap);}

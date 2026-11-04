@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const runtime = require('./course-runtime.js');
 const rules = require('../data/short-line-meanings.cjs');
+const roadmap = require('../data/learning-roadmap.cjs');
 const lessons = ['foundations', 'media', 'extensions'].flatMap(name => require('../data/lessons-' + name + '.cjs'));
 const modes = ['focus', 'gray', 'invert'];
 
@@ -26,6 +27,7 @@ test('complete generated sketches have compact and detailed meanings for every l
       });
     }
   }
+  assert.equal(count, 614);
   t.diagnostic(count + ' generated line occurrences across 7 stages × 3 modes.');
 });
 
@@ -93,11 +95,11 @@ test('every foundation sketch matches its explained source line for line', t => 
       count++;
     });
   }
+  assert.equal(count, 355);
   t.diagnostic(count + ' explained lines in ' + lessons.length + ' foundation sketches.');
 });
 
 test('roadmap gives each stage a build, an assignment connection, evidence and at most two real starting lessons', () => {
-  const roadmap = require('../data/learning-roadmap.cjs');
   const ids = new Set(lessons.map(lesson => lesson.id));
   assert.deepEqual(roadmap.map(stage => stage.tag), ['Image', 'Mosaic', 'RGBA', 'Focus', 'Minute', 'Present', 'Finish']);
   assert.deepEqual(roadmap[1].learnFirst, ['09-color', '07-loops']); // Learn RGB and grid order before channel addresses.
@@ -117,4 +119,18 @@ test('roadmap gives each stage a build, an assignment connection, evidence and a
   for (const mode of modes) {
     assert.equal(runtime.lessonProject(5, {mode}).code, runtime.lessonProject(6, {mode}).code);
   }
+});
+
+test('each stage has a short experiment and visible result tied to its control', () => {
+  const controls = ['larger-size', 'tile', 'flow-source', 'color-rule', 'teaching-time', 'narrow-preview', 'compare-a'];
+  assert.equal(roadmap.length, controls.length);
+  roadmap.forEach(({tag, play}, i) => {
+    assert.ok(play, tag + ': missing play prompts');
+    assert.equal(play.control, controls[i], tag + ': control');
+    for (const key of ['try', 'notice']) {
+      assert.equal(typeof play[key], 'string', tag + ': ' + key);
+      assert.ok(play[key].trim(), tag + ': empty ' + key);
+      assert.ok(play[key].trim().split(/\s+/).length <= 25, tag + ': long ' + key);
+    }
+  });
 });
