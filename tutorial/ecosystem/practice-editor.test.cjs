@@ -43,3 +43,52 @@ test('a passive Run or guide update in another tab cannot overwrite a saved same
 test('Run stays prominent while secondary actions are in a named Tools disclosure',()=>{
  const s=setup(),tools=s.el('practice-tools');assert.ok(tools,'Tools disclosure is missing');assert.equal(tools.tagName,'details');assert.equal(s.el('practice-tools-label').textContent,'Tools');assert.equal(s.el('practice-copy').parentNode,s.el('practice-tool-list'));assert.notEqual(s.el('practice-run').parentNode,s.el('practice-tool-list'));s.editor.setLesson(one);assert.equal(s.el('practice-output-label').textContent,'Your sketch · latest Run');
 });
+
+const mosaic={id:'stage-2',title:'Stage 2 · Mosaic',code:'const tile = 16;',line:0,meaning:'Set the tile size.'};
+const stalledDraft='for (let x = 0; x < 320; x += 0) {}';
+const storedMosaic=JSON.stringify({version:1,drafts:{
+ 'stage-2':{code:stalledDraft,base:mosaic.code},
+ 'stage-1':{code:'my other image',base:one.code}
+}});
+
+test('opening an edited mosaic keeps its code visible and waits for an explicit Run',async()=>{
+ const s=setup(storedMosaic);
+ s.editor.setLesson(mosaic);
+ assert.equal(s.editor.getCode(),stalledDraft);
+ assert.doesNotMatch(s.editor.frame.srcdoc||'',/x \+= 0/,'opening the lesson executed the saved loop');
+ assert.match(s.el('practice-state').textContent,/paused/i);
+ assert.equal(s.memory.get('icm-practice-drafts-v1'),storedMosaic);
+ await s.el('practice-run').click();
+ assert.equal(JSON.parse(s.editor.frame.srcdoc).code,stalledDraft);
+ assert.equal(s.memory.get('icm-practice-drafts-v1'),storedMosaic);
+});
+
+test('returning to an edited phase stops the old preview and ignores its late messages',()=>{
+ const s=setup(storedMosaic);
+ s.editor.setLesson(two);
+ const running=JSON.parse(s.editor.frame.srcdoc);
+ assert.equal(running.code,two.code);
+ s.editor.setLesson(mosaic);
+ assert.equal(s.editor.getCode(),stalledDraft);
+ assert.ok(!s.editor.frame.srcdoc,'the previous executable document should be cleared');
+ const paused=s.el('practice-state').textContent;
+ assert.match(paused,/paused/i);
+ s.send({kind:'practice-ready',token:running.token,version:'2.3.4',width:640,height:480});
+ s.send({kind:'practice-error',token:running.token,message:'late error'});
+ assert.equal(s.el('practice-state').textContent,paused);
+});
+
+test('Use lesson code runs the mosaic and Undo recovers the original draft without running it',async()=>{
+ const s=setup(storedMosaic);
+ s.editor.setLesson(mosaic);
+ await s.el('practice-use-guide').click();
+ assert.equal(JSON.parse(s.editor.frame.srcdoc).code,mosaic.code);
+ const stored=JSON.parse(s.memory.get('icm-practice-drafts-v1')).drafts;
+ assert.equal(stored['stage-2'].previous.code,stalledDraft);
+ assert.deepEqual(stored['stage-1'],{code:'my other image',base:one.code});
+ await s.el('practice-undo').click();
+ assert.equal(s.editor.getCode(),stalledDraft);
+ assert.ok(!s.editor.frame.srcdoc,'Undo must not run the recovered loop');
+ assert.match(s.el('practice-state').textContent,/paused/i);
+ assert.equal(JSON.parse(s.memory.get('icm-practice-drafts-v1')).drafts['stage-2'].code,stalledDraft);
+});
