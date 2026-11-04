@@ -2,16 +2,92 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const file=path.join(__dirname,'practice-editor.js');
 const practice=fs.existsSync(file)?require(file):{};
 class Node {
- constructor(tag,doc){this.tagName=tag;this.ownerDocument=doc;this.children=[];this.attributes={};this.listeners={};this.style={setProperty(){}};this.scrollTop=0;this.value='';this.contentWindow={};this.srcWrites=[];this.classList={add(){},remove(){},toggle(){}};}
+ constructor(tag,doc){this.tagName=tag;this.ownerDocument=doc;this.children=[];this.attributes={};this.listeners={};this.style={};this.scrollTop=0;this.clientHeight=150;this.offsetHeight=150;this.selectionStart=this.selectionEnd=0;this.value='';this.contentWindow={};this.srcWrites=[];this.classList={add(){},remove(){},toggle(){}};}
+ setSelectionRange(start,end,direction='none'){this.selectionStart=start;this.selectionEnd=end;this.selectionDirection=direction;}
  appendChild(n){this.children.push(n);n.parentNode=this;return n;} append(...nodes){nodes.forEach(n=>this.appendChild(n));} replaceChildren(...nodes){this.children=[];this.append(...nodes);}
  setAttribute(k,v){this.attributes[k]=String(v);} getAttribute(k){return this.attributes[k]??null;}
  addEventListener(k,fn){(this.listeners[k]??=[]).push(fn);} fire(k,event={}){return Promise.all((this.listeners[k]||[]).map(fn=>fn(event)));} click(){return this.fire('click');} focus(){this.ownerDocument.activeElement=this;}
  set srcdoc(v){this._srcdoc=v;this.srcWrites.push(v);} get srcdoc(){return this._srcdoc;}
 }
 function find(node,name){if((node.className||'').split(' ').includes(name))return node;for(const child of node.children){const match=find(child,name);if(match)return match;}}
-function setup(raw,shared){const memory=shared||new Map(raw?[['icm-practice-drafts-v1',raw]]:[]),listeners={},copied=[],selected=[];const doc={activeElement:null,createElement:tag=>new Node(tag,doc)};doc.defaultView={location:{origin:'https://course.test'},navigator:{clipboard:{writeText:async code=>copied.push(code)}},addEventListener:(kind,fn)=>{listeners[kind]=fn;}};const container=new Node('aside',doc);const storage={getItem:key=>memory.get(key)??null,setItem:(key,value)=>memory.set(key,value)};const editor=practice.mount({container,storage,runtime:{practiceFrameHTML:args=>JSON.stringify(args)},onLine:line=>selected.push(line)});return {container,editor,memory,listeners,copied,selected,el:name=>find(container,name),send(data,source){listeners.message({origin:'https://course.test',source:source||find(container,'practice-preview').contentWindow,data});}};}
+function setup(raw,shared,followLine){
+ const memory=shared||new Map(raw?[['icm-practice-drafts-v1',raw]]:[]),listeners={},copied=[],selected=[],writes=[];
+ const doc={activeElement:null,createElement:tag=>new Node(tag,doc)};
+ doc.defaultView={getComputedStyle:()=>({lineHeight:'29px',paddingTop:'7px',paddingBottom:'7px'}),location:{origin:'https://course.test'},navigator:{clipboard:{writeText:async code=>copied.push(code)}},addEventListener:(kind,fn)=>{listeners[kind]=fn;}};
+ const container=new Node('aside',doc);
+ const storage={getItem:key=>memory.get(key)??null,setItem:(key,value)=>{writes.push(key);memory.set(key,value);}};
+ const editor=practice.mount({container,storage,runtime:{practiceFrameHTML:args=>JSON.stringify(args)},onLine:line=>{selected.push(line);followLine?.(line,editor);}});
+ return {container,editor,memory,writes,listeners,copied,selected,el:name=>find(container,name),send(data,source){listeners.message({origin:'https://course.test',source:source||find(container,'practice-preview').contentWindow,data});}};
+}
 const one={id:'stage-1',title:'Stage 1 · Image',code:'let picture;\nasync function setup() {}',line:0,meaning:'Name the image.'};
 const two={id:'stage-3',title:'Stage 3 · RGBA',code:'const tile = 16;\nconst r = picture.pixels[i];',line:1,meaning:'Read red.'};
+
+const rowLesson={...one,code:'// 🌱\n\n  draw();\nnext();\nlast();',meaning:'Start here.'};
+
+test('choosing a guide row parks the caret at its first character without taking focus, saving or rerunning',()=>{
+ const s=setup();s.editor.setLesson(rowLesson);
+ const input=s.el('practice-code'),control=s.el('practice-run');control.focus();
+ input.setSelectionRange(1,3);
+ s.editor.setLine(2,'Draw the frame.');
+ assert.equal(input.selectionStart,7,'typing should begin at the first space on line 3');assert.equal(input.selectionEnd,7);
+ assert.equal(input.ownerDocument.activeElement,control);
+ assert.equal(s.el('practice-line-code').textContent,'  draw();');
+ assert.equal(s.el('practice-line-meaning').textContent,'Draw the frame.');
+ assert.equal(s.el('practice-gutter').children[2].getAttribute('aria-current'),'true');
+ assert.equal(s.editor.frame.srcWrites.length,1);assert.deepEqual(s.writes,[]);
+});
+
+test('the current row is highlighted at the measured text position after manual scroll',async()=>{
+ const s=setup();s.editor.setLesson(rowLesson);s.editor.setLine(2,'Draw the frame.');
+ const row=s.el('practice-current-row'),input=s.el('practice-code');
+ assert.ok(row,'the current line needs a highlight inside the editable source');
+ assert.equal(row.hidden,false);assert.equal(row.style.height,'29px');
+ input.scrollTop=19;await input.fire('scroll');
+ assert.equal(row.style.top,'46px','third row: 7px top padding + two 29px lines − 19px scroll');
+ assert.equal(s.el('practice-gutter').scrollTop,19);
+ input.clientHeight=70;s.editor.setLine(4,'Finish the frame.');
+ assert.ok(input.scrollTop>19,'a guide row below the viewport should scroll into view');
+ assert.ok(parseFloat(row.style.top)>=0&&parseFloat(row.style.top)+29<=input.clientHeight);
+ assert.equal(s.editor.frame.srcWrites.length,1);assert.deepEqual(s.writes,[]);
+});
+
+test('guide navigation from the end of a long line reveals the start of the next short line',()=>{
+ const s=setup(),longLine='  // '+ 'draw one square '.repeat(12);
+ s.editor.setLesson({...rowLesson,code:longLine+'\n}'});
+ const input=s.el('practice-code');input.focus();input.setSelectionRange(longLine.length,longLine.length);
+ input.scrollLeft=505.7;s.el('practice-run').focus();
+ s.editor.setLine(1,'Close the block.');
+ assert.equal(input.value[input.selectionStart],'}');
+ assert.equal(input.scrollLeft,0,'the selected closing brace must be visible');
+});
+
+test('textarea click and key navigation keep the active selection and scroll when the guide responds',async()=>{
+ const s=setup(undefined,undefined,(line,editor)=>editor.setLine(line,'Follow this row.'));
+ s.editor.setLesson(rowLesson);const input=s.el('practice-code');input.focus();input.scrollTop=16;input.scrollLeft=36;
+ for(const [event,start,end,direction,line] of [['click',9,9,'none',2],['keyup',17,20,'backward',3],['keyup',9,20,'forward',3],['keyup',9,20,'backward',2]]){
+  input.setSelectionRange(start,end,direction);await input.fire(event);
+  assert.equal(s.selected.at(-1),line);assert.equal(input.ownerDocument.activeElement,input);
+  assert.deepEqual([input.selectionStart,input.selectionEnd,input.selectionDirection],[start,end,direction]);
+  assert.equal(input.scrollTop,16);assert.equal(input.scrollLeft,36);assert.equal(s.el('practice-gutter').children[line].getAttribute('aria-current'),'true');
+ }
+ assert.equal(s.editor.frame.srcWrites.length,1);assert.deepEqual(s.writes,[]);
+});
+
+test('a differing draft retains its selection and scroll without a guide-row highlight',async()=>{
+ const s=setup();s.editor.setLesson(rowLesson);const input=s.el('practice-code');
+ input.value='// my note\n'+input.value;await input.fire('input');
+ input.setSelectionRange(2,8,'backward');input.scrollTop=20;input.scrollLeft=41;s.el('practice-run').focus();
+ s.editor.setLine(3,'Go to the next frame.');
+ assert.deepEqual([input.selectionStart,input.selectionEnd,input.selectionDirection,input.scrollTop],[2,8,'backward',20]);
+ assert.equal(input.scrollLeft,41);
+ assert.equal(input.value,'// my note\n'+rowLesson.code);
+ assert.ok(s.el('practice-gutter').children.every(n=>n.getAttribute('aria-current')===null));
+ const row=s.el('practice-current-row');assert.ok(row?.hidden,'no guide highlight may remain over different code');
+ assert.equal(s.editor.frame.srcWrites.length,1);assert.equal(s.writes.length,1,'only the edit writes a draft');
+ await s.el('practice-use-guide').click();
+ assert.equal(row.hidden,false);assert.equal(input.selectionStart,17,'restoring the example follows the selected line again');
+ await s.el('practice-undo').click();assert.equal(row.hidden,true);assert.equal(input.value,'// my note\n'+rowLesson.code);
+});
 
 test('phase changes replace clean practice source and run automatically beside the current explanation',()=>{
  assert.equal(typeof practice.mount,'function');const s=setup();s.editor.setLesson(one);assert.equal(s.el('practice-code').value,one.code);s.editor.setLesson(two);assert.equal(s.el('practice-code').value,two.code);assert.equal(JSON.parse(s.el('practice-preview').srcdoc).code,two.code);assert.equal(s.el('practice-line-meaning').textContent,'Read red.');const runs=s.el('practice-preview').srcWrites.length;s.editor.setLine(0,'Set block size.');assert.equal(s.el('practice-preview').srcWrites.length,runs,'line changes do not restart the clock');assert.equal(s.el('practice-line-code').textContent,'const tile = 16;');

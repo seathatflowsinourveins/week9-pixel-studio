@@ -14,17 +14,42 @@
   const toolbar=node('div','practice-toolbar'),runButton=button('practice-run','▶ Run',run),use=button('practice-use-guide','Use lesson code',useLesson),undo=button('practice-undo','Undo',undoLesson);undo.disabled=true;undo.title='Undo the last lesson code replacement';
   const tools=node('details','practice-tools'),toolsLabel=node('summary','practice-tools-label','Tools'),toolList=node('div','practice-tool-list');toolList.append(use,undo,button('practice-copy','Copy my code',copy),button('practice-download','Download',download));tools.append(toolsLabel,toolList);toolbar.append(runButton,tools);
   const save=node('p','practice-save');save.setAttribute('role','status');
-  const focused=node('div','practice-line'),lineTitle=node('span','practice-line-title'),lineCode=node('code','practice-line-code'),meaning=node('p','practice-line-meaning');focused.append(lineTitle,lineCode,meaning);
+  const focused=node('div','practice-line'),codeCell=node('div','practice-line-cell'),meaningCell=node('div','practice-line-cell'),lineTitle=node('span','practice-line-title'),lineCode=node('code','practice-line-code'),meaning=node('p','practice-line-meaning');
+  codeCell.append(lineTitle,lineCode);meaningCell.append(node('span','practice-line-title','Meaning'),meaning);focused.append(codeCell,meaningCell);
   const draftNote=node('p','practice-draft-note');
-  const codeArea=node('div','practice-source'),gutter=node('div','practice-gutter'),input=node('textarea','practice-code');gutter.setAttribute('aria-hidden','true');input.setAttribute('aria-label','Editable p5 practice code');input.spellcheck=false;input.wrap='off';input.autocapitalize='off';input.autocomplete='off';input.maxLength=200000;codeArea.append(gutter,input);
+  const codeArea=node('div','practice-source'),gutter=node('div','practice-gutter'),input=node('textarea','practice-code'),currentRow=node('div','practice-current-row');currentRow.hidden=true;currentRow.setAttribute('aria-hidden','true');gutter.setAttribute('aria-hidden','true');input.setAttribute('aria-label','Editable p5 practice code');input.spellcheck=false;input.wrap='off';input.autocapitalize='off';input.autocomplete='off';input.maxLength=200000;codeArea.append(currentRow,gutter,input);
   const outputLabel=node('p','practice-output-label','Your sketch · latest Run'),output=node('div','practice-output'),frame=node('iframe','practice-preview');frame.title='Your running p5 practice';frame.setAttribute('sandbox','allow-scripts allow-same-origin');output.append(frame);
   const status=node('p','practice-state');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
   root.append(top,hint,toolbar,save,focused,draftNote,codeArea,outputLabel,output,status);container.appendChild(root);
   function persist(){if(writable){try{if(!storage)throw Error('No storage');const latest=readRecords();latest[lesson.id]=records[lesson.id];storage.setItem(KEY,JSON.stringify({version:1,drafts:latest}));records=latest;}catch{writable=false;}}saveStatus();}
   function saveStatus(){save.textContent=writable?'Edits save on this device · account saving is separate.':'Draft storage unavailable or unreadable. Download a backup before leaving.';}
   function draft(){return lesson?records[lesson.id]:null;}
-  function renderLines(){if(!lesson)return;const matching=input.value===lesson.code;gutter.replaceChildren(...input.value.split('\n').map((_,i)=>{const n=node('span','',String(i+1));if(matching&&i===line)n.setAttribute('aria-current','true');return n;}));gutter.scrollTop=input.scrollTop;draftNote.textContent=matching?'':'Your draft differs from the guide. It is kept here. Open Tools → Use lesson code to follow the example again.';undo.disabled=!draft()?.previous;}
-  function setLine(index,text){if(!lesson)return;const lines=lesson.code.split('\n');line=Math.max(0,Math.min(Number(index)||0,lines.length-1));lineTitle.textContent='GUIDE LINE '+(line+1)+' / '+lines.length;lineCode.textContent=lines[line];meaning.textContent=text||'';renderLines();if(input.value===lesson.code&&doc.activeElement!==input){input.scrollTop=Math.max(0,line*24-60);gutter.scrollTop=input.scrollTop;}}
+  function positionRow(reveal=false){
+   const style=view.getComputedStyle(input),height=parseFloat(style.lineHeight),top=parseFloat(style.paddingTop)+line*height;
+   if(!currentRow.hidden){
+    if(reveal&&input.clientHeight&&(top<input.scrollTop||top+height>input.scrollTop+input.clientHeight)){
+     input.scrollTop=Math.max(0,top-(input.clientHeight-height)/2);
+    }
+    currentRow.style.top=(top-input.scrollTop)+'px';currentRow.style.height=height+'px';
+   }
+   // Allow the gutter to scroll as far as code with a horizontal scrollbar.
+   gutter.style.paddingBottom=(parseFloat(style.paddingBottom)+input.offsetHeight-input.clientHeight)+'px';
+   gutter.scrollTop=input.scrollTop;
+  }
+  function renderLines(followGuide=false){
+   if(!lesson)return;
+   const matching=input.value===lesson.code,lines=input.value.split('\n'),moveCaret=matching&&followGuide&&doc.activeElement!==input;
+   gutter.replaceChildren(...lines.map((_,i)=>{const n=node('span','',String(i+1));if(matching&&i===line)n.setAttribute('aria-current','true');return n;}));
+   currentRow.hidden=!matching;
+   if(moveCaret){
+    const start=lines.slice(0,line).reduce((offset,sourceLine)=>offset+sourceLine.length+1,0);
+    input.setSelectionRange(start,start);
+    input.scrollLeft=0;
+   }
+   positionRow(moveCaret);
+   draftNote.textContent=matching?'':'Your draft differs from the guide. It is kept here. Open Tools → Use lesson code to follow the example again.';undo.disabled=!draft()?.previous;
+  }
+  function setLine(index,text){if(!lesson)return;const lines=lesson.code.split('\n');line=Math.max(0,Math.min(Number(index)||0,lines.length-1));lineTitle.textContent='GUIDE LINE '+(line+1)+' / '+lines.length;lineCode.textContent=lines[line];meaning.textContent=text||'';renderLines(true);}
   function setLesson(next){if(!next||!validID.test(next.id)||typeof next.code!=='string')throw TypeError('Expected a course phase and its code.');const changed=!lesson||lesson.id!==next.id||lesson.code!==next.code;if(writable&&(!lesson||lesson.id!==next.id)){try{records=readRecords();}catch{writable=false;}}lesson={...next};let saved=records[next.id];if(!saved){saved=records[next.id]={code:next.code,base:next.code};}else if(saved.code===saved.base){saved.code=next.code;saved.base=next.code;}title.textContent=next.title;if(changed)input.value=saved.code;setLine(next.line,next.meaning);saveStatus();if(changed)previewRestoredCode();}
   function remember(){if(!lesson)return;draft().code=input.value;persist();renderLines();}
   function previewRestoredCode(){
@@ -38,13 +63,13 @@
    status.textContent='Draft paused. Press Run to try it, or choose Tools → Use lesson code for the example.';
   }
   function run(){if(!lesson)return;token='practice-'+Date.now()+'-'+(++sequence);runSource=input.value;output.hidden=false;outputLabel.textContent=/^stage-[5-7]$/.test(lesson.id)&&input.value===lesson.code?'Your sketch · real-time run':'Your sketch · latest Run';failed=false;status.classList.remove('error');status.textContent='Starting p5…';frame.srcdoc=runtime.practiceFrameHTML({code:runSource,token});}
-  function useLesson(){if(!lesson)return;const current=draft();if(input.value!==lesson.code)current.previous={code:input.value,base:current.base};current.code=lesson.code;current.base=lesson.code;input.value=lesson.code;renderLines();persist();run();}
-  function undoLesson(){const current=draft();if(!current?.previous)return;const old={code:input.value,base:current.base};current.code=current.previous.code;current.base=current.previous.base;current.previous=old;input.value=current.code;renderLines();persist();previewRestoredCode();}
+  function useLesson(){if(!lesson)return;const current=draft();if(input.value!==lesson.code)current.previous={code:input.value,base:current.base};current.code=lesson.code;current.base=lesson.code;input.value=lesson.code;renderLines(true);persist();run();}
+  function undoLesson(){const current=draft();if(!current?.previous)return;const old={code:input.value,base:current.base};current.code=current.previous.code;current.base=current.previous.base;current.previous=old;input.value=current.code;renderLines(true);persist();previewRestoredCode();}
   async function copy(){try{await view.navigator.clipboard.writeText(input.value);save.textContent='Your practice code copied. Paste into sketch.js in your duplicated p5 account sketch.';}catch{input.focus();input.select?.();save.textContent='Select and copy this practice code, or use Download.';}}
   function download(){const blob=new Blob([input.value+'\n'],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob),a=node('a','');a.href=url;a.download='sketch.js';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);save.textContent='Downloaded sketch.js. Keep sample.png with it when moving to p5.';}
   input.addEventListener('input',()=>{remember();status.textContent='Code changed · press Run to see your edit.';});
-  input.addEventListener('scroll',()=>{gutter.scrollTop=input.scrollTop;});
-  function chooseLine(){if(lesson&&input.value===lesson.code&&typeof onLine==='function')onLine(input.value.slice(0,input.selectionStart).split('\n').length-1);}
+  input.addEventListener('scroll',()=>positionRow());
+  function chooseLine(){if(lesson&&input.value===lesson.code&&typeof onLine==='function'){const cursor=input.selectionDirection==='forward'?input.selectionEnd:input.selectionStart;onLine(input.value.slice(0,cursor).split('\n').length-1);}}
   input.addEventListener('click',chooseLine);input.addEventListener('keyup',chooseLine);
   view.addEventListener('message',event=>{if(!token||event.source!==frame.contentWindow||event.origin!==view.location.origin||event.data?.token!==token)return;const data=event.data;if(data.kind==='practice-error'){failed=true;status.classList.add('error');status.textContent=input.value!==runSource?'Last run: '+String(data.message)+' · Code changed; press Run.':'p5: '+String(data.message)+' · Fix the line, then Run again.';}if(data.kind==='practice-ready'&&!failed){status.classList.remove('error');status.textContent=input.value!==runSource?'Preview shows the last run · code changed, press Run.':'p5 '+data.version+' running · '+data.width+' × '+data.height+' canvas';}});
   return {setLesson,setLine,getCode:()=>input.value,frame};
