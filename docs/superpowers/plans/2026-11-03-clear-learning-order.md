@@ -7,8 +7,10 @@ Stack: existing native browser UI, generated course data and pinned p5.js.
 - [x] Test the sequential navigation model; connect ordered stage prerequisites and the assignment bridge to generated data.
 - [x] Add visible line position, first-line navigation, compact stage route, responsive code/meaning columns and explicit row/grid/mosaic continuation.
 - [x] Connect Stage 7 directly to Finish without reloading the editor. Update README and the manifest.
-- [ ] Run focused/full native checks, independent review, desktop/mobile browser checks and publish/verify the existing Pages site.
+- [x] Run focused/full native checks, independent review, desktop/mobile browser checks and publish/verify the existing Pages site.
 
 Preserve native p5 authentication and saved project, all notes and self-reported completion. No dependency changes or new public services.
 
 Local verification:101 native tests pass; generated explanation coverage614 line occurrences plus355 foundation lines. Browser checks verified first-use start, image/row/grid/mosaic route, contextual endings, line navigation, responsive columns and Finish in place. Publishing follows these checks.
+
+Published implementation6e9b777 via successful Pages run41747922695. Hosted bundle47fa26959262df99:86/86 asset hashes match. The live guide has the ordered prerequisites, Line14/21, side-by-side code/meaning at690px, and the kept p5 project link. The current Stage3 walkthrough was returned to First line for the learner. No assignment completion or observations were generated.
