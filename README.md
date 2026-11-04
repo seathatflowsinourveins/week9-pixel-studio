@@ -21,6 +21,8 @@ Open **Finish** to record your concept, partner roles, iterations, full-minute v
 
 Desktop uses the guide and p5 side by side. Small screens stack the panes. The supplied window-and-plant image is a practice asset, not a required assignment template. The final creative concept, source and observations are yours.
 
+For the group, open **[Samuel’s image-to-circles walkthrough](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosystem/group-study.html)**. Follow all 32 nonblank source lines, move through the intended minute, and select a pixel to connect RGBA addresses, average brightness, HSB hue and circle diameter. This separate teaching model uses our practice image; Samuel’s original code and image remain linked on p5. A clock note explains a p5 2.3.4 timing issue found in the reference source and gives a correction for a separate revision.
+
 ## Continue on another device
 
 Open the same dashboard URL. To move learning notes, saved steps and the Finish desk: **Progress → Export progress**, then **Progress → Import** on the other device. Review the preview and choose **Import and merge**. Matching imported lesson notes and positions replace local values; unrelated notes remain. In Finish, nonempty imported fields replace matching fields, other fields remain, and self-checks are combined.

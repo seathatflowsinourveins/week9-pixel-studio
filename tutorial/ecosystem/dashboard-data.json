@@ -189,6 +189,12 @@
   ],
   "repos": [
     {
+      "name": "Group study · Samuel’s image to circles",
+      "role": "Interactive companion · line by line",
+      "url": "./group-study.html",
+      "detail": "Read the linked sketch together. Move time, follow a pixel and see how RGB becomes a circle’s size and HSB color. Original credited to samuelgoldman."
+    },
+    {
       "name": "Code Hike / focus",
       "role": "Design reference · no installed dependency",
       "url": "https://codehike.org/docs/code/focus",

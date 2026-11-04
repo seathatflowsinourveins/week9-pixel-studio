@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Group study · Image to circles</title>
+<link rel="stylesheet" href="./group-study.css">
+<script defer src="../vendor/p5.min.js"></script>
+<script defer src="./group-study-core.js"></script>
+<script defer src="./group-lessons.js"></script>
+<script defer src="./group-study.js"></script>
+</head>
+<body>
+<a class="skip" href="#reading">Skip to the walkthrough</a>
+<header class="top"><a class="brand" href="./">PIXEL STUDIO <span>/ GROUP STUDY</span></a><a href="./learn.html?view=editor#stage-4">Return to Phase 4 ↗</a></header>
+<div class="page">
+<section class="intro"><div><p class="eyebrow">SAMUEL’S SKETCH · A SHARED READING</p><h1>An image becomes circles.</h1><p>One pixel gives the numbers. Time changes the picture.</p></div><div class="source-credit">By <a href="https://editor.p5js.org/samuelgoldman/sketches/Q1TY34oqc" target="_blank" rel="noopener">samuelgoldman ↗</a><br><span>“Week 008: Partner Assignment copy”<br>Source checked 4 Nov 2026 · p5 2.3.4</span></div></section>
+<main class="workspace">
+<nav class="chapters" aria-label="Reading chapters"><span class="eyebrow">IN ORDER</span><button data-section="Prepare">01 <span>Prepare</span></button><button data-section="Time">02 <span>Time</span></button><button data-section="Grid">03 <span>Grid</span></button><button data-section="Color">04 <span>Color</span></button><button data-section="Draw">05 <span>Draw</span></button><a href="#group">Group notes ↓</a></nav>
+<section class="reading panel" id="reading" aria-labelledby="step-title">
+<div class="card-top"><span class="eyebrow" id="step-section">PREPARE</span><span class="tag" id="step-position"></span></div>
+<label class="field-label" for="step-select">Choose a source line</label><select id="step-select"></select>
+<div class="current-step" aria-live="polite"><span class="line-number" id="line-number"></span><h2 id="step-title"></h2><p class="meaning" id="step-meaning"></p><p id="step-detail"></p></div>
+<section class="diagram" aria-labelledby="diagram-title"><div class="card-top"><span class="eyebrow">SEE THIS LINE</span><span class="tag">LIVE NUMBERS</span></div><h3 id="diagram-title"></h3><div id="diagram"></div></section>
+<div class="try"><span class="eyebrow">ONE SMALL STEP</span><p id="step-try"></p></div>
+<div class="step-nav"><button id="previous">← Previous line</button><button class="primary" id="next">Next line →</button></div>
+<p class="quiet source-note">Line numbers match the original <code>sketch.js</code> checked above. Blank lines make space; they do nothing. Open the original to read its code.</p>
+</section>
+<section class="lab panel" aria-labelledby="lab-title">
+<div class="card-top"><h2 id="lab-title">Try the idea in p5</h2><span class="tag" id="model-status" role="status">Loading image…</span></div>
+<p class="quiet model-note">Our teaching model · window-and-plant sample.<br>Samuel’s original uses <code>COLORFUL.avif</code>.</p>
+<div class="view-tabs" aria-label="Choose illustration"><button id="show-model" aria-pressed="true">Interactive model</button><button id="show-original" aria-pressed="false">Original p5 editor ↗</button></div>
+<div id="model-view"><div class="picture-pair"><div><div id="model-canvas" class="canvas-wrap"></div><p class="caption">Circles drawn by p5 · 400 × 400</p></div><div class="source-column"><button id="source-pick" aria-label="Select a source pixel. Arrow keys move one grid step."><img src="../assets/sample.png" alt="Our window-and-plant practice image, stretched to a square for this model." width="400" height="400"><span id="sample-marker" aria-hidden="true"></span></button><p class="caption">Click the source<br>to follow one sample.</p><label class="check"><input id="show-cell" type="checkbox"> Mark its cell</label><p class="sample-caption" id="sample-caption">Preparing source…</p></div></div>
+<div class="time-label"><label for="seconds">Time <output id="seconds-output">0 s / 60 s</output></label><span id="time-state">Paused</span></div><input id="seconds" type="range" min="0" max="60" step="0.1" value="0">
+<div class="playback"><button class="primary" id="play">Play 60 seconds</button><button id="restart">Restart</button><div class="presets" aria-label="Time presets"><button data-seconds="0">0 s</button><button data-seconds="30">30 s</button><button data-seconds="60">60 s</button></div></div>
+<div class="metrics"><div><span>BACKGROUND HUE</span><strong id="hue-value">30°</strong></div><div><span>GRID STEP</span><strong id="spacing-value">5 px</strong></div><div><span>CIRCLES ATTEMPTED</span><strong id="count-value">6,400</strong></div></div>
+<p class="quiet">At elapsed time 60 s, the final state holds. See the original’s clock note below. Restart resets to 0; then press Play for a full viewing. The model starts paused.</p></div>
+<div id="original-view" hidden><p>The official editor may need a full browser tab. The guide cannot select lines or sign in inside that other site.</p><p><a class="link-button" href="https://editor.p5js.org/samuelgoldman/sketches/Q1TY34oqc" target="_blank" rel="noopener">Open original editor ↗</a> <a class="link-button" href="https://editor.p5js.org/samuelgoldman/full/Q1TY34oqc" target="_blank" rel="noopener">Watch original ↗</a></p><div id="original-frame"></div><p class="quiet">Original code and image stay on p5. Our line explanations remain on the left. Return to Interactive model if the editor is blank.</p></div>
+<noscript><p>This model needs JavaScript. You can still open the original sketch and read the group notes below.</p></noscript>
+</section>
+</main>
+<section id="group" class="group-section"><div><p class="eyebrow">TELL YOUR GROUP</p><h2>Five ideas. In this order.</h2><p>Use these as speaking notes. Add what your group actually sees.</p></div><ol class="talk-track"><li><strong>Load.</strong> We wait for the image, resize it, then read its pixels.</li><li><strong>Time.</strong> A minute of elapsed animation becomes 0 to 1. Check the original’s clock note below.</li><li><strong>Sample.</strong> A grid chooses pixels. Each pixel has RGBA numbers.</li><li><strong>Translate.</strong> Average RGB controls size. Time and brightness control hue.</li><li><strong>Draw.</strong> Many circles rebuild the image. When progress reaches 1, it holds.</li></ol></section>
+<section class="bottom-grid"><details class="panel"><summary>Before calling the assignment finished</summary><ul><li>Watch the complete minute together. Compare start, middle and end.</li><li>Press Run again in the original and check that it repeats the same sequence.</li><li>The source is fixed at 400 × 400. Make a separate version with responsive, relative sizing and test it fullscreen.</li><li>Keep at least three iterations and three full viewings with your own timestamped notes.</li><li>Record your color observations and partner roles. Check the submission links.</li></ul><a href="https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9" target="_blank" rel="noopener">Read the actual Week 9 assignment ↗</a></details><details class="panel"><summary>Words and references</summary><p><code>let</code> = name a value you may replace. <code>map</code> = change a number’s scale. <code>floor</code> = round down. <code>min</code> = choose the smaller number. <code>%</code> = remainder, used here to wrap hue.</p><p><a href="https://p5js.org/reference/p5/colorMode/" target="_blank" rel="noopener">HSB color</a> · <a href="https://p5js.org/reference/p5.Image/pixels/" target="_blank" rel="noopener">RGBA pixels</a> · <a href="https://p5js.org/reference/p5/ellipse/" target="_blank" rel="noopener">Ellipse size</a></p><p>Original source reviewed directly through its public p5 project route. No original image or full sketch source is republished here. The model and explanations are a separate learning companion.</p></details></section>
+<details class="panel clock-note"><summary>Clock note · a correction for a separate revision</summary><p>The original saves <code>startTime</code> during setup. In p5 2.3.4, the clock resets again before draw begins. The saved setup reading can therefore make the first progress values negative and delay the intended start. <code>min</code> only caps the upper end.</p><p>For your own revision: remove the assignment to <code>startTime</code> in setup. At the beginning of draw, before calculating progress, add:</p><pre><code>if (startTime === undefined) {
+  startTime = millis();
+}</code></pre><p>This saves the first draw reading once. Our model uses chosen elapsed seconds from 0 to 60; it illustrates that intended timeline, rather than this clock-reset side effect. With a very slow load the original’s grid spacing can become zero or negative and stall its loops; this is a source-review finding, not a stall observed here. The original remains unchanged.</p><a href="https://github.com/processing/p5.js/blob/v2.3.4/src/core/main.js#L240-L277" target="_blank" rel="noopener">Check the pinned p5 clock implementation ↗</a></details>
+<footer>Read → move time → follow a pixel → explain together. <a href="./">Back to your dashboard ↗</a></footer>
+</div>
+</body>
+</html>

@@ -24,7 +24,7 @@ test('static export contains all stages and resolves assets below a project URL'
  assert(![...names].some(name=>name.split('/').some(part=>part.startsWith('.'))),'Public manifest must exclude dotfiles omitted by the Pages uploader');
  for(const name of names)assert(!/(^|\/)(backups|\.runtime|my-project|journal|evidence|node_modules|\.git)(\/|$)|\.(cjs|test.js|log|zip)$/.test(name),name);
  for(let n=1;n<=7;n++)assert(names.has('workspace/stage-0'+n+'/sketch.js'));
- for(const page of ['index.html','ecosystem/index.html','ecosystem/learn.html','ecosystem/loops.html']){
+ for(const page of ['index.html','ecosystem/index.html','ecosystem/learn.html','ecosystem/loops.html','ecosystem/group-study.html']){
   const html=await fs.readFile(path.join(out,page),'utf8'),base=new URL(page,'https://example.test/some/nested/project/');
   if(page.startsWith('ecosystem/')){
    const sourceHTML=await fs.readFile(path.join(__dirname,'../tutorial',page),'utf8');
