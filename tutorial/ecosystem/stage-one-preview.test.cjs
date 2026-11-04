@@ -6,11 +6,13 @@ const vm = require('node:vm');
 
 test('returning from the pixel inspector keeps the Phase 1 iframe in place while it reports ready', async () => {
   const elements = new Map(), moves = [], srcdocs = [], listeners = {};
+  let testDocument;
   const get = id => elements.get(id);
   const pixels = new Uint8ClampedArray(320 * 240 * 4);
   function node() {
     return {
-      children: [], parentElement: null,
+      children: [], parentElement: null, dataset: {},
+      get ownerDocument() { return testDocument; },
       set id(value) { elements.set(value, this); },
       get previousElementSibling() { return this.parentElement?.children[this.parentElement.children.indexOf(this) - 1] || null; },
       get nextElementSibling() { return this.parentElement?.children[this.parentElement.children.indexOf(this) + 1] || null; },
@@ -46,6 +48,7 @@ test('returning from the pixel inspector keeps the Phase 1 iframe in place while
     window: {
       projectCore: require('../project-core.cjs'), courseRuntime: require('./course-runtime.js'),
       pixelFlowCore: require('./pixel-flow-core.js'),
+      lineIllustration: require('./line-illustration.js'),
       pixelFlow: {mount({container, preview}) {
         container.append(figure);
         return {update() {}, attachPreview() { if (preview.parentElement !== figure) figure.append(preview); }};
@@ -56,6 +59,7 @@ test('returning from the pixel inspector keeps the Phase 1 iframe in place while
     Image: class { set src(_) { this.onload(); } }, URLSearchParams, Event,
     localStorage: {getItem: () => null, setItem() {}}, setTimeout, clearTimeout
   };
+  testDocument = context.document;
   vm.runInNewContext(read('learn.js'), context);
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(srcdocs.length, 1, get('lesson-subtitle').textContent);
