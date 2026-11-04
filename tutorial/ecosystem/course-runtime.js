@@ -73,5 +73,68 @@ let checks=0;const readyCheck=setInterval(()=>{
   const displayPercent=stage===0&&code.includes('createCanvas(320, 240)')?50:100;
   return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;background:#0c121c;overflow:hidden}canvas{display:block;width:'+displayPercent+'%!important;height:auto!important}</style><script src="../vendor/p5.min.js"></script></head><body><main></main><script>'+executable+'\n'+bridge+'</script></body></html>';
  }
- return {lessonProject,frameHTML,meaningForLine};
+ // Runs inside the practice iframe, before either p5 or the learner's script.
+ function observePractice(token) {
+   const origin = new URL(document.baseURI).origin;
+   let failed = false;
+   let checks = 0;
+   const send = (kind, extra) => parent.postMessage({kind, token, ...extra}, origin);
+   const timer = setInterval(checkCanvas, 100);
+
+   function fail(message) {
+     if (failed) return;
+     failed = true;
+     clearInterval(timer);
+     send('practice-error', {message: String(message)});
+   }
+
+   window.addEventListener('error', event => {
+     if (event.message) fail(event.message);
+     else if (event.target?.tagName === 'SCRIPT') fail('The p5 library could not load. Run the sketch again.');
+   }, true);
+   window.addEventListener('unhandledrejection', event => fail(event.reason?.message || event.reason));
+
+   function checkCanvas() {
+     const canvas = document.querySelector('canvas');
+     if (canvas?.width && canvas.height && window.p5) {
+       try {
+         // A learner may draw one square on a transparent canvas. Inspect the
+         // whole canvas only when the inexpensive corner check is transparent.
+         let context = canvas.getContext('2d');
+         if (!context) {
+           const sampler = document.createElement('canvas');
+           sampler.width = canvas.width;
+           sampler.height = canvas.height;
+           context = sampler.getContext('2d');
+           context.drawImage(canvas, 0, 0);
+         }
+         const painted = context.getImageData(0, 0, 1, 1).data[3] ||
+           context.getImageData(0, 0, canvas.width, canvas.height).data.some((v, i) => i % 4 === 3 && v > 0);
+         if (painted) {
+           clearInterval(timer);
+           send('practice-ready', {version: window.p5.VERSION, width: canvas.width, height: canvas.height});
+           return;
+         }
+       } catch (error) {
+         fail(error.message);
+         return;
+       }
+     }
+     if (++checks >= 150) fail('No painted canvas yet. Check createCanvas() and draw a shape or background, then Run again.');
+   }
+ }
+
+ function practiceFrameHTML({code, token}) {
+   // Keep HTML parsing away from learner strings such as "</script>" while
+   // installing the original JavaScript as a classic global-mode sketch.
+   const asScriptString = value => JSON.stringify(String(value)).replace(/</g, '\\u003c');
+   return `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><base href="../assets/">
+<style>html,body{margin:0;background:#0c121c}canvas{display:block;width:100%!important;height:auto!important}</style>
+<script>(${observePractice.toString()})(${asScriptString(token)});</script>
+<script src="../vendor/p5.min.js"></script></head><body><main></main>
+<script>(()=>{const sketch=document.createElement('script');sketch.textContent=${asScriptString(code)};document.body.appendChild(sketch);})();</script>
+</body></html>`;
+ }
+ return {lessonProject,frameHTML,meaningForLine,practiceFrameHTML};
 });

@@ -367,3 +367,23 @@ test('browser script exposes the same host API without CommonJS', () => {
   assert.equal(typeof context.window.p5EditorHost.mount, 'function');
   assert.equal(context.window.p5EditorHost.safeURL(ROW), ROW);
 });
+
+test('automatic practice follows supplied lessons while account navigation remains stable', () => {
+  const aside=container(),received=[];
+  aside.ownerDocument.defaultView.practiceEditor={mount:options=>{
+    options.container.appendChild(aside.ownerDocument.createElement('textarea'));
+    return {setLesson:lesson=>received.push(lesson),setLine(){},getCode:()=> 'my local draft'};
+  }};
+  const instance=host.mount({container:aside,url:ROW,practice:true});
+  assert.equal(typeof instance.setLesson,'function');
+  instance.setLesson({id:'stage-1',code:'image code'});
+  instance.setLesson({id:'stage-3',code:'rgba code'});
+  assert.deepEqual(received.map(lesson=>lesson.id),['stage-1','stage-3']);
+  assert.equal(instance.getPracticeCode(),'my local draft');
+  assert.deepEqual(instance.iframe.srcWrites,[ROW]);
+  const account=find(aside,'p5-mode-account'),practice=find(aside,'p5-mode-practice');
+  assert.equal(find(aside,'p5-native-surface').hidden,true);
+  account.click();assert.equal(find(aside,'p5-native-surface').hidden,false);
+  practice.click();assert.equal(find(aside,'p5-native-surface').hidden,true);
+  assert.deepEqual(instance.iframe.srcWrites,[ROW]);
+});

@@ -181,11 +181,44 @@
       view.addEventListener('storage', refreshSavedProject);
     }
     doc.addEventListener('DOMContentLoaded', refreshSavedProject);
+    var practice;
     container.appendChild(header);
+    if (options.practice && view?.practiceEditor) {
+      container.className = (container.className || '') + ' has-practice';
+      var modes = element('div', 'p5-editor-mode-tabs');
+      modes.setAttribute('role', 'group');
+      modes.setAttribute('aria-label', 'Choose your p5 workspace');
+      var practiceTab = element('button', 'p5-mode-practice', 'Practice · follows phase');
+      var accountTab = element('button', 'p5-mode-account', 'Account editor');
+      practiceTab.type = accountTab.type = 'button';
+      practiceTab.textContent = 'Practice · auto';
+      open.textContent = 'Save in p5 ↗';
+      modes.appendChild(practiceTab);modes.appendChild(accountTab);modes.appendChild(open);
+      header.insertBefore ? header.insertBefore(modes, toolbar) : header.appendChild(modes);
+      var localSurface = element('div', 'p5-practice-surface');
+      container.appendChild(localSurface);
+      practice = view.practiceEditor.mount({container:localSurface, storage:options.practiceStorage,
+        runtime:view.courseRuntime, onLine:options.onPracticeLine});
+      function chooseMode(local) {
+        localSurface.hidden = !local;surface.hidden = local;
+        toolbar.hidden = local;help.hidden = local;
+        practiceTab.setAttribute('aria-pressed', String(local));
+        accountTab.setAttribute('aria-pressed', String(!local));
+      }
+      practiceTab.addEventListener('click', function(){chooseMode(true);});
+      accountTab.addEventListener('click', function(){chooseMode(false);});
+      chooseMode(true);
+    }
     container.appendChild(surface);
-    container.appendChild(element('p', 'p5-native-note',
+    container.appendChild(element('p', 'p5-native-note', practice ?
+      'Practice follows your phase and saves drafts on this device. Use Copy my code, then Open p5 & save for your account.' :
       'Run and edit here. Sign in and save in the full p5 tab. Pane edits stay here until you copy or download them.'));
     var instance = { iframe: iframe, setSuggestedProject: setSuggestedProject, loadSuggested: loadSuggested };
+    if (practice) {
+      instance.setLesson = practice.setLesson;
+      instance.setLine = practice.setLine;
+      instance.getPracticeCode = practice.getCode;
+    }
     mounts.set(container, instance);
     iframe.src = savedURL || suggestedURL;
     return instance;

@@ -1,0 +1,11 @@
+# Automatic p5 practice
+
+The [primary p5 async/await reference](https://p5js.org/reference/p5/async_await/) and [loadImage reference](https://p5js.org/reference/p5/loadImage/) were checked through Context7's official-reference index. Its repository index does not list the pinned2.3.4 snapshot, so version identity is verified separately from the bundled library and maintained upstream code. Existing p5.js2.3.4 is retained after the same-day upstream checkpoint: no dependency/API migration is needed. Recheck when changing the pin or frame API.
+
+The official account iframe has no source-update connection in this project. Changing its URL would discard pane edits and load a starter instead of the generated phase program. A native textarea plus the existing p5 library provides actual automatic editable practice without introducing another editor dependency or changing account authentication.
+
+Each stage and row/grid chapter has a distinct draft. Clean source follows guide settings; edited code stays put until Use lesson code, which can be undone. Only explicit edits/replacements persist. Passive Run and phase visits cannot overwrite another tab's saved code. Writes patch one phase into the latest validated store; unknown storage versions remain untouched. Drafts stay on the device, separate from account Save and workbook observations. Copy my code and Download export the actual editable draft.
+
+The practice frame executes a classic global p5 script, resolves the supplied sample through a native HTML base, and installs error reporting before learner code. It applies none of the teaching preview's draw/time wrappers. Current source, origin and token gate frame messages. The same-origin frame is a convenience runner for intentional learner JavaScript; it is not described as a security isolation boundary.
+
+The existing account iframe remains mounted behind Account editor. Phase/line changes do not navigate it or save account source. Save in p5 opens the normal account route; the learner copies their final code and uses native p5 Save. Same-page line selection updates explanations without rerunning the minute. Drafts with edited lines are explicitly distinguished from the guide explanations.
