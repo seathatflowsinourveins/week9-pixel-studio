@@ -24,6 +24,24 @@ In [Stage 3](https://seathatflowsinourveins.github.io/week9-pixel-studio/ecosyst
 
 Changing steps focuses a relevant line by its role in the code, including when the color rule changes. Manual line selection remains available. These controls explain the supplied code and retain the official p5 editor beside the guide.
 
+## Read in this order
+
+**Image → one row → grid → mosaic → RGBA → focus → one minute → replay / resize → Finish.**
+
+Every stage shows Learn first, Make and For the assignment. Use Next line to read every code line and First line to start over. More detail expands the longer explanation; the numbered All lines table keeps code beside meaning. Closing braces name the block they end.
+
+| Stage | Learn first | Practice to show |
+| --- | --- | --- |
+| 1 | First code, variables | Explain loading an image and drawing it |
+| 2 | RGB color, loops | Draw a row, add rows, sample a mosaic |
+| 3 | Arrays, RGBA | Trace addresses and stored color values |
+| 4 | Decisions, mapping | Explain the colored region and changed region |
+| 5 | Animation, elapsed time | Watch a real minute from beginning to end |
+| 6 | Coordinates, functions | Replay twice and test window sizes |
+| 7 | Color, debugging | Keep Stage 6 code; document actual experiments |
+
+Stage 1’s continuation opens the loop lesson. Row → grid stays in that lesson; grid → mosaic opens Stage 2. Save or copy pane edits before changing pages. Stage 7 opens Finish in place, keeping p5 available. Additional foundations are practice links; the advanced project example is optional.
+
 ## Twenty foundations
 
 ### 01 · Drawing and code

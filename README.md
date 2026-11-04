@@ -41,6 +41,8 @@ Before switching, keep your latest pane edits with p5 **File → Download**, or 
 | 6 | Replay and present | Responsive sizing and repeatable playback |
 | 7 | Refine and document | Iterations, timed observations, collaboration |
 
+The route starts with the image, then the row and grid loop lessons before the mosaic. RGB comes before sampling. Each closing brace names the function, loop or condition it ends. Stage 7 keeps the Stage 6 presentation program and opens **Finish** for your actual project evidence.
+
 See the **[complete manifest](MANIFEST.md)** for every stage, action count, foundation and direct link. See the **[original assignment](https://github.com/ITPNYU/ICM-2026-Media/wiki/Homework-Mimi-07#week-9)** for class requirements and submission details.
 
 ## Run or edit locally

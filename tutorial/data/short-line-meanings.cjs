@@ -53,6 +53,5 @@ module.exports = [
   {pattern: String.raw`^paintTiles\(t \* strength\);$`, meaning: 'Draw using time progress multiplied by final strength.'},
   {pattern: String.raw`^function mousePressed\(\) \{$`, meaning: 'Run this group when the sketch receives a mouse press.'},
   {pattern: String.raw`^function windowResized\(\) \{$`, meaning: 'Respond when the available window size changes.'},
-  {pattern: String.raw`^resizeCanvas\(windowWidth, windowHeight\);$`, meaning: 'Resize the canvas to the new window dimensions.'},
-  {pattern: String.raw`^\}$`, meaning: 'End this group.'}
+  {pattern: String.raw`^resizeCanvas\(windowWidth, windowHeight\);$`, meaning: 'Resize the canvas to the new window dimensions.'}
 ];

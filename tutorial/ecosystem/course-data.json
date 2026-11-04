@@ -215,7 +215,24 @@
           "solution": "Upload the real file, match its exact path in loadImage, and run. If loading fails, inspect the first error and filename before changing drawing mathematics. Save the working sketch and note your source credit."
         }
       ],
-      "idea": "Your source is the material; the canvas is the surface where you arrange it. Enlarging its display does not add detail to the file."
+      "idea": "Your source is the material; the canvas is the surface where you arrange it. Enlarging its display does not add detail to the file.",
+      "roadmap": {
+        "number": 1,
+        "tag": "Image",
+        "learnFirst": [
+          {
+            "id": "00-start",
+            "title": "Meet your drawing machine"
+          },
+          {
+            "id": "01-language",
+            "title": "Read code and name values"
+          }
+        ],
+        "build": "Load one picture and draw it on a canvas.",
+        "assignment": "Choose a source image with your partner and name what you want viewers to notice.",
+        "proof": "Run your saved sketch and point out the difference between the image size and the canvas size."
+      }
     },
     {
       "title": "Make a mosaic",
@@ -403,7 +420,24 @@
           "solution": "Dividing that x by the source width gives 0.5. Multiplying by canvas width places the block halfway across the canvas, even when the two rectangles have different dimensions."
         }
       ],
-      "idea": "A mosaic reads a few locations and makes a new drawing from them. Sampling distance controls both detail and the number of blocks."
+      "idea": "A mosaic reads a few locations and makes a new drawing from them. Sampling distance controls both detail and the number of blocks.",
+      "roadmap": {
+        "number": 2,
+        "tag": "Mosaic",
+        "learnFirst": [
+          {
+            "id": "09-color",
+            "title": "Use color to direct attention"
+          },
+          {
+            "id": "07-loops",
+            "title": "Repeat instructions across a grid"
+          }
+        ],
+        "build": "Visit the picture row by row and draw a block in each sampled color.",
+        "assignment": "Try two block sizes to see which details of your image become hard to recognize.",
+        "proof": "Save your chosen block size and describe one detail it reveals or hides."
+      }
     },
     {
       "title": "Find a pixel’s four numbers",
@@ -568,7 +602,24 @@
           "solution": "The transformed displayed color is [100, 215, 180, 255] if only green is inverted. Red, blue and opacity stay unchanged. Reading from the original again preserves a reliable comparison."
         }
       ],
-      "idea": "An address tells you where to look. The number stored at that address tells you a channel amount. They are different kinds of information."
+      "idea": "An address tells you where to look. The number stored at that address tells you a channel amount. They are different kinds of information.",
+      "roadmap": {
+        "number": 3,
+        "tag": "RGBA",
+        "learnFirst": [
+          {
+            "id": "08-collections",
+            "title": "Store lists and related information"
+          },
+          {
+            "id": "12-rgba",
+            "title": "Read RGBA: four numbers make one pixel"
+          }
+        ],
+        "build": "Find a pixel’s four color entries and draw a block using its red, green and blue.",
+        "assignment": "Trace one sampled color so you know exactly which numbers your rule can change.",
+        "proof": "For one pixel, show its four addresses and the color values stored there."
+      }
     },
     {
       "title": "Choose what keeps its color",
@@ -736,7 +787,24 @@
           "solution": "Half strength mixes original channels with the gray target; full strength makes those channels equal outside the region. Note whether partial color better supports the idea than complete desaturation."
         }
       ],
-      "idea": "A condition chooses where a rule applies; strength chooses how far the rule changes each selected color."
+      "idea": "A condition chooses where a rule applies; strength chooses how far the rule changes each selected color.",
+      "roadmap": {
+        "number": 4,
+        "tag": "Focus",
+        "learnFirst": [
+          {
+            "id": "04-decisions",
+            "title": "React to the mouse and make decisions"
+          },
+          {
+            "id": "06-mapping",
+            "title": "Convert one range into another"
+          }
+        ],
+        "build": "Keep color on the left and turn blocks beyond a chosen boundary toward gray.",
+        "assignment": "Use color to guide attention toward one part of the picture.",
+        "proof": "Point to a block on each side and explain why their colors follow different rules."
+      }
     },
     {
       "title": "Shape one minute",
@@ -901,7 +969,24 @@
           "solution": "A final strength of one-half covers only half the color journey over the same minute. Compare whether the quieter endpoint communicates your intended change."
         }
       ],
-      "idea": "Time progress and transformation strength are separate values. A minute can travel toward a subtle endpoint or a dramatic one."
+      "idea": "Time progress and transformation strength are separate values. A minute can travel toward a subtle endpoint or a dramatic one.",
+      "roadmap": {
+        "number": 5,
+        "tag": "Minute",
+        "learnFirst": [
+          {
+            "id": "03-animation",
+            "title": "Understand setup draw and motion"
+          },
+          {
+            "id": "14-time",
+            "title": "A real minute: turn elapsed time into a color journey"
+          }
+        ],
+        "build": "Use a clock to change the colors over one minute, then hold the ending.",
+        "assignment": "Shape the beginning, middle and end of a silent one-minute piece.",
+        "proof": "Watch one full minute and note what you see at the start, halfway through and at the end."
+      }
     },
     {
       "title": "Replay and present",
@@ -1071,7 +1156,24 @@
           "solution": "Adjust proportional placement where necessary. A viewport-sized canvas does not itself invoke browser fullscreen; the shared fullscreen presentation page must also be tested."
         }
       ],
-      "idea": "Repeatability includes source material, timing, procedural choices and human actions. Seeds address only the procedural generators they control."
+      "idea": "Repeatability includes source material, timing, procedural choices and human actions. Seeds address only the procedural generators they control.",
+      "roadmap": {
+        "number": 6,
+        "tag": "Present",
+        "learnFirst": [
+          {
+            "id": "02-coordinates",
+            "title": "Place shapes and control drawing order"
+          },
+          {
+            "id": "05-functions",
+            "title": "Reuse a rule with functions"
+          }
+        ],
+        "build": "Click to replay the minute and resize the canvas to fit the window.",
+        "assignment": "Use the fullscreen link to rehearse the same silent piece twice at presentation size.",
+        "proof": "Open the shared link, resize the window and compare the two runs at the same moment."
+      }
     },
     {
       "title": "Refine and document together",
@@ -1250,7 +1352,24 @@
           "solution": "Verify the blog, code and fullscreen links; source and inspiration credits; collaboration record; color observations; iteration evidence; and timed viewings. Rehearse two silent runs. Fill gaps with real work rather than invented documentation."
         }
       ],
-      "idea": "A useful process record lets someone connect a decision, a changed rule and an observed result. Your partner can help question that connection."
+      "idea": "A useful process record lets someone connect a decision, a changed rule and an observed result. Your partner can help question that connection.",
+      "roadmap": {
+        "number": 7,
+        "tag": "Finish",
+        "learnFirst": [
+          {
+            "id": "09-color",
+            "title": "Use color to direct attention"
+          },
+          {
+            "id": "19-debug",
+            "title": "Practice: find the first error and repair one thing"
+          }
+        ],
+        "build": "Use the same program as Stage 6 while you test and document it together.",
+        "assignment": "With your partner, save at least three iterations and watch the piece for a full minute at least three times.",
+        "proof": "Share your process and links on the blog and enter your changes and timed observations in the class spreadsheet."
+      }
     }
   ],
   "lineMeanings": [
@@ -1457,10 +1576,6 @@
     {
       "pattern": "^resizeCanvas\\(windowWidth, windowHeight\\);$",
       "meaning": "Resize the canvas to the new window dimensions."
-    },
-    {
-      "pattern": "^\\}$",
-      "meaning": "End this group."
     }
   ]
 }

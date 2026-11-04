@@ -3,7 +3,7 @@
   const C = window.studioDashboardCore;
   if (!C) return;
   const RESUME = 'icm-studio-resume-v1', WORKBOOK = 'icm-workbook-v1';
-  const fallback = {kind:'loops',stage:2,mode:'row'};
+  const fallback = {kind:'stage',stage:1};
   function read(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
   let context = C.validContext(read(RESUME)) || fallback;
   let hasHostContext = false;
@@ -32,6 +32,13 @@
     updateProgress();
   }
   window.studioDashboard = {
+    open(name, from) {
+      if(!sections.includes(name)||!mounted)return false;
+      trigger=from||document.activeElement;section=name;renderDialog();
+      if(!dialog.open)dialog.showModal();
+      dialog.querySelector('.studio-close').focus();
+      return true;
+    },
     setContext(value) {
       const next = C.validContext(value);
       if (!next) return false;

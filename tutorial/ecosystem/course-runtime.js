@@ -1,5 +1,31 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../project-core.cjs'));else root.courseRuntime=factory(root.projectCore);})(typeof globalThis!=='undefined'?globalThis:this,function(C){
  'use strict';
+ // These are the blocks emitted by the project generator. Match an entire
+ // opening line so an unfamiliar future block keeps its detailed explanation.
+ const closingMeanings=new Map([
+  ['for (let x = 0; x < picture.width; x += tile) {','End the column loop for this row.'],
+  ['for (let y = 0; y < picture.height; y += tile) {','End the row loop after visiting every sampled row.'],
+  ['if (x / picture.width >= focus) {','End the focus check that selects which colors change.'],
+  ['if (start === undefined) {','End the first frame check; later frames keep the start time.'],
+  ['async function setup() {','End setup after preparing the sketch.'],
+  ['function draw() {','End draw for this frame.'],
+  ['function paintTiles(amount) {','End paintTiles after drawing the mosaic.'],
+  ['function mousePressed() {','End mousePressed after restarting the minute.'],
+  ['function windowResized() {','End windowResized after fitting the canvas to the window.']
+ ]);
+ function meaningForLine(lines,index,rules){
+  const [source,detail]=lines[index],code=source.trim();
+  if(code==='}'){
+   const open=[];
+   for(let i=0;i<index;i++){
+    const prior=lines[i][0].trim();
+    if(prior.endsWith('{'))open.push(prior);
+    else if(prior==='}')open.pop();
+   }
+   return closingMeanings.get(open.pop())??detail;
+  }
+  return rules.find(rule=>new RegExp(rule.pattern).test(code))?.meaning??detail;
+ }
  function lessonProject(stage,options,size){
   const built=C.buildProject(stage,options);
   if(stage===0&&Number(size)===320){built.lines[3]=['  createCanvas(320, 240);','Create a 320 × 240 canvas, the same dimensions as the supplied source. Changing the canvas does not resize the stored source file.'];built.code=built.lines.map(l=>l[0]).join('\n');}
@@ -47,5 +73,5 @@ let checks=0;const readyCheck=setInterval(()=>{
   const displayPercent=stage===0&&code.includes('createCanvas(320, 240)')?50:100;
   return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;padding:0;background:#0c121c;overflow:hidden}canvas{display:block;width:'+displayPercent+'%!important;height:auto!important}</style><script src="../vendor/p5.min.js"></script></head><body><main></main><script>'+executable+'\n'+bridge+'</script></body></html>';
  }
- return {lessonProject,frameHTML};
+ return {lessonProject,frameHTML,meaningForLine};
 });
