@@ -36,7 +36,7 @@
   function focus(role){activeRole=role||activeRole;root.dataset.focus=activeRole;for(const [key,b] of Object.entries(phaseNodes))b.setAttribute('aria-pressed',String(key===activeRole||(key==='values'&&activeRole==='address')||(key==='fill'&&activeRole==='transform')));}
   function update(next){state={...state,...next};state.options=C.cleanState({options:state.options}).options;current=F.sample(pixels,state);const s=current;root.hidden=state.stage===0;if(root.hidden)return;
    if(document.activeElement!==x)x.value=s.x;if(document.activeElement!==y)y.value=s.y;x.step=y.step=s.tile;jump.disabled=s.tile!==16;
-   destinationLabel.textContent='REAL p5 · '+s.canvasW+' × '+s.canvasH;
+   destinationLabel.textContent='Teaching preview · '+(state.stage>=4?(state.teaching?'paused at '+s.seconds.toFixed(1)+' s':'real time · '+s.seconds.toFixed(1)+' s'):'still picture')+' · '+s.canvasW+' × '+s.canvasH;
    address.textContent='i = 4 × ('+s.x+' + '+s.y+' × 320) = '+s.index;
    channelNodes.forEach((part,i)=>{part.n.textContent=s.rgba[i];part.where.textContent='address '+s.addresses[i];part.bar.style.width=(s.rgba[i]/255*100)+'%';});
    explain.textContent='Address = where. Value = how much color.';

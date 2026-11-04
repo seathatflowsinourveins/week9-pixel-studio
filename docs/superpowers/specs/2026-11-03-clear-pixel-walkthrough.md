@@ -1,0 +1,9 @@
+# Final clarity pass
+
+Implement the five improvements explicitly accepted by the learner: actual selected-pixel values beside each relevant code line; visible-action instructions instead of installation wording; unambiguous Teaching preview versus Your sketch captions; readable complete selected lines and a Tools disclosure for secondary actions; consistent experiment values. Keep the existing dark design, practice automation, drafts, account handoff, pinnedp5 and assignment requirements.
+
+Reuse pixelFlowCore.sample as the numeric source of truth. A lineExample model derives coordinates, RGBA addresses/values, colors and output geometry for the current selected sample and teaching preview. It must never imply those preview clock values are the independent running practice clock. Examples update when the sample, line, rule, settings or inspection time changes, without rewriting or rerunning practice code on a mere line/sample change. Use the real window-and-plant asset; source(16,16) is RGBA148/201/207/255, addresses20544–20547.
+
+Practice shows Run and Tools; Tools contains Use lesson code, Undo, Copy my code and Download. Increase code/gutter line-height together and wrap the full selected line. Preserve editable drafts and Undo. All7 phases and row/grid retain their existing IDs and47actions. Standardize Focus40→70 at strength100 across prompts and walkthrough. First-stage titles are plain visible actions. Account-saving instructions stay in their explicit handoff.
+
+Verify native tests/build, independent review and browser traces of index→green→fill→rect; selected-pixel changes and rule/time updates; clean/edited drafts; Tools/reset/undo; all7 phases and row/grid; captions on paused teaching versus running practice; desktop/phone fit. Publish through existing Pages and open the final Stage3 walkthrough with sample16,16 and address line ready.

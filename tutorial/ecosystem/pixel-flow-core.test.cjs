@@ -26,3 +26,25 @@ test('action focus follows the active color rule and RGBA falls back to a whole 
  }
  assert.match(C.buildProject(1).lines[F.actionLine(C.buildProject(1).lines,'green')][0],/picture.get/);
 });
+
+test('live line examples use the selected pixel addresses and channel amounts',()=>{
+ const F=require('./pixel-flow-core.js'),p=new Uint8ClampedArray(320*240*4);p.set([148,201,207,255],20544);p.set([42,84,126,255],20608);const state={x:16,y:16,tile:16,stage:2};
+ assert.equal(typeof F.lineExample,'function');const address=F.lineExample(p,state,'const i = 4 * (x + y * picture.width);');assert.match(address.expression,/20544/);assert.match(address.context,/16, 16/);
+ const green=F.lineExample(p,state,'const g = picture.pixels[i + 1];');assert.equal(green.expression,'pixels[20545] → 201');assert.match(green.meaning,/green/);
+ const next=F.lineExample(p,{...state,x:32},'const g = picture.pixels[i + 1];');assert.equal(next.expression,'pixels[20609] → 84');
+ const alpha=F.lineExample(p,state,'const a = picture.pixels[i + 3];');assert.match(alpha.meaning,/opaque/);
+});
+test('live fill and rectangle examples connect the sample to its actual color and destination',()=>{
+ const F=require('./pixel-flow-core.js'),p=new Uint8ClampedArray(320*240*4);p.set([148,201,207,255],20544);const state={x:16,y:16,tile:16,stage:2};const fill=F.lineExample(p,state,'fill(r, g, b);');assert.equal(fill.expression,'fill(148, 201, 207)');assert.deepEqual(fill.swatch,[148,201,207]);assert.equal(F.lineExample(p,state,'rect(x / picture.width * width, y / picture.height * height, tile / picture.width * width, tile / picture.height * height);').expression,'rect(32, 32, 32, 32)');
+});
+test('Stage2 fill includes alpha while later transformed colors are described as rounded output',()=>{
+ const F=require('./pixel-flow-core.js'),C=require('../project-core.cjs'),p=new Uint8ClampedArray(320*240*4);p.set([148,201,207,255],20544);
+ const line=C.buildProject(1).lines.find(([code])=>code.trim().startsWith('fill('))[0];assert.equal(F.lineExample(p,{x:16,y:16,tile:16,stage:1},line).expression,'fill(148, 201, 207, 255)');
+ const transformed=F.lineExample(p,{x:16,y:16,tile:16,stage:3,options:{mode:'gray',strength:.5}},'fill(lerp(r, targetR, amount), lerp(g, targetG, amount), lerp(b, targetB, amount));');assert.match(transformed.title,/rounded/i);assert.doesNotMatch(transformed.expression,/^fill\(/);
+});
+test('time and transformed examples describe the teaching sample rather than the independent practice clock',()=>{
+ const F=require('./pixel-flow-core.js'),p=new Uint8ClampedArray(320*240*4);p.set([148,201,207,255],4*(160+16*320));const state={x:160,y:16,stage:4,seconds:30,teaching:true,options:{mode:'focus',focus:.4,strength:.5,tile:16}};
+ const time=F.lineExample(p,state,'paintTiles(t * strength);');assert.match(time.expression,/30 ÷ 60 × 0.5 = 0.25/);assert.match(time.context,/Teaching preview/);
+ const fill=F.lineExample(p,state,'fill(lerp(r, targetR, amount), lerp(g, targetG, amount), lerp(b, targetB, amount));');assert.deepEqual(fill.swatch,F.sample(p,state).current);
+ assert.equal(F.lineExample(p,state,'let picture;'),null);
+});

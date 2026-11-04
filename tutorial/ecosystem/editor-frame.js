@@ -211,7 +211,7 @@
     }
     container.appendChild(surface);
     container.appendChild(element('p', 'p5-native-note', practice ?
-      'Practice follows your phase and saves drafts on this device. Use Copy my code, then Open p5 & save for your account.' :
+      'Practice saves drafts on this device. Use Tools → Copy my code, then Save in p5 for your account.' :
       'Run and edit here. Sign in and save in the full p5 tab. Pane edits stay here until you copy or download them.'));
     var instance = { iframe: iframe, setSuggestedProject: setSuggestedProject, loadSuggested: loadSuggested };
     if (practice) {

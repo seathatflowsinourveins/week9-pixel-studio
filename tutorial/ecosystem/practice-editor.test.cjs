@@ -40,3 +40,6 @@ test('late readiness cannot present an unrun edit as the currently running sourc
 test('a passive Run or guide update in another tab cannot overwrite a saved same-phase edit',async()=>{
  const a=setup(),b=setup(undefined,a.memory);a.editor.setLesson(one);b.editor.setLesson(one);a.el('practice-code').value='latest explicit edit in tab A';await a.el('practice-code').fire('input');await b.el('practice-run').click();b.editor.setLesson({...one,code:'new guide settings'});assert.equal(JSON.parse(a.memory.get('icm-practice-drafts-v1')).drafts['stage-1'].code,'latest explicit edit in tab A');
 });
+test('Run stays prominent while secondary actions are in a named Tools disclosure',()=>{
+ const s=setup(),tools=s.el('practice-tools');assert.ok(tools,'Tools disclosure is missing');assert.equal(tools.tagName,'details');assert.equal(s.el('practice-tools-label').textContent,'Tools');assert.equal(s.el('practice-copy').parentNode,s.el('practice-tool-list'));assert.notEqual(s.el('practice-run').parentNode,s.el('practice-tool-list'));s.editor.setLesson(one);assert.equal(s.el('practice-output-label').textContent,'Your sketch · latest Run');
+});

@@ -26,8 +26,8 @@ module.exports = [
   {
     number: 3, tag: 'RGBA', learnFirst: ['08-collections', '12-rgba'],
     play: {
-      try: 'Click near the middle of the source picture. Press the right arrow to select the next block.',
-      notice: 'The outline moves right. The four addresses below now point to the red, green, blue and alpha values for that block.',
+      try: 'Set Sampling step to 16. Choose (16, 16), then press the right arrow on the source picture.',
+      notice: 'The outline moves to the next block. Each block has four color values at four addresses.',
       control: 'flow-source'
     },
     build: 'Find a pixel’s four color entries and draw a block using its red, green and blue.',
@@ -37,7 +37,7 @@ module.exports = [
   {
     number: 4, tag: 'Focus', learnFirst: ['04-decisions', '06-mapping'],
     play: {
-      try: 'Choose “Keep a region colored.” Set “Transformation strength” to 100%. Move “Width that keeps its color” from 25% to 75%.',
+      try: 'Choose “Keep a region colored.” Set “Transformation strength” to 100%. Move “Width that keeps its color” from 40% to 70%.',
       notice: 'The edge of the colored region moves right. More blocks on the left keep their original colors.',
       control: 'color-rule'
     },
@@ -49,7 +49,7 @@ module.exports = [
     number: 5, tag: 'Minute', learnFirst: ['03-animation', '14-time'],
     play: {
       try: 'Move Teaching time to 0, 30 and 60 seconds. Then choose “Play actual 60 seconds” to watch the full minute.',
-      notice: 'Teaching time holds each frame still. During the real minute, the clock advances on its own.',
+      notice: 'Teaching preview pauses at each selected moment. Your sketch follows its own clock.',
       control: 'teaching-time'
     },
     build: 'Use a clock to change the colors over one minute, then hold the ending.',

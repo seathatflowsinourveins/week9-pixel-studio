@@ -9,47 +9,84 @@ const lessons = [
     title: 'Show one image',
     subtitle: 'A file becomes a picture on your drawing surface.',
     outcome: 'Display sample.png, then explain why its source size and canvas size are different.',
-    illustrationHint: 'This is a real p5 sketch. The source is 320 × 240 pixels; its canvas is 640 × 480. A still image is the expected result.',
+    illustrationHint: 'The source picture is 320 × 240 pixels. The canvas can show the same picture at a different size.',
     experiment: {
-      instruction: 'In your p5 editor, change only createCanvas(640, 480) to createCanvas(320, 240). Run, compare, then restore 640, 480 and save.',
+      instruction: 'Choose Show at 320 × 240. Then choose Show at 640 × 480. Compare the window in each picture.',
       expect: 'The displayed picture becomes smaller. The original image file stays 320 × 240.'
     },
     checkpoint: 'I can load the image, save the sketch, and explain that loadImage loads while image draws.',
     actions: [
       {
-        here: 'Keep this lesson visible beside your usual browser’s p5 editor. Read one action here, then perform its editor instruction. You can revisit any action without starting your project again.',
-        editor: 'Open your saved Stage 1 sketch. You already confirmed its image runs in your usual browser. Keep that browser for editing if the in-app preview is blank.'
+        title: 'Find the window and plant',
+        here: 'Look for the window and plant in Your sketch. Practice has already drawn the picture.',
+        editor: 'When you want a shareable version, use Save in p5 to open your account sketch.',
+        why: 'Recognizing the picture gives you a result to compare as you change the code.',
+        expect: 'The window, sun and plant appear on the canvas.',
+        question: 'What should you see at this point?',
+        choices: ['A still picture with a window and plant', 'A new color on every frame'],
+        correct: 0,
+        explanation: 'This first sketch draws the image once.',
+        repair: 'In Practice, choose Run and look at Your sketch.'
       },
       {
-        here: 'Press Restart p5. Look for the window, sun, hills and plant in the illustration. This establishes the result you will recognize when you run your own sketch.',
+        title: 'Watch the picture stay still',
+        here: 'Look at the sun for a moment. This sketch draws the image once, so the sun stays in place.',
         editor: 'Keep your saved sketch as it is. Compare its preview with this illustration. Stage 1 draws once; it does not yet animate.'
       },
       {
-        here: 'Choose Download sample.png and locate the downloaded image file. Its stored size is 320 × 240. Keep its exact filename for the upload step.',
-        editor: 'Your prepared Stage 1 already has this image. When rebuilding the exercise, upload the actual file. A Downloads folder path pasted into code does not upload it.'
+        title: 'Find the image file',
+        here: 'Read the filename inside loadImage("sample.png"). That file holds the original 320 × 240 picture.',
+        editor: 'If rebuilding an account sketch from scratch, download sample.png and upload that file to the sketch.',
+        why: 'loadImage uses the filename to find the picture.',
+        expect: 'The filename in the code matches the source image.',
+        repair: 'Read the letters between the quote marks in loadImage.'
       },
       {
-        here: 'Identify the three jobs: index.html loads the page and p5 library, sketch.js contains your program, and sample.png supplies the image. Your existing saved project is ready; these steps also let you recreate it.',
-        editor: 'Open the file panel with Open Sketch files navigation. Find index.html, sketch.js and sample.png. Use a new sketch if you want to rebuild the exercise separately from your saved version.'
+        title: 'Name the three files',
+        here: 'Find sketch.js in the guide. It contains your drawing instructions. index.html loads p5, and sample.png supplies the picture.',
+        editor: 'If you open a p5 account sketch, its file panel lists index.html, sketch.js and sample.png.',
+        expect: 'You can name the page, drawing program and picture file.',
+        repair: 'Read the file roles above, then find the program name ending in .js.'
       },
       {
-        here: 'Choose Copy index.html. This copies the complete page setup for p5 2.3.4. Use the HTML explanation link when you want to understand its 17 lines.',
-        editor: 'Select index.html. Click inside its code, press Ctrl+A, then Ctrl+V to replace that whole file. The prepared Stage 1 already has this setup. Keep sketch.js as a separate file.'
+        title: 'See how the page starts',
+        here: 'Open “Explain the page setup / HTML.” Find where the page loads p5 before sketch.js.',
+        editor: 'For a fresh account sketch, use Copy index.html to install the supplied page setup. Practice already has it.',
+        expect: 'You can point to the script that loads p5.',
+        question: 'Which file loads the p5 library for the page?',
+        choices: ['index.html', 'sample.png'],
+        correct: 0,
+        explanation: 'The script tags in index.html load p5 and sketch.js.',
+        repair: 'Open “Explain the page setup / HTML” and look for the script tags.'
       },
       {
-        here: 'Have the downloaded sample.png file ready. Its name in the project must match the quoted text in loadImage("sample.png"). The supplied image lets you recognize a working result before choosing your own material.',
-        editor: 'If sample.png is already beside sketch.js, this step is done. Otherwise use the + button next to Sketch Files, choose upload file, then Drop files here or click to use the file browser. Select sample.png and confirm it appears in the file list.'
+        title: 'Match the filename',
+        here: 'Read the quoted text "sample.png" in the loading line. Its spelling tells p5 which image file to open.',
+        editor: 'For a fresh account sketch, place sample.png beside sketch.js in the file panel.',
+        expect: 'The program asks p5 to open the supplied picture.',
+        repair: 'Check that the quoted name includes the .png ending.'
       },
       {
-        here: 'Choose Copy sketch.js. It copies this stage’s complete eight-line program. Select a code line to read its explanation, or use Next line to move through the program in order.',
-        editor: 'Select sketch.js, click inside its code, press Ctrl+A, then paste. Replace the entire old program. The first line is let picture; and there is one async function setup().'
+        title: 'Read the loading line',
+        here: 'Select the line containing await loadImage. Read its meaning. The picture must finish loading before p5 can draw it.',
+        editor: 'Practice has the complete eight-line sketch. To keep your edited version in an account, copy your code and paste it into a duplicate.',
+        expect: 'The name picture holds the loaded image.',
+        why: 'Loading the file makes the image available to the drawing code.',
+        question: 'What does picture hold after await loadImage finishes?',
+        choices: ['The loaded image', 'The canvas width'],
+        correct: 0,
+        explanation: 'await lets the image finish loading before setup continues.',
+        repair: 'Read the name on the left of the equals sign, then the call on the right.'
       },
       {
-        here: 'Press Restart p5 and compare the illustration with your editor. Write two short statements: “source: 320 × 240” and “canvas: 640 × 480.” Seeing the result and saving the project are separate checks.',
-        editor: 'Press the Run triangle. Confirm the image appears, give the sketch a recognizable title and choose File → Save. Reopen its actual saved address to check that your code and asset were saved.'
+        title: 'Compare picture and canvas',
+        here: 'Choose Show at 640 × 480. The source is still 320 × 240. Compare the drawing size with the file size.',
+        editor: 'To check your shareable account version, save it in p5 and reopen its saved address.',
+        why: 'The canvas can display the same source at a different size.',
+        expect: 'The canvas is 640 × 480 and the image file is still 320 × 240.'
       },
       {
-        here: 'Select the createCanvas line and read its explanation. Predict what a smaller canvas will do. This lesson’s reference stays available while you make the practice change in your editor.',
+        here: 'Select createCanvas. Choose Show at 320 × 240, then return to 640 × 480. Watch the canvas change size.',
         editor: 'Change only createCanvas(640, 480) to createCanvas(320, 240), then Run. Compare the display. Restore 640, 480, Run again and Save. Explain what changed before continuing.'
       }
     ]
@@ -60,14 +97,16 @@ const lessons = [
     outcome: 'Build a mosaic and explain how the sampling step controls its detail.',
     illustrationHint: 'Each block uses one color sampled from the source. The loops visit a row from left to right, then move to the next row.',
     experiment: {
-      instruction: 'Compare tile values 8, 16 and 40 while keeping the source image fixed. Inspect the illustration and the generated const tile line after each change.',
-      expect: 'The three settings use 1,200, 300 and 48 samples. Larger steps make fewer, larger blocks.'
+      instruction: 'Set Sampling step to 16, then 8. Compare the same edge of the window.',
+      expect: 'At 8, smaller blocks follow the edge more closely. The number of samples rises from 300 to 1,200.'
     },
     checkpoint: 'I can explain why increasing tile makes the mosaic coarser, and I saved one tested version.',
     actions: [
       {
-        here: 'Set tile to 16 and press Restart p5. Compare this mosaic with the smooth Stage 1 picture. Keep the same source image while learning the sampling rule.',
-        editor: 'Choose Copy sketch.js, select all of sketch.js in the editor, and replace it. Run and Save this stage. Keep the same sample.png and index.html.'
+        title: 'Find one block',
+        here: 'Look at the edge of the window in Your sketch. Each square takes its color from one place in the source picture.',
+        editor: 'In Practice, select const tile. It sets the distance between samples.',
+        repair: 'Look for a straight edge of the window where neighboring blocks meet.'
       },
       {
         here: 'Look at the block edges: they form a grid even though no outline is drawn. At tile 16, the 320 × 240 source is visited in 20 columns and 15 rows. Trace one row with your eyes, then move down.',
@@ -90,8 +129,14 @@ const lessons = [
         editor: 'Find the same two loops without changing them. At tile 16, calculate 320 ÷ 16 = 20 columns and 240 ÷ 16 = 15 rows. Multiply to get 300 samples.'
       },
       {
-        here: 'Change tile to 8, then 40. Compare the detail in the window and plant. Only one setting changes, so you can connect that setting with the result.',
-        editor: 'Change only const tile = 16; to const tile = 8; and Run. Then try 40 and Run. Keep the two loop steps as y += tile and x += tile.'
+        here: 'Set Sampling step to 16, then 8. Look at the same window edge after each change.',
+        editor: 'Find const tile in Practice. At 8, each loop moves eight source pixels between samples.',
+        expect: 'Smaller blocks trace the same edge with more detail.',
+        question: 'Which setting draws fewer blocks?',
+        choices: ['Step 16', 'Step 8'],
+        correct: 0,
+        explanation: 'At 16, the loop visits fewer places in the same picture.',
+        repair: 'Look at the same edge at 16 and 8.'
       },
       {
         here: 'Restore tile 16. Select the rect line and read its explanation. x / picture.width gives a fraction of the source; multiplying by width finds the matching position on the canvas.',
@@ -106,38 +151,42 @@ const lessons = [
   {
     title: 'Find a pixel’s four numbers',
     subtitle: 'A rectangular picture is stored as a long list.',
-    outcome: 'Connect a source coordinate to the red, green, blue and alpha entries in its pixel buffer.',
+    outcome: 'Choose one point in the source picture and read its red, green, blue and alpha values.',
     illustrationHint: 'The mosaic can look exactly like Stage 2. The change is how the program reads colors: this stage uses picture.pixels instead of get.',
     experiment: {
-      instruction: 'At tile 16, inspect source sample (16, 16). Calculate 4 × (16 + 16 × 320) before reading the inspector’s answer.',
-      expect: 'The red address is 20544; green, blue and alpha are at 20545, 20546 and 20547. Their stored values are separate numbers.'
+      instruction: 'Set Sampling step to 16. Choose (16, 16). Follow this point from its four values to its block.',
+      expect: 'At (16, 16), RGBA is [148, 201, 207, 255]. Green is stored at address 20545 and its value is 201.'
     },
     checkpoint: 'I can calculate one pixel’s four addresses and distinguish an address from a color amount.',
     actions: [
       {
-        here: 'Set tile 16 and press Restart p5. A mosaic matching Stage 2 is correct. Select picture.pixelDensity(1) and picture.loadPixels() to see how the source buffer is prepared.',
-        editor: 'Choose Copy sketch.js, replace all editor sketch.js, then Run and Save. Check that picture.pixelDensity(1); and picture.loadPixels(); appear after loading.'
+        title: 'Choose one pixel',
+        here: 'With Sampling step at 16, choose (16, 16). Find the outlined point on the source picture and its block in Teaching preview.',
+        editor: 'Read the selected guide line in Practice. picture.loadPixels() makes the image’s color values available to the sketch.',
+        why: 'Following one point connects the color numbers to a block you can see.',
+        expect: 'The outline marks the same sample in both pictures.',
+        repair: 'Set Sampling step to 16 so the (16, 16) shortcut is available.'
       },
       {
-        here: 'Read the source coordinate beside the sample inspector. Begin with sample (0, 0); use Next sample to follow the row and return through the sequence if necessary. Its channel addresses are 0, 1, 2 and 3.',
+        here: 'Look at the top-left sample (0, 0). Its four color values start at addresses 0, 1, 2 and 3.',
         editor: 'Find const i = 4 * (x + y * picture.width);. Substitute x = 0 and y = 0 on paper. The first red address is zero, not one.',
         repair: 'Use the inspector’s coordinate label to distinguish sample (0, 0) from a later sample.'
       },
       {
-        here: 'With tile 16, press the (16, 16) shortcut in Follow one pixel. Predict the red address before comparing it with the readout. The source width is 320 even though the canvas is 640 wide.',
+        here: 'Choose (16, 16) again. Read the address line. It uses the source width of 320 and finds the red address 20544.',
         editor: 'Calculate: 16 complete rows × 320 pixels = 5120; add x = 16 to get 5136 pixels; multiply by 4 RGBA entries to get address 20544.',
         repair: 'Confirm tile 16 and coordinate (16, 16), then calculate using source width 320.'
       },
       {
-        here: 'Read the selected sample’s RGBA values. Write one channel address and its stored value with separate labels: “where” and “how much.” A large address can hold an ordinary channel amount between 0 and 255.',
+        here: 'Read green for (16, 16). Address 20545 holds the value 201. The address tells you where to look. The value tells you how much green.',
         editor: 'Find const g = picture.pixels[i + 1];. Say: “go to the green address and remember the amount found there.” The +1 changes the address; it does not increase the green amount.'
       },
       {
-        here: 'Inspect alpha, the fourth channel. The supplied image is opaque, so its alpha is 255. Compare the explanations for picture.pixelDensity(1) and pixelDensity(1): they belong to different drawing objects.',
+        here: 'Read the fourth value for (16, 16). Alpha 255 means fully opaque. This sketch uses one physical pixel per source position.',
         editor: 'Keep both density lines. This starter reads source RGB and draws opaque tiles with fill(r, g, b). It does not copy arbitrary source transparency into the result.'
       },
       {
-        here: 'Select fill(r, g, b). Compare a sampled source color with its mosaic block. The program reads the original buffer, then draws new rectangles; it leaves the source values available for later comparisons.',
+        here: 'Select fill(r, g, b). For (16, 16), fill(148, 201, 207) sets the color for the block drawn by rect.',
         editor: 'Find the three channel-reading lines. There is no assignment back into picture.pixels and no picture.updatePixels() call. Reading a buffer does not require updating that buffer.'
       }
     ]
@@ -148,14 +197,16 @@ const lessons = [
     outcome: 'Keep a chosen left-hand region colored while changing the remaining samples toward gray.',
     illustrationHint: 'focus chooses where the boundary sits. strength chooses how far the selected colors move toward their targets. Change one at a time.',
     experiment: {
-      instruction: 'First compare focus 40% and 70% at full strength. Restore 40%, then compare strength 50% and 100%.',
-      expect: 'Changing focus moves the region boundary. Changing strength changes the color amount outside that boundary.'
+      instruction: 'Choose “Keep a region colored.” Set strength to 100%. Move the width from 40% to 70%.',
+      expect: 'The color boundary moves right. More of the window keeps its original color.'
     },
     checkpoint: 'I can explain the position test and blend amount, and describe one visual consequence I actually observed.',
     actions: [
       {
-        here: 'Choose the focus color rule, tile 16, focus 40% and strength 100%. Press Restart p5. Samples in the left-hand region keep their color; the remaining samples become gray.',
-        editor: 'Choose Copy sketch.js, replace all sketch.js, then Run and Save. Find const focus = 0.4; and const strength = 1; near the top.'
+        title: 'Find the color boundary',
+        here: 'Choose “Keep a region colored.” Set strength to 100% and width to 40%. Find the edge between color and gray.',
+        editor: 'In Practice, find const focus = 0.4 and const strength = 1. They match the two settings.',
+        why: 'A position test decides which blocks keep their original colors.'
       },
       {
         here: 'Select if (x / picture.width >= focus). Read it as a sentence: “If this sample is at or beyond the boundary, use gray targets.” At focus 0.4, source x 128 is exactly on the boundary.',
@@ -171,11 +222,11 @@ const lessons = [
       },
       {
         here: 'Restore strength 100% and choose the invert rule. Read the regenerated targetR, targetG and targetB explanations. For any channel, the inverted target is 255 minus its original value.',
-        editor: 'Choose Copy sketch.js again and replace the complete file, then Run. Changing a rule generates a complete matching program; do not combine the old focus branch with the new inversion branch.'
+        editor: 'Look at targetR in the guide code. The invert rule now uses 255 - r. If Practice has your own edits, Use lesson code loads the example there.'
       },
       {
         here: 'Return to the focus rule, focus 40% and strength 100%. Write one actual comparison and what you noticed first. The rule tests horizontal position; it does not recognize objects automatically.',
-        editor: 'Copy the restored complete code, replace sketch.js, Run and Save. Preserve a different tested version separately if you want to return to it.'
+        editor: 'To save this version in your p5 account, choose Copy my code in Practice. Use Save in p5, duplicate your sketch, paste the code, Run and Save.'
       }
     ]
   },
@@ -183,19 +234,24 @@ const lessons = [
     title: 'Shape one minute',
     subtitle: 'Use elapsed time to move gradually toward an ending.',
     outcome: 'Turn the static rule into a sixty-second transformation that holds its final state.',
-    illustrationHint: 'Restart p5 begins the real timed preview. Teaching time lets you inspect a selected moment; it does not move your separate editor’s clock or change the exported 60000 milliseconds.',
+    illustrationHint: 'Teaching time pauses Teaching preview at a chosen moment. Your sketch follows its own clock.',
     experiment: {
-      instruction: 'Inspect teaching times 0, 30 and 60 seconds. Then restart the actual p5 sketch and watch a full minute with a separate timer.',
+      instruction: 'Inspect 0, 30 and 60 seconds in Teaching preview. Then choose Play actual 60 seconds and watch the full minute.',
       expect: 'Progress is 0, 0.5 and 1 at those checkpoints. After a minute, constrain keeps progress at 1 and the ending holds.'
     },
     checkpoint: 'I can explain elapsed progress and final strength separately, and I watched a real full-minute run.',
     actions: [
       {
-        here: 'Choose the focus rule, focus 40%, strength 100% and tile 16. Press Restart p5. Its real timed run starts near zero; the separate Teaching time control is for inspecting moments.',
-        editor: 'Choose Copy sketch.js, replace every line of sketch.js and Run. Find let start; and function draw(). Keep a separate timer ready.',
-        question: 'Does moving Teaching time here move the separate editor’s clock?',
+        title: 'Pause at 30 seconds',
+        here: 'Move Teaching time to 30 seconds. Teaching preview holds that moment. Your sketch follows its own clock.',
+        editor: 'In Practice, find let start and draw(). They let Your sketch keep time as it draws.',
+        expect: 'Teaching preview shows the halfway point. Your sketch keeps its own time.',
+        question: 'Does moving Teaching time change the clock in Your sketch?',
         choices: ['No, they are independent', 'Yes, both clocks are connected'],
-        correct: 0
+        correct: 0,
+        why: 'The slider lets you inspect the middle of the minute.',
+        explanation: 'Teaching preview and Your sketch have separate clocks.',
+        repair: 'Look for the paused label on Teaching preview.'
       },
       {
         here: 'Select if (start === undefined), then start = millis(). Use Next line to reach the progress calculation. The start reading is assigned on the first draw frame and retained on later frames.',
@@ -237,11 +293,20 @@ const lessons = [
     checkpoint: 'I tested replay and resizing, then opened and watched my actual saved presentation link.',
     actions: [
       {
-        here: 'Press Restart p5. Read the lines for createCanvas(windowWidth, windowHeight), mousePressed and windowResized. Keep the source and color settings fixed while testing presentation behavior.',
-        editor: 'Choose Copy sketch.js, replace all sketch.js, then Run and Save. Confirm those three functions or calls appear in the new version.'
+        title: 'Change the viewing shape',
+        here: 'Choose Wide preview, then Narrow preview. Watch the picture fit the new space in Teaching preview.',
+        editor: 'In Practice, find createCanvas(windowWidth, windowHeight). It uses the width and height of its own window.',
+        why: 'The same sketch can be shown in windows with different shapes.',
+        expect: 'The canvas changes shape with the preview.',
+        question: 'What changes when you choose Narrow preview?',
+        choices: ['The shape of the teaching canvas', 'The original image file'],
+        correct: 0,
+        explanation: 'The program fits its canvas to the available window.',
+        repair: 'Choose Wide preview again to compare the two shapes.'
       },
       {
-        here: 'Compare Teaching time 0, 30 and 60 without changing the source or rules. Repeat the same three values. Press Restart p5 when you want to begin a real timed preview again.',
+        title: 'Compare three moments',
+        here: 'Inspect 0, 30 and 60 seconds in Teaching preview. Repeat the three times and look at the same detail.',
         editor: 'Keep your project unchanged during this comparison. Note the same three moments you will look for during full runs.',
         expect: 'Matching teaching times show matching states; Restart p5 starts a new actual preview.',
         question: 'Does Restart p5 on this page also save your online editor project?',
@@ -279,8 +344,11 @@ const lessons = [
     checkpoint: 'I checked the live assignment against actual work, tested every submitted link and named any remaining work honestly.',
     actions: [
       {
-        here: 'Open the full workbook’s submission checklist and follow its Week 9 assignment link. With your partner, work through all linked Color Theory examples. Write two or three genuine observations you might explore.',
-        editor: 'Keep your working sketch saved while examining examples in separate tabs. An answer on this learning card does not complete the example exploration.'
+        title: 'Compare two versions',
+        here: 'Choose A, then B. Look at the same window edge in Teaching preview. Both versions show 30 seconds.',
+        editor: 'With your partner, follow the Week 9 brief to explore all linked Color Theory examples. Record two or three observations from what you see.',
+        why: 'Comparing the same moment makes a change in block size easier to see.',
+        expect: 'B shows smaller blocks than A. Keep your own observations for the class record.'
       },
       {
         here: 'Open Finish and expand Concept and partner. Together, name your source, intended alternative reality and first rule to test. Divide concrete independent work, then agree when to reunite and compare.',
@@ -317,7 +385,7 @@ module.exports = lessons.map((lesson, stage) => ({
     const change = lesson.actions[position];
     if (!change) throw new Error('Missing clean lesson action: ' + stage + '/' + position);
     return {
-      title: action.title,
+      title: change.title || action.title,
       here: change.here,
       editor: change.editor,
       why: change.why || action.why,
